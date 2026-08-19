@@ -73,6 +73,16 @@ const sampleFlights = [
   { airline: "Vistara", code: "UK-995", depart: "13:20", arrive: "15:30", duration: "2h 10m", price: 6120 },
   { airline: "SpiceJet", code: "SG-8169", depart: "18:05", arrive: "20:35", duration: "2h 30m", price: 4499 },
   { airline: "Akasa Air", code: "QP-1401", depart: "21:10", arrive: "23:20", duration: "2h 10m", price: 5299 },
+  { airline: "IndiGo", code: "6E-554", depart: "07:00", arrive: "09:35", duration: "2h 35m", price: 6499 },
+  { airline: "Air India", code: "AI-404", depart: "10:15", arrive: "12:00", duration: "1h 45m", price: 3999 },
+  { airline: "Vistara", code: "UK-992", depart: "14:00", arrive: "16:45", duration: "2h 45m", price: 5899 },
+  { airline: "IndiGo", code: "6E-809", depart: "17:30", arrive: "20:00", duration: "2h 30m", price: 5199 },
+  { airline: "Air India", code: "AI-887", depart: "19:15", arrive: "21:35", duration: "2h 20m", price: 4799 },
+  { airline: "SpiceJet", code: "SG-412", depart: "08:30", arrive: "10:05", duration: "1h 35m", price: 3499 },
+  { airline: "Akasa Air", code: "QP-1108", depart: "11:45", arrive: "13:50", duration: "2h 05m", price: 4599 },
+  { airline: "Vistara", code: "UK-771", depart: "15:10", arrive: "17:40", duration: "2h 30m", price: 5999 },
+  { airline: "IndiGo", code: "6E-302", depart: "18:40", arrive: "21:30", duration: "2h 50m", price: 5750 },
+  { airline: "Air India", code: "AI-610", depart: "22:00", arrive: "23:15", duration: "1h 15m", price: 3899 },
 ];
 
 // Popular hotels shown in the hotel results dialog (prices per night in ₹).
@@ -82,6 +92,16 @@ const sampleHotels = [
   { name: "Marine Bay Resort", city: "Goa", rating: 4.6, reviews: 3120, price: 6299, tag: "Beachfront" },
   { name: "Leela Sky Suites", city: "Mumbai", rating: 4.9, reviews: 2760, price: 10499, tag: "Premium" },
   { name: "Hilltop Retreat", city: "Manali", rating: 4.5, reviews: 1440, price: 4599, tag: "Mountain View" },
+  { name: "ITC Rajputana Palace", city: "Jaipur", rating: 4.7, reviews: 1680, price: 6899, tag: "Royal Heritage" },
+  { name: "Grand Hyatt Kochi", city: "Kochi", rating: 4.8, reviews: 2100, price: 8199, tag: "Waterfront" },
+  { name: "JW Marriott Bengaluru", city: "Bengaluru", rating: 4.8, reviews: 2950, price: 9499, tag: "City Luxury" },
+  { name: "Taj Falaknuma Palace", city: "Hyderabad", rating: 4.9, reviews: 3400, price: 18500, tag: "Ultra Luxury" },
+  { name: "Radisson Blu Resort", city: "Udaipur", rating: 4.6, reviews: 1560, price: 7299, tag: "Lake View" },
+  { name: "Novotel Airport Hotel", city: "New Delhi", rating: 4.5, reviews: 2040, price: 5999, tag: "Transit & Spa" },
+  { name: "Alila Diwa Resort", city: "Goa", rating: 4.7, reviews: 2450, price: 8799, tag: "Paddy Fields" },
+  { name: "Trident Hotel Nariman Point", city: "Mumbai", rating: 4.7, reviews: 3100, price: 9899, tag: "Sea Facing" },
+  { name: "The Westin Pune Koregaon", city: "Pune", rating: 4.6, reviews: 1780, price: 6799, tag: "Executive" },
+  { name: "Fortune Park Signature", city: "Ahmedabad", rating: 4.4, reviews: 1120, price: 4199, tag: "Business" },
 ];
 
 // Format a number as Indian Rupees, e.g. 4899 -> "₹4,899".
