@@ -33,27 +33,6 @@ const initialUsers = [
     email: "shagun201104@gmail.com",
     role: "ADMIN",
   },
-  {
-    _id: "2",
-    firstname: "John",
-    lastname: "Doe",
-    email: "john.doe@example.com",
-    role: "USER",
-  },
-  {
-    _id: "3",
-    firstname: "Aisha",
-    lastname: "Khan",
-    email: "aisha.khan@example.com",
-    role: "USER",
-  },
-  {
-    _id: "4",
-    firstname: "Rahul",
-    lastname: "Sharma",
-    email: "rahul.sharma@example.com",
-    role: "USER",
-  },
 ];
 
 // Rich set of default flights for Admin Panel management
@@ -365,27 +344,36 @@ export default function AdminDashboardPage() {
         const [flightData, hotelData] = await Promise.all([getflight(), gethotel()]);
         if (!active) return;
 
-        if (Array.isArray(flightData) && flightData.length > 0) {
+        if (Array.isArray(flightData) && flightData.length >= 15) {
           setFlights(flightData);
+        } else if (Array.isArray(flightData) && flightData.length > 0) {
+          const existing = new Set(flightData.map((f: any) => f.id || f.flightName));
+          const fillers = initialAdminFlights.filter((f) => !existing.has(f.id) && !existing.has(f.flightName));
+          setFlights([...flightData, ...fillers].slice(0, 15));
         } else {
-          // Store initial in local storage if empty
           const stored = localStorage.getItem("mmt_admin_flights");
           if (stored) setFlights(JSON.parse(stored));
+          else setFlights(initialAdminFlights);
         }
 
-        if (Array.isArray(hotelData) && hotelData.length > 0) {
+        if (Array.isArray(hotelData) && hotelData.length >= 15) {
           setHotels(hotelData);
+        } else if (Array.isArray(hotelData) && hotelData.length > 0) {
+          const existing = new Set(hotelData.map((h: any) => h.id || h.hotelName));
+          const fillers = initialAdminHotels.filter((h) => !existing.has(h.id) && !existing.has(h.hotelName));
+          setHotels([...hotelData, ...fillers].slice(0, 15));
         } else {
           const stored = localStorage.getItem("mmt_admin_hotels");
           if (stored) setHotels(JSON.parse(stored));
+          else setHotels(initialAdminHotels);
         }
       } catch (error) {
         console.warn("Backend API unavailable, using local admin catalog", error);
         if (typeof window !== "undefined") {
           const storedF = localStorage.getItem("mmt_admin_flights");
-          if (storedF) setFlights(JSON.parse(storedF));
+          setFlights(storedF ? JSON.parse(storedF) : initialAdminFlights);
           const storedH = localStorage.getItem("mmt_admin_hotels");
-          if (storedH) setHotels(JSON.parse(storedH));
+          setHotels(storedH ? JSON.parse(storedH) : initialAdminHotels);
         }
       }
     })();
