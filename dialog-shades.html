@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dialog Header Shades</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #eef3f8;
+    color: #0f1a2e;
+    padding: 28px;
+  }
+  h1 { font-size: 20px; margin-bottom: 6px; }
+  .sub { color: #52627a; font-size: 14px; margin-bottom: 22px; }
+  .grid { display: flex; flex-direction: column; gap: 18px; max-width: 640px; }
+  .card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(20,40,80,.12);
+    border: 1px solid rgba(255,255,255,.6);
+    background: #fff;
+  }
+  .header {
+    padding: 22px 22px 18px;
+    color: #fff;
+  }
+  .header.dark-text { color: #0f1a2e; }
+  .route { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .meta { font-size: 13px; opacity: .8; margin-top: 4px; }
+  .header.dark-text .meta { opacity: .65; }
+  .label {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 18px; font-size: 14px;
+  }
+  .name { font-weight: 700; }
+  .hex { font-family: monospace; color: #52627a; font-size: 13px; }
+  .current { font-size: 12px; color: #b04a4a; font-weight: 600; }
+
+  /* CURRENT (for reference) */
+  .c-current { background: linear-gradient(135deg, #2c5a9e, #4a86c9); }
+  /* OPTIONS */
+  .c-ocean   { background: linear-gradient(135deg, #4a86c9, #6aa5df); }
+  .c-sky     { background: linear-gradient(135deg, #5b9bd5, #7fb8e6); }
+  .c-powder  { background: linear-gradient(135deg, #7fb2e0, #a3cef0); }
+  .c-verylight { background: linear-gradient(135deg, #a3cef0, #c5e2f7); }
+</style>
+</head>
+<body>
+  <h1>Dialog header — pick a shade</h1>
+  <div class="sub">These mimic the flight results popup. Top one is what you have now. Tell me which name you want.</div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="header c-current">
+        <div class="route">✈ New Delhi → Mumbai</div>
+        <div class="meta">Departure on 2026-08-10 · 1 traveller</div>
+      </div>
+      <div class="label">
+        <span class="name">Current <span class="current">(too dark)</span></span>
+        <span class="hex">#2c5a9e → #4a86c9</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="header c-ocean">
+        <div class="route">✈ New Delhi → Mumbai</div>
+        <div class="meta">Departure on 2026-08-10 · 1 traveller</div>
+      </div>
+      <div class="label">
+        <span class="name">Ocean blue</span>
+        <span class="hex">#4a86c9 → #6aa5df</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="header c-sky">
+        <div class="route">✈ New Delhi → Mumbai</div>
+        <div class="meta">Departure on 2026-08-10 · 1 traveller</div>
+      </div>
+      <div class="label">
+        <span class="name">Soft sky blue</span>
+        <span class="hex">#5b9bd5 → #7fb8e6</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="header c-powder">
+        <div class="route">✈ New Delhi → Mumbai</div>
+        <div class="meta">Departure on 2026-08-10 · 1 traveller</div>
+      </div>
+      <div class="label">
+        <span class="name">Powder blue</span>
+        <span class="hex">#7fb2e0 → #a3cef0</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="header c-verylight dark-text">
+        <div class="route">✈ New Delhi → Mumbai</div>
+        <div class="meta">Departure on 2026-08-10 · 1 traveller</div>
+      </div>
+      <div class="label">
+        <span class="name">Very light blue <span style="color:#52627a;font-weight:500;">(dark text)</span></span>
+        <span class="hex">#a3cef0 → #c5e2f7</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
