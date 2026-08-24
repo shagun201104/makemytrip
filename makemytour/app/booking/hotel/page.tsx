@@ -134,6 +134,14 @@ function HotelBookingContent() {
   const [submitting, setSubmitting] = useState(false);
   const [bookingRef, setBookingRef] = useState("");
 
+  // Detailed Guest & Add-on states
+  const [numAdults, setNumAdults] = useState<number>(guests || 2);
+  const [numChildren, setNumChildren] = useState<number>(0);
+  const [childAge, setChildAge] = useState<string>("5");
+  const [numInfants, setNumInfants] = useState<number>(0);
+  const [extraMattress, setExtraMattress] = useState<boolean>(false);
+  const [includeBreakfast, setIncludeBreakfast] = useState<boolean>(true);
+
   const user = useSelector((state: any) => state.user.user);
 
   // Dynamic pricing
@@ -148,17 +156,19 @@ function HotelBookingContent() {
 
   // Price breakdown
   const nights = nightsBetween(checkin, checkout);
-  const { roomTotal, taxes, otherServices, discount, total } = useMemo(() => {
+  const { roomTotal, breakfastTotal, mattressTotal, taxes, otherServices, discount, total } = useMemo(() => {
     const extraNightly = selectedRoom ? selectedRoom.extraPricePerNight : 0;
     const effectiveNightly = (dynamicNightly || nightly) + extraNightly;
     const roomTotal = effectiveNightly * nights;
-    const taxes = Math.round(roomTotal * 0.12);
+    const breakfastTotal = includeBreakfast ? 350 * (numAdults + numChildren) * nights : 0;
+    const mattressTotal = extraMattress ? 500 * nights : 0;
+    const taxes = Math.round((roomTotal + mattressTotal + breakfastTotal) * 0.12);
     const otherServices = 299;
     const promo = PROMOS.find((p) => p.code === appliedPromo);
     const discount = promo ? promo.value : 0;
-    const total = roomTotal + taxes + otherServices - discount;
-    return { roomTotal, taxes, otherServices, discount, total };
-  }, [nightly, nights, appliedPromo, dynamicNightly, selectedRoom]);
+    const total = roomTotal + mattressTotal + breakfastTotal + taxes + otherServices - discount;
+    return { roomTotal, breakfastTotal, mattressTotal, taxes, otherServices, discount, total };
+  }, [nightly, nights, appliedPromo, dynamicNightly, selectedRoom, includeBreakfast, extraMattress, numAdults, numChildren]);
 
   const applyPromo = (code: string) => {
     const match = PROMOS.find(
@@ -494,6 +504,106 @@ function HotelBookingContent() {
                   className="bg-white border border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-lg h-11 px-3 focus-visible:ring-2 focus-visible:ring-[#5b9bd5]/40"
                 />
               </div>
+            </div>
+
+            {/* Guest Composition & Children Age Selector */}
+            <div className="rounded-xl bg-[#f8fafc] border border-[#e2e8f0] p-4 space-y-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#1a3a6b]">Guest Composition &amp; Age Breakdown</p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <Label className="text-xs font-semibold text-[#334155]">Adults (12+ yrs)</Label>
+                  <select
+                    value={numAdults}
+                    onChange={(e) => setNumAdults(Number(e.target.value))}
+                    className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                  >
+                    {[1, 2, 3, 4, 5, 6].map((n) => (
+                      <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <Label className="text-xs font-semibold text-[#334155]">Children (0-12 yrs)</Label>
+                  <select
+                    value={numChildren}
+                    onChange={(e) => setNumChildren(Number(e.target.value))}
+                    className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                  >
+                    {[0, 1, 2, 3, 4].map((n) => (
+                      <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <Label className="text-xs font-semibold text-[#334155]">Infants (Under 2 yrs)</Label>
+                  <select
+                    value={numInfants}
+                    onChange={(e) => setNumInfants(Number(e.target.value))}
+                    className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                  >
+                    {[0, 1, 2].map((n) => (
+                      <option key={n} value={n}>{n} Infant{n !== 1 ? "s" : ""}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {numChildren > 0 && (
+                <div className="bg-white p-3 rounded-lg border border-[#cbd5e1]">
+                  <Label className="text-xs font-bold text-[#1e293b]">Child Age Limit Selection</Label>
+                  <p className="text-[11px] text-[#64748b] mb-2">Children below 12 years receive complimentary stay without extra bed.</p>
+                  <select
+                    value={childAge}
+                    onChange={(e) => setChildAge(e.target.value)}
+                    className="w-full bg-[#f1f5f9] border border-[#cbd5e1] rounded-md h-9 px-2 text-xs font-medium text-[#0f172a]"
+                  >
+                    <option value="2">Child 1 Age: 2 years (Infant Bed Included)</option>
+                    <option value="5">Child 1 Age: 5 years (Junior Stay Included)</option>
+                    <option value="8">Child 1 Age: 8 years (Child Discount)</option>
+                    <option value="11">Child 1 Age: 11 years (Child Discount)</option>
+                  </select>
+                </div>
+              )}
+            </div>
+
+            {/* Room Add-ons & Facilities */}
+            <div className="rounded-xl bg-[#f0fdf4] border border-[#bbf7d0] p-4 space-y-3">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#15803d]">Optional Add-ons &amp; Facilities</p>
+
+              <label className="flex items-center justify-between cursor-pointer p-2 bg-white rounded-lg border border-[#dcfce7] hover:border-[#86efac]">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={includeBreakfast}
+                    onChange={(e) => setIncludeBreakfast(e.target.checked)}
+                    className="w-4 h-4 text-[#16a34a] rounded"
+                  />
+                  <div>
+                    <span className="text-xs font-bold text-[#14532d]">Complimentary Daily Breakfast Buffet</span>
+                    <p className="text-[11px] text-[#475569]">Includes Continental, South Indian &amp; Hot Dishes</p>
+                  </div>
+                </div>
+                <span className="text-xs font-extrabold text-[#15803d]">+₹350/person/night</span>
+              </label>
+
+              <label className="flex items-center justify-between cursor-pointer p-2 bg-white rounded-lg border border-[#dcfce7] hover:border-[#86efac]">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={extraMattress}
+                    onChange={(e) => setExtraMattress(e.target.checked)}
+                    className="w-4 h-4 text-[#16a34a] rounded"
+                  />
+                  <div>
+                    <span className="text-xs font-bold text-[#14532d]">Extra Bed / Rollaway Mattress</span>
+                    <p className="text-[11px] text-[#475569]">Plush extra mattress with luxury duvet &amp; pillow</p>
+                  </div>
+                </div>
+                <span className="text-xs font-extrabold text-[#15803d]">+₹500/night</span>
+              </label>
             </div>
 
             <Button

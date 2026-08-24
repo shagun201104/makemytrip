@@ -147,6 +147,12 @@ function FlightBookingContent() {
   const [submitting, setSubmitting] = useState(false);
   const [bookingRef, setBookingRef] = useState("");
 
+  // Traveller Breakdown States
+  const [numAdults, setNumAdults] = useState<number>(travellers || 1);
+  const [numChildren, setNumChildren] = useState<number>(0);
+  const [childAge, setChildAge] = useState<string>("6");
+  const [numInfants, setNumInfants] = useState<number>(0);
+
   const user = useSelector((state: any) => state.user.user);
 
   // Dynamic pricing
@@ -160,17 +166,20 @@ function FlightBookingContent() {
   const { effective: dynamicPrice } = useLiveQuote(pricingInput);
 
   // Price breakdown
-  const { baseFare, taxes, otherServices, seatCharge, discount, total } = useMemo(() => {
+  const { baseFare, childFare, infantFare, taxes, otherServices, seatCharge, discount, total } = useMemo(() => {
     const effectiveBase = dynamicPrice || basePrice;
-    const baseFare = effectiveBase * travellers;
+    const adultFare = effectiveBase * numAdults;
+    const childFare = Math.round(effectiveBase * 0.75) * numChildren; // 25% discount for 2-12 yrs
+    const infantFare = 1500 * numInfants; // Flat 1500 per infant
+    const baseFare = adultFare + childFare + infantFare;
     const taxes = Math.round(baseFare * 0.28);
     const otherServices = 249;
     const seatCharge = selectedSeat ? selectedSeat.price : 0;
     const promo = PROMOS.find((p) => p.code === appliedPromo);
     const discount = promo ? promo.value : 0;
     const total = baseFare + taxes + otherServices + seatCharge - discount;
-    return { baseFare, taxes, otherServices, seatCharge, discount, total };
-  }, [basePrice, travellers, appliedPromo, dynamicPrice, selectedSeat]);
+    return { baseFare, childFare, infantFare, taxes, otherServices, seatCharge, discount, total };
+  }, [basePrice, numAdults, numChildren, numInfants, appliedPromo, dynamicPrice, selectedSeat]);
 
   const applyPromo = (code: string) => {
     const match = PROMOS.find(
@@ -494,6 +503,72 @@ function FlightBookingContent() {
                   className="bg-white border border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-lg h-11 px-3 focus-visible:ring-2 focus-visible:ring-[#5b9bd5]/40"
                 />
               </div>
+            </div>
+
+            {/* Traveller Age Breakdown */}
+            <div className="rounded-xl bg-[#f8fafc] border border-[#e2e8f0] p-4 space-y-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#1a3a6b]">Passenger Breakdown &amp; Age Limits</p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <Label className="text-xs font-semibold text-[#334155]">Adults (12+ yrs)</Label>
+                  <p className="text-[10px] text-[#64748b] mb-1">Standard Adult Fare</p>
+                  <select
+                    value={numAdults}
+                    onChange={(e) => setNumAdults(Number(e.target.value))}
+                    className="w-full bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+                      <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <Label className="text-xs font-semibold text-[#334155]">Children (2-12 yrs)</Label>
+                  <p className="text-[10px] text-[#059669] mb-1 font-bold">25% Discounted Fare</p>
+                  <select
+                    value={numChildren}
+                    onChange={(e) => setNumChildren(Number(e.target.value))}
+                    className="w-full bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                  >
+                    {[0, 1, 2, 3, 4, 5, 6].map((n) => (
+                      <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <Label className="text-xs font-semibold text-[#334155]">Infants (Under 2 yrs)</Label>
+                  <p className="text-[10px] text-[#2563eb] mb-1 font-bold">Flat ₹1,500 Lap Fee</p>
+                  <select
+                    value={numInfants}
+                    onChange={(e) => setNumInfants(Number(e.target.value))}
+                    className="w-full bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                  >
+                    {[0, 1, 2, 3, 4].map((n) => (
+                      <option key={n} value={n}>{n} Infant{n !== 1 ? "s" : ""}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {numChildren > 0 && (
+                <div className="bg-white p-3 rounded-lg border border-[#cbd5e1]">
+                  <Label className="text-xs font-bold text-[#1e293b]">Child Age Limit &amp; Identification</Label>
+                  <p className="text-[11px] text-[#64748b] mb-2">Government photo ID or birth certificate required at airport check-in desk for age verification.</p>
+                  <select
+                    value={childAge}
+                    onChange={(e) => setChildAge(e.target.value)}
+                    className="w-full bg-[#f1f5f9] border border-[#cbd5e1] rounded-md h-9 px-2 text-xs font-medium text-[#0f172a]"
+                  >
+                    <option value="3">Child 1 Age: 3 years (Seat assigned)</option>
+                    <option value="6">Child 1 Age: 6 years (Seat assigned)</option>
+                    <option value="9">Child 1 Age: 9 years (Seat assigned)</option>
+                    <option value="11">Child 1 Age: 11 years (Seat assigned)</option>
+                  </select>
+                </div>
+              )}
             </div>
 
             <Button

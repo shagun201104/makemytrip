@@ -321,13 +321,20 @@ export default function Home() {
   };
 
   return (
-    <div
-      style={{ backgroundImage: 'url("/img.avif")' }}
-      className="min-h-screen w-full bg-contain bg-top bg-no-repeat"
-    >
-      {/* Soft overlay so content stays readable over the image */}
-      <div className="min-h-screen w-full bg-gradient-to-b from-black/30 via-black/10 to-[#96bfe3]/80">
-        <div className="max-w-7xl mx-auto px-6 py-10 space-y-10">
+    <div className="min-h-screen w-full bg-gradient-to-b from-[#09152b] via-[#14233c] via-[#1a2c4e] to-[#09152b] text-white relative overflow-x-hidden">
+      {/* Ambient background light flares */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3b82f6]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[30rem] h-[30rem] bg-[#0ea5e9]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/3 w-[28rem] h-[28rem] bg-[#8b5cf6]/15 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Hero background image overlay */}
+      <div
+        style={{ backgroundImage: 'url("/img.avif")' }}
+        className="absolute top-0 left-0 right-0 h-[650px] bg-cover bg-top opacity-30 pointer-events-none mix-blend-overlay"
+      />
+
+      <div className="relative min-h-screen w-full">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-10">
 
           {/* HERO HEADING */}
           <div className="pt-6 text-center space-y-4">
@@ -413,26 +420,32 @@ export default function Home() {
                     <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 tracking-wide uppercase">
                       <MapPin className="w-4 h-4 text-[#5b9bd5]" /> From
                     </Label>
-                    <Input
-                      list="city-options"
+                    <select
                       value={fromCity}
                       onChange={(e) => setFromCity(e.target.value)}
-                      placeholder="Departure city"
-                      className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-xl h-12 px-4 font-medium shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all"
-                    />
+                      className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4 font-semibold shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all cursor-pointer"
+                    >
+                      <option value="" disabled>Select Departure City</option>
+                      {indianCities.map((city) => (
+                        <option key={city} value={city}>{city}</option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className="space-y-2">
                     <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 tracking-wide uppercase">
                       <ArrowRightLeft className="w-4 h-4 text-[#5b9bd5]" /> To
                     </Label>
-                    <Input
-                      list="city-options"
+                    <select
                       value={toCity}
                       onChange={(e) => setToCity(e.target.value)}
-                      placeholder="Destination city"
-                      className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-xl h-12 px-4 font-medium shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all"
-                    />
+                      className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4 font-semibold shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all cursor-pointer"
+                    >
+                      <option value="" disabled>Select Destination City</option>
+                      {indianCities.map((city) => (
+                        <option key={city} value={city}>{city}</option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className="space-y-2">
@@ -451,23 +464,20 @@ export default function Home() {
                     <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 tracking-wide uppercase">
                       <Users className="w-4 h-4 text-[#5b9bd5]" /> Travellers
                     </Label>
-                    <Input
-                      type="number"
-                      min={1}
+                    <select
                       value={travellers}
                       onChange={(e) => setTravellers(e.target.value)}
-                      placeholder="1"
-                      className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-xl h-12 px-4 font-medium shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all"
-                    />
+                      className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4 font-semibold shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all cursor-pointer"
+                    >
+                      <option value="1">1 Adult (12+ yrs)</option>
+                      <option value="2">2 Adults (12+ yrs)</option>
+                      <option value="3">3 Adults (12+ yrs)</option>
+                      <option value="4">2 Adults + 1 Child (2-12 yrs)</option>
+                      <option value="5">2 Adults + 2 Children (2-12 yrs)</option>
+                      <option value="6">2 Adults + 1 Infant (Under 2 yrs)</option>
+                    </select>
                   </div>
                 </div>
-
-                {/* Shared Indian-city suggestions for From / To */}
-                <datalist id="city-options">
-                  {indianCities.map((city) => (
-                    <option key={city} value={city} />
-                  ))}
-                </datalist>
 
                 <div className="flex justify-center mt-8">
                   <Button
@@ -488,13 +498,19 @@ export default function Home() {
                     <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 tracking-wide uppercase">
                       <MapPin className="w-4 h-4 text-[#5b9bd5]" /> Location
                     </Label>
-                    <Input
-                      list="hotel-location-options"
+                    <select
                       value={hotelLocation}
                       onChange={(e) => setHotelLocation(e.target.value)}
-                      placeholder="City or hotel name"
-                      className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-xl h-12 px-4 font-medium shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all"
-                    />
+                      className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4 font-semibold shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all cursor-pointer"
+                    >
+                      <option value="" disabled>Select Location or Hotel</option>
+                      {indianCities.map((city) => (
+                        <option key={city} value={city}>{city}</option>
+                      ))}
+                      {sampleHotels.map((h) => (
+                        <option key={h.name} value={h.name}>{h.name} ({h.city})</option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className="space-y-2">
@@ -525,14 +541,17 @@ export default function Home() {
                     <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 tracking-wide uppercase">
                       <Users className="w-4 h-4 text-[#5b9bd5]" /> Guests
                     </Label>
-                    <Input
-                      type="number"
-                      min={1}
+                    <select
                       value={guests}
                       onChange={(e) => setGuests(e.target.value)}
-                      placeholder="2"
-                      className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-xl h-12 px-4 font-medium shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all"
-                    />
+                      className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4 font-semibold shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all cursor-pointer"
+                    >
+                      <option value="1">1 Guest (1 Room)</option>
+                      <option value="2">2 Guests (1 Room)</option>
+                      <option value="3">3 Guests (1 Room + Extra Bed)</option>
+                      <option value="4">4 Guests (2 Adults + 2 Children)</option>
+                      <option value="5">5 Guests (Family Suite)</option>
+                    </select>
                   </div>
                 </div>
 
@@ -611,9 +630,16 @@ export default function Home() {
                     </span>
                     <button
                       type="button"
-                      className="text-[#0f1a2e] font-semibold text-sm hover:underline"
+                      onClick={() => {
+                        if (offer.tag === "Hotels") {
+                          setShowHotelResults(true);
+                        } else {
+                          setShowResults(true);
+                        }
+                      }}
+                      className="text-[#1a3a6b] font-bold text-sm hover:underline flex items-center gap-1"
                     >
-                      Grab Deal
+                      Grab Deal &rarr;
                     </button>
                   </div>
                 </div>
@@ -630,14 +656,24 @@ export default function Home() {
               {bestOffers.map((offer) => (
                 <div
                   key={offer.title}
-                  className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all group"
+                  onClick={() => {
+                    if (offer.title.includes("Flights")) {
+                      setShowResults(true);
+                    } else if (offer.title.includes("Hotels")) {
+                      setHotelLocation("Goa");
+                      setShowHotelResults(true);
+                    } else {
+                      handleCategory("Holiday");
+                    }
+                  }}
+                  className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all group cursor-pointer"
                 >
                   {/* Background image */}
                   <div
                     style={{ backgroundImage: `url(${offer.image})` }}
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
                   {/* Content */}
                   <div className="relative p-6 flex flex-col justify-end min-h-[280px]">
@@ -651,7 +687,7 @@ export default function Home() {
                       type="button"
                       className="bg-[#5b9bd5] text-white hover:bg-[#4a86c9] font-semibold rounded-full px-6 h-10 shadow-md w-fit"
                     >
-                      Book Now
+                      Book Now &rarr;
                     </Button>
                   </div>
                 </div>
@@ -668,12 +704,19 @@ export default function Home() {
               {collections.map((col) => (
                 <div
                   key={col.title}
+                  onClick={() => {
+                    if (col.title.includes("Delhi")) setHotelLocation("New Delhi");
+                    else if (col.title.includes("Mumbai")) setHotelLocation("Mumbai");
+                    else if (col.title.includes("Bangalore")) setHotelLocation("Bengaluru");
+                    else setHotelLocation("Goa");
+                    setShowHotelResults(true);
+                  }}
                   className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all group cursor-pointer"
                 >
                   {/* Background image */}
                   <div
                     style={{ backgroundImage: `url(${col.image})` }}
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
@@ -684,8 +727,9 @@ export default function Home() {
 
                   {/* Title */}
                   <div className="relative p-6 flex flex-col justify-end min-h-[240px]">
-                    <h3 className="text-white font-bold text-xl drop-shadow-md">
-                      {col.title}
+                    <h3 className="text-white font-bold text-xl drop-shadow-md flex items-center justify-between">
+                      <span>{col.title}</span>
+                      <ArrowRight className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" />
                     </h3>
                   </div>
                 </div>
@@ -702,6 +746,11 @@ export default function Home() {
               {wonders.map((w) => (
                 <div
                   key={w.title}
+                  onClick={() => {
+                    const loc = w.title.includes("Ziro") ? "Guwahati" : w.title.includes("Gokarna") ? "Goa" : w.title.includes("Khajjiar") ? "Manali" : "Kochi";
+                    setHotelLocation(loc);
+                    setShowHotelResults(true);
+                  }}
                   className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all group cursor-pointer"
                 >
                   {/* Background image */}
@@ -713,8 +762,9 @@ export default function Home() {
 
                   {/* Title */}
                   <div className="relative p-6 flex flex-col justify-end min-h-[280px]">
-                    <h3 className="text-white font-bold text-xl drop-shadow-md leading-snug">
-                      {w.title}
+                    <h3 className="text-white font-bold text-xl drop-shadow-md leading-snug flex items-center justify-between">
+                      <span>{w.title}</span>
+                      <ArrowRight className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform shrink-0 ml-2" />
                     </h3>
                   </div>
                 </div>
