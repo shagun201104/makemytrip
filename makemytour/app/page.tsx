@@ -321,17 +321,16 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-[#09152b] via-[#14233c] via-[#1a2c4e] to-[#09152b] text-white relative overflow-x-hidden">
+    <div
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(9, 21, 43, 0.45), rgba(15, 26, 46, 0.75), rgba(9, 21, 43, 0.95)), url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQHGbTMM630aKYG-7kgc3Sb3RzIGmoNFhLKxxWxrCZVNBfSAMjm4ziOVqg8VXxd')`,
+      }}
+      className="min-h-screen w-full bg-cover bg-center bg-fixed text-white relative overflow-x-hidden"
+    >
       {/* Ambient background light flares */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3b82f6]/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/3 right-1/4 w-[30rem] h-[30rem] bg-[#0ea5e9]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/3 w-[28rem] h-[28rem] bg-[#8b5cf6]/15 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Hero background image overlay */}
-      <div
-        style={{ backgroundImage: 'url("/img.avif")' }}
-        className="absolute top-0 left-0 right-0 h-[650px] bg-cover bg-top opacity-30 pointer-events-none mix-blend-overlay"
-      />
 
       <div className="relative min-h-screen w-full">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-10">
@@ -725,12 +724,26 @@ export default function Home() {
                     {col.badge}
                   </div>
 
-                  {/* Title */}
-                  <div className="relative p-6 flex flex-col justify-end min-h-[240px]">
-                    <h3 className="text-white font-bold text-xl drop-shadow-md flex items-center justify-between">
+                  {/* Title & Action Button */}
+                  <div className="relative p-6 flex flex-col justify-end min-h-[260px] gap-3">
+                    <h3 className="text-white font-extrabold text-xl drop-shadow-md flex items-center justify-between">
                       <span>{col.title}</span>
                       <ArrowRight className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" />
                     </h3>
+                    <Button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (col.title.includes("Delhi")) setHotelLocation("New Delhi");
+                        else if (col.title.includes("Mumbai")) setHotelLocation("Mumbai");
+                        else if (col.title.includes("Bangalore")) setHotelLocation("Bengaluru");
+                        else setHotelLocation("Goa");
+                        setShowHotelResults(true);
+                      }}
+                      className="bg-white/90 text-[#0f1a2e] hover:bg-white font-bold text-xs rounded-full px-4 h-9 shadow-md w-fit backdrop-blur-sm"
+                    >
+                      Explore Stays &rarr;
+                    </Button>
                   </div>
                 </div>
               ))}
