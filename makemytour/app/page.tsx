@@ -323,7 +323,7 @@ export default function Home() {
   return (
     <div
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQHGbTMM630aKYG-7kgc3Sb3RzIGmoNFhLKxxWxrCZVNBfSAMjm4ziOVqg8VXxd')`,
+        backgroundImage: `linear-gradient(to bottom, rgba(9, 21, 43, 0.40), rgba(15, 26, 46, 0.65), rgba(9, 21, 43, 0.90)), url('/world_travel_bg.jpg')`,
       }}
       className="min-h-screen w-full bg-cover bg-center bg-fixed text-white relative overflow-x-hidden"
     >
@@ -846,48 +846,66 @@ export default function Home() {
 
       {/* FLIGHT SEARCH RESULTS DIALOG */}
       <Dialog open={showResults} onOpenChange={setShowResults}>
-        <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden rounded-2xl border-0 shadow-2xl">
-          {/* Gradient header showing the route */}
-          <DialogHeader className="bg-gradient-to-br from-[#a3cef0] to-[#c5e2f7] px-6 pt-6 pb-5 text-left">
-            <DialogTitle className="text-2xl font-bold text-[#0f1a2e] flex items-center gap-2">
-              <Plane className="w-6 h-6" />
-              {fromCity || "From"}
-              <ArrowRight className="w-5 h-5 text-[#2c3e57]/70" />
-              {toCity || "To"}
-            </DialogTitle>
-            <DialogDescription className="text-[#2c3e57]/80 text-base">
-              {departDate ? `Departure on ${departDate}` : "Available flights"}
-              {" · "}
-              {travellers} {Number(travellers) > 1 ? "travellers" : "traveller"}
-            </DialogDescription>
+        <DialogContent className="sm:max-w-[680px] p-0 overflow-hidden rounded-3xl border-0 shadow-2xl bg-[#f8fafc]">
+          {/* Luxury Gradient header showing the route */}
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#2c5a9e] px-7 py-6 text-left text-white relative">
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-2xl font-extrabold text-white flex items-center gap-3">
+                  <Plane className="w-7 h-7 text-[#60a5fa] animate-pulse" />
+                  <span>{fromCity || "New Delhi"}</span>
+                  <ArrowRight className="w-5 h-5 text-white/80" />
+                  <span>{toCity || "Goa"}</span>
+                </DialogTitle>
+                <DialogDescription className="text-white/80 text-xs mt-1.5 flex items-center gap-2">
+                  <span>{departDate ? `Departure: ${departDate}` : "Daily Direct Flights"}</span>
+                  <span>•</span>
+                  <span>{travellers} {Number(travellers) > 1 ? "Travellers" : "Traveller"}</span>
+                </DialogDescription>
+              </div>
+              <span className="bg-[#22c55e] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                Lowest Fare Guaranteed
+              </span>
+            </div>
           </DialogHeader>
 
           {/* Scrollable list of flight results */}
-          <div className="px-6 py-5 max-h-[60vh] overflow-y-auto space-y-3">
-            {sampleFlights.map((flight) => (
+          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+            {sampleFlights.map((flight, idx) => (
               <div
                 key={flight.code}
-                className="flex items-center justify-between gap-4 rounded-xl border border-[#e2e8f0] bg-white px-5 py-4 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white rounded-2xl border border-[#e2e8f0] p-5 shadow-sm hover:shadow-xl hover:border-[#3b82f6] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group"
               >
-                {/* Airline + timing */}
-                <div className="flex flex-col">
-                  <span className="font-bold text-lg text-[#0f1a2e]">
-                    {flight.airline}
-                  </span>
-                  <span className="text-sm text-[#7c8ba3]">{flight.code}</span>
+                {/* Airline logo badge + details */}
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] border border-[#bfdbfe] flex items-center justify-center font-black text-sm text-[#1e40af] shrink-0 shadow-xs">
+                    {flight.airline.substring(0, 2).toUpperCase()}
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-extrabold text-base text-[#0f172a] group-hover:text-[#2563eb] transition-colors">
+                        {flight.airline}
+                      </span>
+                      <span className="text-[11px] font-bold text-[#64748b] bg-[#f1f5f9] px-2 py-0.5 rounded-md">
+                        {flight.code}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 mt-1.5 text-xs font-semibold text-[#475569]">
+                      <span className="bg-[#dcfce7] text-[#15803d] text-[10px] px-2 py-0.5 rounded-md font-extrabold">Non-Stop</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#64748b]" /> {flight.duration}</span>
+                      <span>• Cabin Bag Included</span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex flex-col items-center text-[#2c3e57]">
-                  <span className="font-semibold text-lg">
-                    {flight.depart} — {flight.arrive}
-                  </span>
-                  <span className="flex items-center gap-1 text-sm text-[#7c8ba3]">
-                    <Clock className="w-4 h-4" /> {flight.duration}
-                  </span>
+                {/* Timing route */}
+                <div className="text-left md:text-center bg-[#f8fafc] px-4 py-2 rounded-xl border border-[#f1f5f9]">
+                  <p className="font-extrabold text-base text-[#0f172a]">{flight.depart} → {flight.arrive}</p>
+                  <p className="text-[10px] font-bold text-[#2563eb] uppercase tracking-wider mt-0.5">Direct Flight</p>
                 </div>
 
-                {/* Price in ₹ + book */}
-                <div className="flex flex-col items-end gap-2">
+                {/* Price in ₹ + book button */}
+                <div className="flex items-center md:flex-col items-end justify-between md:justify-center gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-[#f1f5f9]">
                   <LivePrice
                     input={{
                       kind: "FLIGHT",
@@ -900,9 +918,9 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={() => handleBookNow(flight)}
-                    className="h-9 px-5 text-sm bg-[#5b9bd5] text-white hover:bg-[#4a86c9] rounded-full font-semibold"
+                    className="h-10 px-6 text-xs bg-gradient-to-r from-[#1a3a6b] to-[#2c5a9e] text-white hover:from-[#0f2847] hover:to-[#1a3a6b] rounded-full font-extrabold shadow-md hover:shadow-lg transition-all"
                   >
-                    Book Now
+                    Select &amp; Reserve Seat &rarr;
                   </Button>
                 </div>
               </div>
@@ -913,74 +931,107 @@ export default function Home() {
 
       {/* HOTEL SEARCH RESULTS DIALOG */}
       <Dialog open={showHotelResults} onOpenChange={setShowHotelResults}>
-        <DialogContent className="sm:max-w-[650px] p-0 overflow-hidden rounded-2xl border-0 shadow-2xl">
-          {/* Gradient header showing location */}
-          <DialogHeader className="bg-gradient-to-br from-[#a3cef0] to-[#c5e2f7] px-6 pt-6 pb-5 text-left">
-            <DialogTitle className="text-2xl font-bold text-[#0f1a2e] flex items-center gap-2">
-              <BedDouble className="w-6 h-6" />
-              Hotels in {hotelLocation || "Your Location"}
-            </DialogTitle>
-            <DialogDescription className="text-[#2c3e57]/80 text-base">
-              {checkInDate && checkOutDate
-                ? `${checkInDate} to ${checkOutDate}`
-                : "Available hotels"}
-              {" · "}
-              {guests} {Number(guests) > 1 ? "guests" : "guest"}
-            </DialogDescription>
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-0 shadow-2xl bg-[#f8fafc]">
+          {/* Luxury Header */}
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#2c5a9e] px-7 py-6 text-left text-white relative">
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-2xl font-extrabold text-white flex items-center gap-3">
+                  <BedDouble className="w-7 h-7 text-[#60a5fa]" />
+                  <span>Hotels in {hotelLocation || "Your Selected Destination"}</span>
+                </DialogTitle>
+                <DialogDescription className="text-white/80 text-xs mt-1.5">
+                  {checkInDate && checkOutDate ? `${checkInDate} to ${checkOutDate}` : "Luxury & Handpicked Hotels"}
+                  {" • "}
+                  {guests} {Number(guests) > 1 ? "Guests" : "Guest"}
+                </DialogDescription>
+              </div>
+              <span className="bg-[#f59e0b] text-[#0f172a] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                Up to 25% OFF
+              </span>
+            </div>
           </DialogHeader>
 
           {/* Scrollable list of hotel results */}
-          <div className="px-6 py-5 max-h-[60vh] overflow-y-auto space-y-3">
-            {sampleHotels.map((hotel) => (
-              <div
-                key={hotel.name}
-                className="flex items-start justify-between gap-4 rounded-xl border border-[#e2e8f0] bg-white px-5 py-4 shadow-sm hover:shadow-md transition-shadow"
-              >
-                {/* Hotel name + city + rating */}
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-lg text-[#0f1a2e]">
-                      {hotel.name}
-                    </span>
-                    <span className="inline-block bg-[#5b9bd5]/10 text-[#5b9bd5] text-xs font-semibold px-2 py-0.5 rounded-full border border-[#5b9bd5]/20">
+          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+            {sampleHotels.map((hotel, idx) => {
+              const hotelImages = [
+                "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80",
+              ];
+              const hotelImg = hotelImages[idx % hotelImages.length];
+
+              return (
+                <div
+                  key={hotel.name}
+                  className="bg-white rounded-2xl border border-[#e2e8f0] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#3b82f6] transition-all flex flex-col sm:flex-row gap-4 p-4 group"
+                >
+                  {/* Property Cover Photo */}
+                  <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#e2e8f0]">
+                    <img
+                      src={hotelImg}
+                      alt={hotel.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <span className="absolute top-2 left-2 bg-[#0f172a]/90 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full backdrop-blur-sm">
                       {hotel.tag}
                     </span>
                   </div>
-                  <span className="text-sm text-[#7c8ba3] flex items-center gap-1 mt-1">
-                    <MapPin className="w-3.5 h-3.5" /> {hotel.city}
-                  </span>
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className="text-sm font-semibold text-[#2c3e57]">
-                      ★ {hotel.rating}
-                    </span>
-                    <span className="text-xs text-[#7c8ba3]">
-                      ({hotel.reviews.toLocaleString("en-IN")} reviews)
-                    </span>
+
+                  {/* Property Info */}
+                  <div className="flex-1 flex flex-col justify-between space-y-2">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-extrabold text-base text-[#0f172a] group-hover:text-[#2563eb] transition-colors leading-snug">
+                          {hotel.name}
+                        </h4>
+                        <span className="bg-[#fef3c7] text-[#b45309] text-xs font-bold px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
+                          ★ {hotel.rating}
+                        </span>
+                      </div>
+                      <p className="text-xs text-[#64748b] flex items-center gap-1 mt-1">
+                        <MapPin className="w-3.5 h-3.5 text-[#94a3b8]" /> {hotel.city} • Prime Location
+                      </p>
+                    </div>
+
+                    {/* Amenities chips */}
+                    <div className="flex flex-wrap gap-1.5">
+                      <span className="bg-[#eff6ff] text-[#1e40af] text-[10px] font-bold px-2 py-0.5 rounded-md">Free Breakfast</span>
+                      <span className="bg-[#f0fdf4] text-[#166534] text-[10px] font-bold px-2 py-0.5 rounded-md">Free WiFi</span>
+                      <span className="bg-[#fef2f2] text-[#991b1b] text-[10px] font-bold px-2 py-0.5 rounded-md">Swimming Pool</span>
+                    </div>
+
+                    {/* Price & Book */}
+                    <div className="flex items-center justify-between border-t border-[#f1f5f9] pt-2 mt-1">
+                      <div>
+                        <span className="text-[10px] font-bold text-[#64748b] uppercase block">Special Nightly Rate</span>
+                        <LivePrice
+                          input={{
+                            kind: "HOTEL",
+                            itemId: hotel.name.replace(/\s+/g, "-").toLowerCase(),
+                            label: hotel.name,
+                            basePrice: hotel.price,
+                            date: checkInDate || undefined,
+                          }}
+                          suffix="per night"
+                        />
+                      </div>
+                      <Button
+                        type="button"
+                        onClick={() => handleBookHotel(hotel)}
+                        className="h-10 px-5 text-xs bg-gradient-to-r from-[#1a3a6b] to-[#2c5a9e] text-white hover:from-[#0f2847] hover:to-[#1a3a6b] rounded-full font-extrabold shadow-md hover:shadow-lg transition-all"
+                      >
+                        Book &amp; Reserve Room &rarr;
+                      </Button>
+                    </div>
                   </div>
                 </div>
-
-                {/* Price per night + book */}
-                <div className="flex flex-col items-end gap-2">
-                  <LivePrice
-                    input={{
-                      kind: "HOTEL",
-                      itemId: hotel.name.replace(/\s+/g, "-").toLowerCase(),
-                      label: hotel.name,
-                      basePrice: hotel.price,
-                      date: checkInDate || undefined,
-                    }}
-                    suffix="per night"
-                  />
-                  <Button
-                    type="button"
-                    onClick={() => handleBookHotel(hotel)}
-                    className="h-9 px-5 text-sm bg-[#5b9bd5] text-white hover:bg-[#4a86c9] rounded-full font-semibold"
-                  >
-                    Book Now
-                  </Button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </DialogContent>
       </Dialog>

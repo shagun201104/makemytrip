@@ -91,11 +91,18 @@ export function PersonalizedRecommendations() {
         {recommendations.map((item) => (
           <div
             key={item.id}
-            className="bg-white rounded-2xl border border-[#d5e2f0] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+            onClick={() => {
+              if (item.kind === "FLIGHT") {
+                window.location.href = `/booking/flight?code=${encodeURIComponent(item.id)}&price=${item.price}&from=New%20Delhi&to=${encodeURIComponent(item.location)}`;
+              } else {
+                window.location.href = `/booking/hotel?name=${encodeURIComponent(item.title)}&city=${encodeURIComponent(item.location)}&nightly=${item.price}`;
+              }
+            }}
+            className="bg-white rounded-2xl border border-[#d5e2f0] overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group cursor-pointer"
           >
             <div>
               {/* Image Banner */}
-              <div className="relative h-36 w-full bg-[#cbd5e1] overflow-hidden">
+              <div className="relative h-40 w-full bg-[#cbd5e1] overflow-hidden">
                 <img
                   src={item.imageUrl}
                   alt={item.title}
@@ -108,7 +115,7 @@ export function PersonalizedRecommendations() {
                 </span>
 
                 {/* Kind Icon Badge */}
-                <span className="absolute top-3 right-3 bg-white/90 text-[#0f1a2e] text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                <span className="absolute top-3 right-3 bg-white/90 text-[#0f1a2e] text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm shadow-sm">
                   {item.kind === "FLIGHT" ? (
                     <Plane className="w-3 h-3 inline mr-1 text-[#5b9bd5]" />
                   ) : (
@@ -120,7 +127,7 @@ export function PersonalizedRecommendations() {
 
               {/* Card Body */}
               <div className="p-4 space-y-2">
-                <h4 className="font-bold text-sm text-[#0f1a2e] leading-snug line-clamp-1">
+                <h4 className="font-bold text-base text-[#0f1a2e] leading-snug line-clamp-1 group-hover:text-[#5b9bd5] transition-colors">
                   {item.title}
                 </h4>
                 <p className="text-xs text-[#5b6b82] flex items-center gap-1">
@@ -132,7 +139,10 @@ export function PersonalizedRecommendations() {
                   <span className="truncate mr-1">{item.reason}</span>
                   <button
                     type="button"
-                    onClick={() => setActiveTooltipItem(item)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveTooltipItem(item);
+                    }}
                     className="text-[#b45309] hover:text-[#78350f] shrink-0"
                     title="Why this recommendation?"
                   >
@@ -147,18 +157,28 @@ export function PersonalizedRecommendations() {
               <div className="flex items-center justify-between pt-3">
                 <div>
                   <p className="text-[10px] text-[#7c8ba3] font-bold uppercase">Starting at</p>
-                  <p className="text-base font-extrabold text-[#0f1a2e]">
+                  <p className="text-lg font-extrabold text-[#0f1a2e]">
                     ₹{item.price.toLocaleString("en-IN")}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-1 text-xs font-bold text-[#0f1a2e]">
+                <div className="flex items-center gap-1 text-xs font-bold text-[#0f1a2e] bg-[#fef3c7] px-2 py-1 rounded-md">
                   <Star className="w-3.5 h-3.5 text-[#f59e0b] fill-[#f59e0b]" /> {item.rating}
                 </div>
               </div>
 
+              <Button
+                type="button"
+                className="w-full bg-[#5b9bd5] hover:bg-[#4a86c9] text-white font-bold text-xs rounded-xl h-10 shadow-md transition-all flex items-center justify-center gap-2"
+              >
+                Book Now &rarr;
+              </Button>
+
               {/* Feedback Loop Buttons: Helpful / Irrelevant */}
-              <div className="flex items-center justify-between bg-[#f8fafc] px-3 py-1.5 rounded-xl text-xs border border-[#e2e8f0]">
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center justify-between bg-[#f8fafc] px-3 py-1.5 rounded-xl text-xs border border-[#e2e8f0]"
+              >
                 <span className="text-[10px] font-bold text-[#64748b]">Was this helpful?</span>
                 <div className="flex items-center gap-2">
                   <button
