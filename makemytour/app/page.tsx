@@ -586,26 +586,26 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
               {offers.map((offer) => (
                 <div
                   key={offer.code}
-                  className="bg-white/70 border border-white/60 rounded-2xl shadow-lg backdrop-blur-md p-5 flex flex-col justify-between hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                  className="bg-white/95 border-2 border-white rounded-2xl shadow-lg backdrop-blur-md p-4 md:p-5 flex flex-col justify-between hover:shadow-xl hover:-translate-y-0.5 transition-all text-[#0f1a2e]"
                 >
                   <div>
-                    <span className="inline-block bg-[#0f1a2e] text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                    <span className="inline-block bg-[#0f1a2e] text-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-full">
                       {offer.tag}
                     </span>
-                    <h3 className="text-[#0f1a2e] font-bold text-lg mt-3 leading-snug">
+                    <h3 className="text-[#0f1a2e] font-extrabold text-sm md:text-lg mt-2 leading-snug">
                       {offer.title}
                     </h3>
-                    <p className="text-[#3d5170] text-sm mt-2">
+                    <p className="text-[#334155] text-xs mt-1.5 line-clamp-2">
                       {offer.description}
                     </p>
                   </div>
 
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-[#1a6b52] font-mono font-semibold text-sm border border-dashed border-[#1a6b52]/50 rounded-md px-2 py-1">
+                  <div className="mt-3 flex items-center justify-between">
+                    <span className="text-[#16a34a] font-mono font-bold text-xs border border-dashed border-[#16a34a] rounded-md px-1.5 py-0.5">
                       {offer.code}
                     </span>
                     <button
@@ -617,7 +617,7 @@ export default function Home() {
                           setShowResults(true);
                         }
                       }}
-                      className="text-[#1a3a6b] font-bold text-sm hover:underline flex items-center gap-1"
+                      className="text-[#2563eb] font-extrabold text-xs hover:underline flex items-center gap-0.5"
                     >
                       Grab Deal &rarr;
                     </button>
@@ -627,12 +627,12 @@ export default function Home() {
             </div>
           </section>
 
-          {/* BEST OFFERS — IMAGE CARDS */}
-          <section className="space-y-5">
+          {/* BEST OFFERS — IMAGE CARDS (2 COLUMNS ON MOBILE) */}
+          <section className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-md">
               Best Offers
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
               {bestOffers.map((offer) => (
                 <div
                   key={offer.title}
@@ -653,19 +653,19 @@ export default function Home() {
                     style={{ backgroundImage: `url(${offer.image})` }}
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
 
                   {/* Content */}
-                  <div className="relative p-6 flex flex-col justify-end min-h-[280px]">
-                    <h3 className="text-white font-bold text-2xl mb-2 drop-shadow-md">
+                  <div className="relative p-4 md:p-6 flex flex-col justify-end min-h-[220px] md:min-h-[280px]">
+                    <h3 className="text-white font-extrabold text-sm md:text-2xl mb-1 drop-shadow-md leading-tight">
                       {offer.title}
                     </h3>
-                    <p className="text-white/90 text-sm mb-4 drop-shadow">
+                    <p className="text-white/90 text-xs mb-3 drop-shadow line-clamp-2">
                       {offer.description}
                     </p>
                     <Button
                       type="button"
-                      className="bg-[#5b9bd5] text-white hover:bg-[#4a86c9] font-semibold rounded-full px-6 h-10 shadow-md w-fit"
+                      className="bg-white/95 text-[#0f1a2e] hover:bg-white font-extrabold text-[10px] md:text-xs rounded-full px-4 h-8 md:h-10 shadow-md w-fit"
                     >
                       Book Now &rarr;
                     </Button>
