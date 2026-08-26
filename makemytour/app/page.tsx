@@ -171,6 +171,12 @@ const bestOffers = [
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
   },
+  {
+    title: "Cab & Bus Travel Sale",
+    description: "Save up to ₹500 on intercity cabs & luxury bus rides",
+    image:
+      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
+  },
 ];
 
 // "Handpicked Collections for You" — image cards with a TOP badge.

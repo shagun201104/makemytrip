@@ -286,12 +286,29 @@ function HotelBookingContent() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto space-y-5">
+      {/* Top Helper Alert Banner */}
+      <div className="bg-gradient-to-r from-[#1e3a8a] to-[#2563eb] text-white p-4 rounded-2xl shadow-xl flex items-center justify-between gap-3 border border-white/20">
+        <div className="flex items-center gap-3">
+          <Ticket className="w-6 h-6 text-[#60a5fa] shrink-0" />
+          <p className="text-xs md:text-sm font-bold">
+            💡 <span className="underline decoration-wavy">Where will I see my booking?</span> Once confirmed, your ticket &amp; booking details will instantly appear under your <span className="text-[#60a5fa] font-black uppercase">Profile &rarr; My Trips</span> section!
+          </p>
+        </div>
+        <Button
+          type="button"
+          onClick={() => router.push("/profile")}
+          className="bg-white text-[#1d4ed8] hover:bg-white/90 font-extrabold text-xs rounded-full px-4 h-9 shadow-md shrink-0"
+        >
+          My Profile &rarr;
+        </Button>
+      </div>
+
       <button
         onClick={() => router.back()}
-        className="flex items-center gap-2 text-[#2c3e57] hover:text-[#0f1a2e] font-medium mb-5 transition-colors"
+        className="flex items-center gap-2 text-white hover:text-white/80 font-bold text-sm transition-colors bg-[#0f1a2e]/80 backdrop-blur-md px-4 py-2 rounded-full w-fit border border-[#3b82f6]/40"
       >
-        <ArrowLeft className="w-4 h-4" /> Back to results
+        <ArrowLeft className="w-4 h-4" /> Back to search results
       </button>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
@@ -300,148 +317,148 @@ function HotelBookingContent() {
           {/* Dynamic price banner */}
           {pricingInput && <BookingPriceBanner input={pricingInput} />}
 
-          {/* ---- Hotel details card ---- */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6 md:p-7">
-            {/* Header */}
-            <div className="flex items-start justify-between gap-4 flex-wrap">
-              <div className="flex items-center gap-3 flex-wrap">
-                <h1 className="text-2xl font-extrabold text-[#0f1a2e]">{name}</h1>
-                <span className="inline-block bg-[#eaf3fb] text-[#2c5a9e] text-xs font-semibold px-2.5 py-1 rounded-full border border-[#cfe2f4]">
-                  {tag}
-                </span>
-                <span className="inline-flex items-center bg-[#e6f4ea] text-[#1f8a4c] text-xs font-semibold px-3 py-1 rounded-full">
-                  FREE CANCELLATION
-                </span>
-              </div>
-              <button className="flex items-center gap-1.5 text-[#2c5a9e] hover:text-[#1a3a6b] text-sm font-medium">
-                <Info className="w-4 h-4" /> View Property Rules
-              </button>
-            </div>
-
-            <div className="flex items-center gap-4 text-sm text-[#7c8ba3] mt-3">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4" /> {city}
-              </span>
-              <span className="w-1 h-1 rounded-full bg-[#c3cfe0]" />
-              <span className="flex items-center gap-1.5 font-semibold text-[#2c3e57]">
-                <Star className="w-4 h-4 fill-[#f5b942] text-[#f5b942]" /> {rating}
-                <span className="font-normal text-[#7c8ba3]">
-                  ({reviews.toLocaleString("en-IN")} reviews)
-                </span>
-              </span>
-            </div>
-
-            {/* Room row */}
-            <div className="flex items-center gap-4 mt-5">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#eaf3fb] shrink-0">
-                <BedDouble className="w-6 h-6 text-[#5b9bd5]" />
-              </div>
-              <div>
-                <p className="font-bold text-[#0f1a2e]">Deluxe Room</p>
-                <p className="text-xs text-[#7c8ba3]">
-                  1 King Bed &bull; Breakfast Included &bull; {guests}{" "}
-                  {guests > 1 ? "Guests" : "Guest"}
-                </p>
-              </div>
-              <div className="flex items-center gap-2 ml-2">
-                <span className="bg-[#eaf3fb] text-[#2c5a9e] text-xs font-medium px-2.5 py-1 rounded-md">
-                  Free Cancellation
-                </span>
-                <span className="text-[#7c8ba3] text-xs font-medium">MMTSTAY</span>
-              </div>
-            </div>
-
-            <div className="h-px bg-[#eef2f7] my-6" />
-
-            {/* Timeline: check-in -> check-out */}
-            <div className="flex items-center justify-between gap-3">
-              <div className="max-w-[38%]">
-                <p className="text-xs text-[#7c8ba3] uppercase tracking-wide font-semibold">
-                  Check-in
-                </p>
-                <p className="text-xl md:text-2xl font-extrabold text-[#0f1a2e] leading-tight mt-1">
-                  {formatDate(checkin)}
-                </p>
-                <p className="text-sm text-[#7c8ba3] mt-1.5 flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" /> From 2:00 PM
-                </p>
-              </div>
-
-              <div className="flex-1 flex flex-col items-center px-2">
-                <span className="text-xs text-[#7c8ba3] mb-1">
-                  {nights} {nights > 1 ? "nights" : "night"}
-                </span>
-                <div className="w-full flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#5b9bd5]" />
-                  <div className="h-px bg-[#c3daf0] flex-1" />
-                  <BedDouble className="w-4 h-4 text-[#5b9bd5]" />
-                  <div className="h-px bg-[#c3daf0] flex-1" />
-                  <span className="w-2 h-2 rounded-full bg-[#5b9bd5]" />
+          {/* ---- LUXURY HOTEL DETAILS CARD ---- */}
+          <div className="bg-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/30 overflow-hidden text-[#0f1a2e]">
+            {/* Header Banner */}
+            <div className="bg-gradient-to-r from-[#0f1a2e] via-[#1e3a8a] to-[#0f1a2e] p-6 md:p-8 text-white space-y-3">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <span className="bg-[#2563eb] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                    {tag || "LUXURY STAY"}
+                  </span>
+                  <span className="bg-[#16a34a] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md flex items-center gap-1">
+                    <ShieldCheck className="w-3.5 h-3.5" /> FREE CANCELLATION
+                  </span>
                 </div>
-                <span className="text-xs text-[#7c8ba3] mt-1">Stay</span>
+                <button className="flex items-center gap-1 text-[#60a5fa] hover:text-white text-xs font-extrabold">
+                  <Info className="w-4 h-4" /> View Property Rules
+                </button>
               </div>
 
-              <div className="max-w-[38%] text-right">
-                <p className="text-xs text-[#7c8ba3] uppercase tracking-wide font-semibold">
-                  Check-out
-                </p>
-                <p className="text-xl md:text-2xl font-extrabold text-[#0f1a2e] leading-tight mt-1">
-                  {formatDate(checkout)}
-                </p>
-                <p className="text-sm text-[#7c8ba3] mt-1.5 flex items-center justify-end gap-1">
-                  <Clock className="w-3.5 h-3.5" /> Until 11:00 AM
-                </p>
+              <h1 className="text-3xl md:text-4xl font-black text-white drop-shadow-md">{name}</h1>
+
+              <div className="flex items-center gap-4 text-xs md:text-sm text-white/90">
+                <span className="flex items-center gap-1 font-bold">
+                  <MapPin className="w-4 h-4 text-[#60a5fa]" /> {city}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#60a5fa]" />
+                <span className="flex items-center gap-1 font-black text-[#facc15] bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-full">
+                  <Star className="w-4 h-4 fill-[#facc15] text-[#facc15]" /> {rating}
+                  <span className="text-white/80 font-normal ml-1">
+                    ({reviews.toLocaleString("en-IN")} verified reviews)
+                  </span>
+                </span>
               </div>
             </div>
 
-            <div className="h-px bg-[#eef2f7] my-6" />
-
-            {/* Amenities */}
-            <p className="text-sm font-semibold text-[#0f1a2e] mb-3">Popular Amenities</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-3 gap-x-4">
-              {AMENITIES.map((a) => (
-                <span
-                  key={a.label}
-                  className="flex items-center gap-2 text-sm text-[#2c3e57]"
-                >
-                  <a.icon className="w-4 h-4 text-[#5b9bd5]" />
-                  {a.label}
+            {/* Room Info */}
+            <div className="p-6 md:p-8 space-y-6">
+              <div className="flex items-center gap-4 bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-4">
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white shrink-0 shadow-lg">
+                  <BedDouble className="w-7 h-7" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-extrabold text-base md:text-lg text-[#0f172a]">Deluxe Executive Room</p>
+                  <p className="text-xs md:text-sm font-semibold text-[#64748b] mt-0.5">
+                    1 King Bed &bull; Complimentary Breakfast &bull; {guests}{" "}
+                    {guests > 1 ? "Guests" : "Guest"}
+                  </p>
+                </div>
+                <span className="bg-[#dcfce7] text-[#16a34a] text-xs font-black px-3 py-1.5 rounded-xl border border-[#86efac] hidden sm:inline-block">
+                  MMTSTAY INCLUDED
                 </span>
-              ))}
+              </div>
+
+              {/* Timeline: check-in -> check-out */}
+              <div className="bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-5 md:p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="max-w-[38%]">
+                    <p className="text-xs text-[#64748b] uppercase tracking-wider font-black">
+                      Check-in Date
+                    </p>
+                    <p className="text-xl md:text-2xl font-black text-[#0f172a] leading-tight mt-1">
+                      {formatDate(checkin)}
+                    </p>
+                    <p className="text-xs text-[#2563eb] font-bold mt-1.5 flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-[#2563eb]" /> From 2:00 PM
+                    </p>
+                  </div>
+
+                  <div className="flex-1 flex flex-col items-center px-2">
+                    <span className="bg-[#1e3a8a] text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full shadow-md mb-1">
+                      {nights} {nights > 1 ? "Nights Stay" : "Night Stay"}
+                    </span>
+                    <div className="w-full flex items-center gap-1">
+                      <span className="w-3 h-3 rounded-full bg-[#2563eb] shadow-md" />
+                      <div className="h-1 bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] flex-1 rounded-full" />
+                      <BedDouble className="w-5 h-5 text-[#2563eb]" />
+                      <div className="h-1 bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#2563eb] flex-1 rounded-full" />
+                      <span className="w-3 h-3 rounded-full bg-[#2563eb] shadow-md" />
+                    </div>
+                  </div>
+
+                  <div className="max-w-[38%] text-right">
+                    <p className="text-xs text-[#64748b] uppercase tracking-wider font-black">
+                      Check-out Date
+                    </p>
+                    <p className="text-xl md:text-2xl font-black text-[#0f172a] leading-tight mt-1">
+                      {formatDate(checkout)}
+                    </p>
+                    <p className="text-xs text-[#2563eb] font-bold mt-1.5 flex items-center justify-end gap-1">
+                      <Clock className="w-3.5 h-3.5 text-[#2563eb]" /> Until 11:00 AM
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Amenities */}
+              <div>
+                <p className="text-xs font-black uppercase tracking-wider text-[#0f172a] mb-3">Popular Included Amenities</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {AMENITIES.map((a) => (
+                    <div
+                      key={a.label}
+                      className="flex items-center gap-2.5 bg-[#f1f5f9] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs font-bold text-[#0f172a]"
+                    >
+                      <a.icon className="w-4 h-4 text-[#2563eb]" />
+                      {a.label}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
           {/* ---- Cancellation & Date Change Policy ---- */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6 md:p-7">
+          <div className="bg-white rounded-3xl shadow-xl border-2 border-[#cbd5e1] p-6 md:p-7 text-[#0f1a2e]">
             <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 font-bold text-[#0f1a2e] text-lg">
-                <CircleAlert className="w-5 h-5 text-[#e0a800]" /> Cancellation &amp; Date
-                Change Policy
+              <h2 className="flex items-center gap-2 font-black text-[#0f1a2e] text-lg">
+                <CircleAlert className="w-5 h-5 text-[#f59e0b]" /> Cancellation Policy
               </h2>
-              <button className="text-[#2c5a9e] hover:text-[#1a3a6b] text-sm font-medium">
-                View Policy
+              <button className="text-[#2563eb] font-extrabold text-xs hover:underline">
+                View Full Terms
               </button>
             </div>
 
-            <div className="mt-5 rounded-xl bg-[#f8fafc] border border-[#eef2f7] p-5">
+            <div className="mt-4 rounded-2xl bg-[#f8fafc] border border-[#cbd5e1] p-5">
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-2 font-semibold text-[#0f1a2e]">
-                  <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#eaf3fb]">
-                    <BedDouble className="w-4 h-4 text-[#5b9bd5]" />
+                <span className="flex items-center gap-2 font-extrabold text-[#0f1a2e]">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#2563eb] text-white">
+                    <BedDouble className="w-4 h-4" />
                   </span>
                   {name}
                 </span>
-                <span className="font-bold text-[#0f1a2e]">
+                <span className="font-black text-[#16a34a]">
                   {formatINR(Math.round(nightly * 0.9))}
                 </span>
               </div>
 
               {/* Gradient time bar */}
-              <div className="mt-4 h-2 rounded-full bg-gradient-to-r from-[#4caf50] via-[#f5b942] to-[#e5573f]" />
-              <div className="flex items-center justify-between text-xs text-[#7c8ba3] mt-2">
-                <span>Free till 24h before</span>
-                <span>Charges increase closer to check-in</span>
-                <span>No refund</span>
+              <div className="mt-3 h-2 rounded-full bg-gradient-to-r from-[#16a34a] via-[#f59e0b] to-[#dc2626]" />
+              <div className="flex items-center justify-between text-[11px] font-bold text-[#64748b] mt-2">
+                <span>Free cancellation up to 24h</span>
+                <span>Partial refund</span>
+                <span>Non-refundable</span>
               </div>
             </div>
           </div>
@@ -697,41 +714,39 @@ function HotelBookingContent() {
 
         {/* ============ RIGHT COLUMN (sticky) ============ */}
         <div className="space-y-6 lg:sticky lg:top-6">
-          {/* Price summary */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6">
-            <h2 className="flex items-center gap-2 text-lg font-bold text-[#0f1a2e] mb-5">
-              <TicketPercent className="w-5 h-5 text-[#5b9bd5]" /> Price Summary
+          {/* Price summary — Luxury High Contrast Dark Navy Card */}
+          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-7 space-y-5">
+            <h2 className="flex items-center gap-2.5 text-xl font-black text-white border-b border-[#1e293b] pb-4">
+              <TicketPercent className="w-6 h-6 text-[#60a5fa]" /> Price Summary
             </h2>
             <div className="space-y-3.5 text-sm">
-              <div className="flex justify-between">
-                <span className="text-[#3d5170]">
+              <div className="flex justify-between items-center text-white/90 font-medium">
+                <span>
                   {formatINR(nightly)} &times; {nights} {nights > 1 ? "nights" : "night"}
                 </span>
-                <span className="font-semibold text-[#0f1a2e]">{formatINR(roomTotal)}</span>
+                <span className="font-extrabold text-white">{formatINR(roomTotal)}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-[#3d5170]">Taxes &amp; Service Fees</span>
-                <span className="font-semibold text-[#0f1a2e]">{formatINR(taxes)}</span>
+              <div className="flex justify-between items-center text-white/90 font-medium">
+                <span>Taxes &amp; Service Fees</span>
+                <span className="font-extrabold text-white">{formatINR(taxes)}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-[#3d5170]">Other Services</span>
-                <span className="font-semibold text-[#0f1a2e]">
+              <div className="flex justify-between items-center text-white/90 font-medium">
+                <span>Other Included Services</span>
+                <span className="font-extrabold text-white">
                   {formatINR(otherServices)}
                 </span>
               </div>
               {discount > 0 && (
-                <div className="flex justify-between">
-                  <span className="text-[#1f8a4c]">Discounts</span>
-                  <span className="font-semibold text-[#1f8a4c]">
-                    - {formatINR(discount)}
-                  </span>
+                <div className="flex justify-between items-center text-[#4ade80] font-bold bg-[#16a34a]/20 px-3 py-1.5 rounded-xl border border-[#4ade80]/30">
+                  <span>Applied Promo Discount</span>
+                  <span className="font-black">- {formatINR(discount)}</span>
                 </div>
               )}
-              <div className="h-px bg-[#eef2f7] my-1" />
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-[#0f1a2e]">Total Amount</span>
-                <span className="flex items-center text-xl font-extrabold text-[#0f1a2e]">
-                  <IndianRupee className="w-4 h-4" />
+              <div className="h-px bg-[#1e293b] my-2" />
+              <div className="flex justify-between items-center pt-1">
+                <span className="font-black text-base text-white">Total Amount</span>
+                <span className="flex items-center text-2xl font-black text-[#facc15] drop-shadow-md">
+                  <IndianRupee className="w-5 h-5" />
                   {total.toLocaleString("en-IN")}
                 </span>
               </div>
@@ -740,76 +755,62 @@ function HotelBookingContent() {
             <Button
               onClick={handleConfirm}
               disabled={submitting}
-              className="w-full mt-5 bg-[#3a2318] hover:bg-[#4a2e20] text-white font-bold rounded-xl h-12 shadow-md transition-all disabled:opacity-70"
+              className="w-full mt-4 bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-lg rounded-full h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all tracking-wide uppercase cursor-pointer disabled:opacity-70"
             >
-              {submitting ? "Processing…" : "Book Now"}
+              {submitting ? "Processing…" : "Book Now &amp; Pay"}
             </Button>
 
-            <div className="mt-4 flex items-center gap-2 text-xs text-[#4f9c7f] bg-[#4f9c7f]/10 rounded-lg px-3 py-2.5 border border-[#4f9c7f]/20">
-              <ShieldCheck className="w-4 h-4 shrink-0" />
-              Free cancellation &middot; Pay at hotel option available
+            <div className="flex items-center gap-2 text-xs font-bold text-[#4ade80] bg-[#16a34a]/15 rounded-2xl px-4 py-3 border border-[#4ade80]/30">
+              <ShieldCheck className="w-4 h-4 shrink-0 text-[#4ade80]" />
+              Free Cancellation &middot; Pay at Hotel Option Available
             </div>
           </div>
 
-          {/* Promo codes */}
-          <div className="bg-[#fdf6e3] rounded-2xl shadow-lg border border-[#f3e6c0] p-6">
-            <h2 className="flex items-center gap-2 text-base font-bold text-[#0f1a2e] mb-4">
-              <Gift className="w-5 h-5 text-[#e0a800]" /> PROMO CODES
-            </h2>
-
+          {/* Promo code card — Luxury Gold Card */}
+          <div className="bg-gradient-to-br from-[#fffbeb] to-[#fef3c7] border-2 border-[#fde68a] rounded-3xl p-6 shadow-xl text-[#0f1a2e]">
+            <h3 className="flex items-center gap-2 text-base font-black text-[#78350f] mb-3">
+              <Gift className="w-5 h-5 text-[#d97706]" /> Exclusive Promo Codes
+            </h3>
             <div className="flex gap-2 mb-4">
               <Input
+                placeholder="Enter promo code"
                 value={promoInput}
                 onChange={(e) => setPromoInput(e.target.value)}
-                placeholder="Enter promo code here"
-                className="bg-white border border-[#e6d59a] text-[#0f1a2e] placeholder:text-[#b09a5e] rounded-lg h-11 px-3 focus-visible:ring-2 focus-visible:ring-[#e0a800]/40"
+                className="bg-white border-2 border-[#fde68a] text-[#0f172a] font-bold rounded-xl h-11 px-3 text-sm focus:border-[#d97706]"
               />
               <Button
                 type="button"
                 onClick={() => applyPromo(promoInput)}
-                className="bg-[#0f1a2e] hover:bg-[#1a2947] text-white font-semibold rounded-lg px-5 h-11 shrink-0"
+                className="bg-[#78350f] text-white hover:bg-[#92400e] font-black text-xs rounded-xl px-5 h-11 shadow-md"
               >
                 Apply
               </Button>
             </div>
 
-            <div className="space-y-3">
-              {PROMOS.map((promo) => {
-                const active = appliedPromo === promo.code;
-                return (
-                  <button
-                    type="button"
-                    key={promo.code}
-                    onClick={() => applyPromo(promo.code)}
-                    className={`w-full text-left rounded-xl border p-4 transition-all ${
-                      active
-                        ? "border-[#e0a800] bg-white ring-2 ring-[#e0a800]/30"
-                        : "border-[#f0e3b8] bg-white/70 hover:bg-white"
-                    }`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <span
-                        className={`mt-0.5 flex items-center justify-center w-4 h-4 rounded-full border-2 shrink-0 ${
-                          active ? "border-[#e0a800]" : "border-[#c9b878]"
-                        }`}
-                      >
-                        {active && <span className="w-2 h-2 rounded-full bg-[#e0a800]" />}
-                      </span>
-                      <div>
-                        <p className="font-bold text-[#e5573f] text-sm tracking-wide">
-                          {promo.code}
-                        </p>
-                        <p className="text-xs text-[#5c6675] mt-1 leading-relaxed">
-                          {promo.desc}
-                        </p>
-                        <span className="inline-block text-[#2c5a9e] text-xs font-medium mt-2">
-                          Terms &amp; Conditions
-                        </span>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
+            <div className="space-y-2">
+              {PROMOS.map((p) => (
+                <div
+                  key={p.code}
+                  onClick={() => applyPromo(p.code)}
+                  className={`p-3.5 rounded-2xl border-2 cursor-pointer transition-all ${
+                    appliedPromo === p.code
+                      ? "bg-white border-[#d97706] shadow-md ring-2 ring-[#d97706]/30"
+                      : "bg-white/90 border-[#fde68a] hover:bg-white"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono font-black text-xs text-[#d97706] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#fde68a]">
+                      {p.code}
+                    </span>
+                    <span className="text-[11px] font-black text-[#16a34a]">
+                      - ₹{p.value} OFF
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#78350f] font-semibold mt-1">
+                    {p.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
