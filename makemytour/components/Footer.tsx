@@ -4,51 +4,57 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-[#0f1a2e] via-[#1a2f47] to-[#2c3e57] text-white">
+    <footer className="bg-[#09152b] border-t-4 border-[#3b82f6] text-white relative z-20 shadow-2xl">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Top section with 3 info cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all">
-            <h3 className="text-xl font-bold mb-3">Why MakeMyTour?</h3>
-            <p className="text-white/80 text-sm leading-relaxed">
+          <div className="bg-[#0f1a2e] rounded-2xl p-6 border border-[#1e293b] shadow-xl hover:border-[#3b82f6] transition-all">
+            <h3 className="text-xl font-extrabold text-white mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#3b82f6]" /> Why MakeMyTour?
+            </h3>
+            <p className="text-white/90 text-sm leading-relaxed font-medium">
               Established in 2000, MakeMyTour has since positioned itself as one of the leading companies, providing great offers, competitive airfares, exclusive discounts, and a seamless online booking experience.
             </p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all">
-            <h3 className="text-xl font-bold mb-3">Booking Flights with MakeMyTour</h3>
-            <p className="text-white/80 text-sm leading-relaxed">
+          <div className="bg-[#0f1a2e] rounded-2xl p-6 border border-[#1e293b] shadow-xl hover:border-[#3b82f6] transition-all">
+            <h3 className="text-xl font-extrabold text-white mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#f59e0b]" /> Booking Flights with MakeMyTour
+            </h3>
+            <p className="text-white/90 text-sm leading-relaxed font-medium">
               Book your flight tickets with India&apos;s leading flight booking company. Get best deals on flights, train tickets, buses, hotels and holiday packages.
             </p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all">
-            <h3 className="text-xl font-bold mb-3">Domestic Flights with MakeMyTour</h3>
-            <p className="text-white/80 text-sm leading-relaxed">
+          <div className="bg-[#0f1a2e] rounded-2xl p-6 border border-[#1e293b] shadow-xl hover:border-[#3b82f6] transition-all">
+            <h3 className="text-xl font-extrabold text-white mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#22c55e]" /> Domestic Flights with MakeMyTour
+            </h3>
+            <p className="text-white/90 text-sm leading-relaxed font-medium">
               MakeMyTour is India&apos;s leading player for flight bookings. With the cheapest fare guarantee, experience great value at the lowest price.
             </p>
           </div>
         </div>
 
         {/* Links grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-white/20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-[#1e293b]">
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-[#a3cef0]">
+            <h4 className="font-extrabold text-sm uppercase tracking-wider mb-4 text-[#60a5fa]">
               About the Site
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Investor Relations
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Careers
                 </a>
               </li>
@@ -56,22 +62,22 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-[#a3cef0]">
+            <h4 className="font-extrabold text-sm uppercase tracking-wider mb-4 text-[#60a5fa]">
               Popular Hotels
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Hotels in Delhi
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Hotels in Mumbai
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Hotels in Goa
                 </a>
               </li>
@@ -79,22 +85,22 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-[#a3cef0]">
+            <h4 className="font-extrabold text-sm uppercase tracking-wider mb-4 text-[#60a5fa]">
               Quick Links
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   COVID-19 Update
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Flight Schedule
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Train Schedule
                 </a>
               </li>
@@ -102,22 +108,22 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-[#a3cef0]">
+            <h4 className="font-extrabold text-sm uppercase tracking-wider mb-4 text-[#60a5fa]">
               Important Links
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
-                  Terms & Conditions
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
+                  Terms &amp; Conditions
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white text-sm transition-colors">
+                <a href="#" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
                   User Agreement
                 </a>
               </li>
@@ -131,7 +137,7 @@ const Footer = () => {
           <div className="flex items-center gap-4">
             <a
               href="#"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all hover:scale-110"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all hover:scale-110"
               aria-label="Instagram"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -140,7 +146,7 @@ const Footer = () => {
             </a>
             <a
               href="#"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all hover:scale-110"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all hover:scale-110"
               aria-label="X"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -149,7 +155,7 @@ const Footer = () => {
             </a>
             <a
               href="#"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all hover:scale-110"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all hover:scale-110"
               aria-label="LinkedIn"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -158,7 +164,7 @@ const Footer = () => {
             </a>
             <a
               href="#"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all hover:scale-110"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1e293b] hover:bg-[#3b82f6] text-white transition-all hover:scale-110"
               aria-label="Facebook"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -168,7 +174,7 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <p className="text-white/60 text-sm">
+          <p className="text-white/80 font-medium text-sm">
             © {currentYear} MakeMyTour PVT. LTD. All rights reserved
           </p>
         </div>
