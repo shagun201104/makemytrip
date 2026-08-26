@@ -25,6 +25,7 @@ import {
   Mail,
   Phone,
   IndianRupee,
+  Ticket,
   Wifi,
   Coffee,
   UtensilsCrossed,
@@ -221,45 +222,64 @@ function HotelBookingContent() {
 
   if (confirmed) {
     return (
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white/80 border border-white/60 rounded-3xl shadow-2xl backdrop-blur-md p-10 text-center">
-          <div className="flex justify-center mb-5">
-            <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#4f9c7f] to-[#6bb39a] text-white shadow-lg">
-              <CheckCircle2 className="w-11 h-11" />
+      <div className="max-w-2xl mx-auto py-6">
+        <div className="bg-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 overflow-hidden text-center">
+          {/* Top Gradient Banner */}
+          <div className="bg-gradient-to-r from-[#0f1a2e] via-[#1e3a8a] to-[#0f1a2e] p-8 text-white">
+            <div className="flex justify-center mb-4">
+              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#22c55e] to-[#16a34a] text-white shadow-xl animate-pulse">
+                <CheckCircle2 className="w-12 h-12" />
+              </div>
             </div>
-          </div>
-          <h1 className="text-3xl font-extrabold text-[#0f1a2e]">Booking Confirmed!</h1>
-          <p className="text-[#3d5170] mt-2">
-            Your stay at {name}, {city} is booked successfully.
-          </p>
-
-          <div className="mt-6 rounded-2xl bg-white/80 border border-[#d5e3f2] p-5 text-left space-y-2">
-            <div className="flex justify-between text-sm">
-              <span className="text-[#7c8ba3]">Booking Reference</span>
-              <span className="font-bold text-[#0f1a2e]">{bookingRef}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-[#7c8ba3]">Guest</span>
-              <span className="font-semibold text-[#0f1a2e]">{guest.name}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-[#7c8ba3]">Hotel</span>
-              <span className="font-semibold text-[#0f1a2e]">{name}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-[#7c8ba3]">
-                {nights} {nights > 1 ? "nights" : "night"}
-              </span>
-              <span className="font-bold text-[#0f1a2e]">{formatINR(total)}</span>
-            </div>
+            <h1 className="text-3xl font-black text-white drop-shadow-md">Booking Confirmed! 🎉</h1>
+            <p className="text-white/80 text-sm mt-1.5 font-medium">
+              Your stay at <span className="font-extrabold text-white">{name}</span>, {city} is booked successfully.
+            </p>
           </div>
 
-          <Button
-            onClick={() => router.push("/")}
-            className="mt-7 bg-[#0f1a2e] text-white hover:bg-[#1a2947] font-semibold rounded-full px-10 h-12 shadow-md"
-          >
-            Back to Home
-          </Button>
+          {/* Details Card */}
+          <div className="p-7 space-y-4">
+            <div className="rounded-2xl bg-[#f8fafc] border border-[#cbd5e1] p-5 text-left space-y-3">
+              <div className="flex justify-between items-center text-sm pb-2 border-b border-[#e2e8f0]">
+                <span className="text-[#64748b] font-semibold">Booking Reference ID</span>
+                <span className="font-extrabold text-[#1d4ed8] text-base font-mono">{bookingRef}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-[#64748b] font-semibold">Guest Name</span>
+                <span className="font-extrabold text-[#0f172a]">{guest.name}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-[#64748b] font-semibold">Hotel Property</span>
+                <span className="font-extrabold text-[#0f172a]">{name}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-[#64748b] font-semibold">Stay Duration</span>
+                <span className="font-bold text-[#0f172a]">{nights} {nights > 1 ? "Nights" : "Night"} ({formatDate(checkin)} - {formatDate(checkout)})</span>
+              </div>
+              <div className="flex justify-between items-center text-sm pt-2 border-t border-[#e2e8f0]">
+                <span className="text-[#64748b] font-bold">Total Paid</span>
+                <span className="font-black text-xl text-[#16a34a]">{formatINR(total)}</span>
+              </div>
+            </div>
+
+            {/* Action Buttons: View in Profile + Home */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+              <Button
+                onClick={() => router.push("/profile")}
+                className="w-full sm:w-auto bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white hover:opacity-95 font-extrabold rounded-full px-8 h-12 shadow-xl flex items-center justify-center gap-2"
+              >
+                <Ticket className="w-5 h-5" />
+                View My Booking in Profile &rarr;
+              </Button>
+              <Button
+                onClick={() => router.push("/")}
+                variant="outline"
+                className="w-full sm:w-auto border-2 border-[#cbd5e1] text-[#0f172a] hover:bg-[#f1f5f9] font-bold rounded-full px-8 h-12"
+              >
+                Back to Home
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     );

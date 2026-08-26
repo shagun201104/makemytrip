@@ -675,12 +675,12 @@ export default function Home() {
             </div>
           </section>
 
-          {/* HANDPICKED COLLECTIONS */}
-          <section className="space-y-5">
+          {/* HANDPICKED COLLECTIONS — 2 COLUMNS ON MOBILE (LIKE MAKEMYTRIP APP) */}
+          <section className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-md">
               Handpicked Collections for You
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
               {collections.map((col) => (
                 <div
                   key={col.title}
@@ -698,18 +698,18 @@ export default function Home() {
                     style={{ backgroundImage: `url(${col.image})` }}
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
 
                   {/* TOP badge */}
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0f1a2e]">
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[10px] md:text-xs font-black text-[#0f1a2e] shadow-sm">
                     {col.badge}
                   </div>
 
                   {/* Title & Action Button */}
-                  <div className="relative p-6 flex flex-col justify-end min-h-[260px] gap-3">
-                    <h3 className="text-white font-extrabold text-xl drop-shadow-md flex items-center justify-between">
-                      <span>{col.title}</span>
-                      <ArrowRight className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" />
+                  <div className="relative p-4 md:p-6 flex flex-col justify-end min-h-[220px] md:min-h-[260px] gap-2 md:gap-3">
+                    <h3 className="text-white font-extrabold text-sm md:text-xl drop-shadow-md flex items-center justify-between">
+                      <span className="line-clamp-2">{col.title}</span>
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white transform group-hover:translate-x-1 transition-transform shrink-0 ml-1" />
                     </h3>
                     <Button
                       type="button"
@@ -721,7 +721,7 @@ export default function Home() {
                         else setHotelLocation("Goa");
                         setShowHotelResults(true);
                       }}
-                      className="bg-white/90 text-[#0f1a2e] hover:bg-white font-bold text-xs rounded-full px-4 h-9 shadow-md w-fit backdrop-blur-sm"
+                      className="bg-white/95 text-[#0f1a2e] hover:bg-white font-extrabold text-[10px] md:text-xs rounded-full px-3 md:px-4 h-8 md:h-9 shadow-md w-fit backdrop-blur-sm"
                     >
                       Explore Stays &rarr;
                     </Button>
@@ -731,12 +731,78 @@ export default function Home() {
             </div>
           </section>
 
-          {/* UNLOCK LESSER-KNOWN WONDERS OF INDIA */}
-          <section className="space-y-5">
+          {/* FLAGSHIP STORES (AIRLINES & HOTELS) — 2 COLUMNS ON MOBILE (LIKE MAKEMYTRIP APP) */}
+          <section className="space-y-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-md">
+              Flagship Airline &amp; Hotel Stores
+            </h2>
+
+            <div className="space-y-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#60a5fa] drop-shadow">Flagship Airline Stores</p>
+              <div className="grid grid-cols-2 gap-3 md:gap-5">
+                <div
+                  onClick={() => setShowResults(true)}
+                  className="relative overflow-hidden rounded-2xl h-36 bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] p-4 flex flex-col justify-between shadow-xl hover:scale-[1.02] transition-all cursor-pointer group"
+                >
+                  <span className="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">OFFICIAL STORE</span>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-white font-black text-lg md:text-2xl">Air India</h3>
+                      <p className="text-white/80 text-xs font-semibold">Fly nonstop worldwide</p>
+                    </div>
+                    <Plane className="w-8 h-8 text-white/80 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+
+                <div
+                  onClick={() => setShowResults(true)}
+                  className="relative overflow-hidden rounded-2xl h-36 bg-gradient-to-r from-[#78350f] to-[#d97706] p-4 flex flex-col justify-between shadow-xl hover:scale-[1.02] transition-all cursor-pointer group"
+                >
+                  <span className="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">PREMIUM PARTNER</span>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-white font-black text-lg md:text-2xl">Etihad Airways</h3>
+                      <p className="text-white/80 text-xs font-semibold">Luxury 5-star flying</p>
+                    </div>
+                    <Plane className="w-8 h-8 text-white/80 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-xs font-bold uppercase tracking-wider text-[#60a5fa] drop-shadow pt-2">Flagship Hotel Stores</p>
+              <div className="grid grid-cols-2 gap-3 md:gap-5">
+                {[
+                  { name: "ITC Hotels Limited", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" },
+                  { name: "Sterling Hotels & Resorts", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" },
+                  { name: "Hyatt Hotels", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=500&q=80" },
+                  { name: "Cinnamon Hotels", img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=500&q=80" },
+                ].map((store) => (
+                  <div
+                    key={store.name}
+                    onClick={() => {
+                      setHotelLocation("Goa");
+                      setShowHotelResults(true);
+                    }}
+                    className="relative overflow-hidden rounded-2xl h-36 p-4 flex flex-col justify-end shadow-xl hover:scale-[1.02] transition-all cursor-pointer group"
+                  >
+                    <div style={{ backgroundImage: `url(${store.img})` }} className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                    <div className="relative">
+                      <span className="bg-white/90 text-[#0f172a] text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider mb-1 inline-block">Official Flagship</span>
+                      <h4 className="text-white font-extrabold text-sm md:text-base leading-snug">{store.name}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* UNLOCK LESSER-KNOWN WONDERS OF INDIA — 2 COLUMNS ON MOBILE (LIKE MAKEMYTRIP APP) */}
+          <section className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-md">
               Unlock Lesser-Known Wonders of India
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
               {wonders.map((w) => (
                 <div
                   key={w.title}
@@ -752,13 +818,13 @@ export default function Home() {
                     style={{ backgroundImage: `url(${w.image})` }}
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
                   {/* Title */}
-                  <div className="relative p-6 flex flex-col justify-end min-h-[280px]">
-                    <h3 className="text-white font-bold text-xl drop-shadow-md leading-snug flex items-center justify-between">
-                      <span>{w.title}</span>
-                      <ArrowRight className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform shrink-0 ml-2" />
+                  <div className="relative p-4 md:p-6 flex flex-col justify-end min-h-[220px] md:min-h-[280px]">
+                    <h3 className="text-white font-bold text-sm md:text-xl drop-shadow-md leading-snug flex items-center justify-between">
+                      <span className="line-clamp-2">{w.title}</span>
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white transform group-hover:translate-x-1 transition-transform shrink-0 ml-1" />
                     </h3>
                   </div>
                 </div>
