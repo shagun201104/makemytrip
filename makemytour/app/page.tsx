@@ -321,13 +321,16 @@ export default function Home() {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(9, 21, 43, 0.40), rgba(15, 26, 46, 0.65), rgba(9, 21, 43, 0.90)), url('/world_travel_bg.jpg')`,
-      }}
-      className="min-h-screen w-full bg-cover bg-center bg-fixed text-white relative overflow-x-hidden"
-    >
-      <div className="relative min-h-screen w-full">
+    <div className="min-h-screen w-full text-white relative overflow-x-hidden">
+      {/* True Fixed Background Layer — Original Crisp Image, Zero Blur, Zero Scrolling Movement */}
+      <div
+        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none z-0"
+        style={{
+          backgroundImage: `url('/world_travel_bg.jpg')`,
+        }}
+      />
+
+      <div className="relative z-10 min-h-screen w-full bg-black/15">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-10">
 
           {/* HERO HEADING */}
