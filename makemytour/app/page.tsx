@@ -177,6 +177,18 @@ const bestOffers = [
     image:
       "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
   },
+  {
+    title: "Homestays & Villas",
+    description: "Flat 25% off on luxury private villas & homestays",
+    image:
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Train & Rail Pass Sale",
+    description: "Zero gateway fees on IRCTC train ticket bookings",
+    image:
+      "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80",
+  },
 ];
 
 // "Handpicked Collections for You" — image cards with a TOP badge.

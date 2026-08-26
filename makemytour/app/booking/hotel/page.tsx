@@ -497,63 +497,70 @@ function HotelBookingContent() {
             </div>
           </div>
 
-          {/* ---- Guest details ---- */}
+          {/* ---- LUXURY GUEST DETAILS & PAYMENT FORM ---- */}
           <form
             onSubmit={handleConfirm}
-            className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6 md:p-7 space-y-5"
+            className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-6 md:p-8 space-y-6"
           >
-            <h2 className="text-lg font-bold text-[#0f1a2e]">Guest Details</h2>
+            <div className="flex items-center justify-between border-b border-[#1e293b] pb-4">
+              <h2 className="text-2xl font-black text-white flex items-center gap-2">
+                <User className="w-6 h-6 text-[#60a5fa]" /> Guest Details &amp; Options
+              </h2>
+              <span className="bg-[#2563eb] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                Step 2 of 2
+              </span>
+            </div>
 
-            <div className="space-y-1.5">
-              <Label className="text-[#2c3e57] text-sm font-medium flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5" /> Full Name
+            <div className="space-y-2">
+              <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                <User className="w-4 h-4 text-[#60a5fa]" /> Primary Guest Full Name
               </Label>
               <Input
                 value={guest.name}
                 onChange={(e) => setGuest({ ...guest, name: e.target.value })}
-                placeholder="Primary guest name"
-                className="bg-white border border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-lg h-11 px-3 focus-visible:ring-2 focus-visible:ring-[#5b9bd5]/40"
+                placeholder="Enter full name as on Govt ID"
+                className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <Label className="text-[#2c3e57] text-sm font-medium flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5" /> Email
+              <div className="space-y-2">
+                <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                  <Mail className="w-4 h-4 text-[#60a5fa]" /> Email Address (For E-Ticket)
                 </Label>
                 <Input
                   type="email"
                   value={guest.email}
                   onChange={(e) => setGuest({ ...guest, email: e.target.value })}
                   placeholder="you@example.com"
-                  className="bg-white border border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-lg h-11 px-3 focus-visible:ring-2 focus-visible:ring-[#5b9bd5]/40"
+                  className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
                 />
               </div>
-              <div className="space-y-1.5">
-                <Label className="text-[#2c3e57] text-sm font-medium flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5" /> Phone
+              <div className="space-y-2">
+                <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                  <Phone className="w-4 h-4 text-[#60a5fa]" /> Mobile Number (For SMS/WhatsApp)
                 </Label>
                 <Input
                   type="tel"
                   value={guest.phone}
                   onChange={(e) => setGuest({ ...guest, phone: e.target.value })}
                   placeholder="+91 98765 43210"
-                  className="bg-white border border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-lg h-11 px-3 focus-visible:ring-2 focus-visible:ring-[#5b9bd5]/40"
+                  className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
                 />
               </div>
             </div>
 
             {/* Guest Composition & Children Age Selector */}
-            <div className="rounded-xl bg-[#f8fafc] border border-[#e2e8f0] p-4 space-y-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#1a3a6b]">Guest Composition &amp; Age Breakdown</p>
+            <div className="rounded-2xl bg-[#1e293b]/90 border-2 border-[#3b82f6]/40 p-5 space-y-4">
+              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa]">Guest Composition &amp; Age Breakdown</p>
               
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <Label className="text-xs font-semibold text-[#334155]">Adults (12+ yrs)</Label>
+                  <Label className="text-xs font-bold text-white/90">Adults (12+ yrs)</Label>
                   <select
                     value={numAdults}
                     onChange={(e) => setNumAdults(Number(e.target.value))}
-                    className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                    className="w-full mt-1.5 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
@@ -562,11 +569,11 @@ function HotelBookingContent() {
                 </div>
 
                 <div>
-                  <Label className="text-xs font-semibold text-[#334155]">Children (0-12 yrs)</Label>
+                  <Label className="text-xs font-bold text-white/90">Children (0-12 yrs)</Label>
                   <select
                     value={numChildren}
                     onChange={(e) => setNumChildren(Number(e.target.value))}
-                    className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                    className="w-full mt-1.5 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[0, 1, 2, 3, 4].map((n) => (
                       <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
@@ -575,11 +582,11 @@ function HotelBookingContent() {
                 </div>
 
                 <div>
-                  <Label className="text-xs font-semibold text-[#334155]">Infants (Under 2 yrs)</Label>
+                  <Label className="text-xs font-bold text-white/90">Infants (Under 2 yrs)</Label>
                   <select
                     value={numInfants}
                     onChange={(e) => setNumInfants(Number(e.target.value))}
-                    className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-sm font-semibold text-[#0f172a]"
+                    className="w-full mt-1.5 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[0, 1, 2].map((n) => (
                       <option key={n} value={n}>{n} Infant{n !== 1 ? "s" : ""}</option>
@@ -589,13 +596,13 @@ function HotelBookingContent() {
               </div>
 
               {numChildren > 0 && (
-                <div className="bg-white p-3 rounded-lg border border-[#cbd5e1]">
-                  <Label className="text-xs font-bold text-[#1e293b]">Child Age Limit Selection</Label>
-                  <p className="text-[11px] text-[#64748b] mb-2">Children below 12 years receive complimentary stay without extra bed.</p>
+                <div className="bg-[#0f1a2e] p-4 rounded-xl border border-[#3b82f6]/40 space-y-1.5">
+                  <Label className="text-xs font-black text-[#60a5fa]">Child Age Limit Selection</Label>
+                  <p className="text-[11px] text-white/80 font-medium">Children below 12 years receive complimentary stay without extra bed.</p>
                   <select
                     value={childAge}
                     onChange={(e) => setChildAge(e.target.value)}
-                    className="w-full bg-[#f1f5f9] border border-[#cbd5e1] rounded-md h-9 px-2 text-xs font-medium text-[#0f172a]"
+                    className="w-full bg-[#1e293b] border border-[#3b82f6]/40 text-white rounded-lg h-10 px-3 text-xs font-bold"
                   >
                     <option value="2">Child 1 Age: 2 years (Infant Bed Included)</option>
                     <option value="5">Child 1 Age: 5 years (Junior Stay Included)</option>
@@ -607,92 +614,87 @@ function HotelBookingContent() {
             </div>
 
             {/* Room Add-ons & Facilities */}
-            <div className="rounded-xl bg-[#f0fdf4] border border-[#bbf7d0] p-4 space-y-3">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#15803d]">Optional Add-ons &amp; Facilities</p>
+            <div className="rounded-2xl bg-[#14532d]/40 border-2 border-[#22c55e]/60 p-5 space-y-3">
+              <p className="text-xs font-black uppercase tracking-wider text-[#4ade80]">Optional Add-ons &amp; Facilities</p>
 
-              <label className="flex items-center justify-between cursor-pointer p-2 bg-white rounded-lg border border-[#dcfce7] hover:border-[#86efac]">
-                <div className="flex items-center gap-2">
+              <label className="flex items-center justify-between cursor-pointer p-3 bg-[#0f1a2e] rounded-xl border border-[#22c55e]/40 hover:border-[#22c55e] transition-all">
+                <div className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     checked={includeBreakfast}
                     onChange={(e) => setIncludeBreakfast(e.target.checked)}
-                    className="w-4 h-4 text-[#16a34a] rounded"
+                    className="w-5 h-5 text-[#22c55e] rounded cursor-pointer"
                   />
                   <div>
-                    <span className="text-xs font-bold text-[#14532d]">Complimentary Daily Breakfast Buffet</span>
-                    <p className="text-[11px] text-[#475569]">Includes Continental, South Indian &amp; Hot Dishes</p>
+                    <span className="text-sm font-extrabold text-white">Complimentary Daily Breakfast Buffet</span>
+                    <p className="text-xs text-white/80">Includes Continental, South Indian &amp; Hot Chef Specialities</p>
                   </div>
                 </div>
-                <span className="text-xs font-extrabold text-[#15803d]">+₹350/person/night</span>
+                <span className="text-xs font-black text-[#4ade80] bg-[#16a34a]/20 px-3 py-1 rounded-lg border border-[#4ade80]/30">+₹350/person/night</span>
               </label>
 
-              <label className="flex items-center justify-between cursor-pointer p-2 bg-white rounded-lg border border-[#dcfce7] hover:border-[#86efac]">
-                <div className="flex items-center gap-2">
+              <label className="flex items-center justify-between cursor-pointer p-3 bg-[#0f1a2e] rounded-xl border border-[#22c55e]/40 hover:border-[#22c55e] transition-all">
+                <div className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     checked={extraMattress}
                     onChange={(e) => setExtraMattress(e.target.checked)}
-                    className="w-4 h-4 text-[#16a34a] rounded"
+                    className="w-5 h-5 text-[#22c55e] rounded cursor-pointer"
                   />
                   <div>
-                    <span className="text-xs font-bold text-[#14532d]">Extra Bed / Rollaway Mattress</span>
-                    <p className="text-[11px] text-[#475569]">Plush extra mattress with luxury duvet &amp; pillow</p>
+                    <span className="text-sm font-extrabold text-white">Extra Bed / Rollaway Mattress</span>
+                    <p className="text-xs text-white/80">Plush extra mattress with luxury duvet &amp; pillow</p>
                   </div>
                 </div>
-                <span className="text-xs font-extrabold text-[#15803d]">+₹500/night</span>
+                <span className="text-xs font-black text-[#4ade80] bg-[#16a34a]/20 px-3 py-1 rounded-lg border border-[#4ade80]/30">+₹500/night</span>
               </label>
             </div>
 
             {/* Payment Method & EMI Installment Options */}
-            <div className="rounded-xl bg-[#f8fafc] border border-[#e2e8f0] p-4 space-y-3">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#1a3a6b]">Select Payment Method &amp; EMI Options</p>
+            <div className="rounded-2xl bg-[#1e293b]/90 border-2 border-[#3b82f6]/40 p-5 space-y-3">
+              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa]">Select Payment Method &amp; EMI Options</p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <label className="flex items-center gap-2 bg-white border border-[#cbd5e1] p-3 rounded-lg cursor-pointer hover:border-[#3b82f6]">
-                  <input type="radio" name="payMethod" defaultChecked className="text-[#1a3a6b]" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
+                  <input type="radio" name="payMethod" defaultChecked className="w-4 h-4 text-[#2563eb]" />
                   <div>
-                    <p className="text-xs font-bold text-[#0f172a]">📱 BHIM UPI / GPay / PhonePe</p>
-                    <p className="text-[10px] text-[#64748b]">Instant 0% fee payment</p>
+                    <p className="text-xs font-black text-white">📱 BHIM UPI / GPay / PhonePe</p>
+                    <p className="text-[11px] text-white/80 font-medium">Instant 0% fee payment</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-2 bg-white border border-[#cbd5e1] p-3 rounded-lg cursor-pointer hover:border-[#3b82f6]">
-                  <input type="radio" name="payMethod" className="text-[#1a3a6b]" />
+                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
+                  <input type="radio" name="payMethod" className="w-4 h-4 text-[#2563eb]" />
                   <div>
-                    <p className="text-xs font-bold text-[#0f172a]">💳 Credit / Debit Card</p>
-                    <p className="text-[10px] text-[#64748b]">Visa, Mastercard, RuPay</p>
+                    <p className="text-xs font-black text-white">💳 Credit / Debit Card</p>
+                    <p className="text-[11px] text-white/80 font-medium">Visa, Mastercard, RuPay</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-2 bg-white border border-[#cbd5e1] p-3 rounded-lg cursor-pointer hover:border-[#3b82f6]">
-                  <input type="radio" name="payMethod" className="text-[#1a3a6b]" />
+                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
+                  <input type="radio" name="payMethod" className="text-[#2563eb]" />
                   <div>
-                    <p className="text-xs font-bold text-[#0f172a]">🏦 Net Banking</p>
-                    <p className="text-[10px] text-[#64748b]">SBI, HDFC, ICICI, Axis</p>
+                    <p className="text-xs font-black text-white">🏦 Net Banking</p>
+                    <p className="text-[11px] text-white/80 font-medium">SBI, HDFC, ICICI, Axis</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-2 bg-[#eff6ff] border border-[#bfdbfe] p-3 rounded-lg cursor-pointer hover:border-[#2563eb]">
-                  <input type="radio" name="payMethod" className="text-[#1a3a6b]" />
+                <label className="flex items-center gap-3 bg-[#1e3a8a]/60 border-2 border-[#60a5fa] p-3.5 rounded-xl cursor-pointer hover:bg-[#1e3a8a] transition-all">
+                  <input type="radio" name="payMethod" className="text-[#2563eb]" />
                   <div>
-                    <p className="text-xs font-bold text-[#1e40af]">📊 Easy No-Cost EMI</p>
-                    <p className="text-[10px] text-[#2563eb] font-semibold">Pay in 3, 6, or 12 monthly installments</p>
+                    <p className="text-xs font-black text-[#facc15]">📊 Easy No-Cost EMI</p>
+                    <p className="text-[11px] text-white font-bold">Pay in 3, 6, or 12 monthly installments</p>
                   </div>
                 </label>
-              </div>
-
-              <div className="bg-white p-3 rounded-lg border border-[#e2e8f0] text-xs text-[#334155] flex justify-between items-center">
-                <span>Monthly EMI Estimate (No-Cost):</span>
-                <span className="font-extrabold text-[#1e3a8a]">{formatINR(Math.round(total / 3))}/mo for 3 months</span>
               </div>
             </div>
 
             <Button
               type="submit"
               disabled={submitting}
-              className="w-full bg-gradient-to-r from-[#1a3a6b] to-[#2c5a9e] text-white hover:from-[#0f2847] hover:to-[#1a3a6b] font-bold rounded-full py-3.5 shadow-lg hover:shadow-xl transition-all disabled:opacity-70"
+              className="w-full bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-lg rounded-full py-4 shadow-2xl hover:shadow-orange-500/40 hover:scale-[1.02] transition-all uppercase tracking-wide cursor-pointer disabled:opacity-70"
             >
-              {submitting ? "Processing…" : <>Confirm &amp; Pay {formatINR(total)}</>}
+              {submitting ? "Processing Booking…" : <>Confirm &amp; Pay {formatINR(total)}</>}
             </Button>
           </form>
 
