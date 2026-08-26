@@ -571,6 +571,50 @@ function FlightBookingContent() {
               )}
             </div>
 
+            {/* Payment Method & EMI Installment Options */}
+            <div className="rounded-xl bg-[#f8fafc] border border-[#e2e8f0] p-4 space-y-3">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#1a3a6b]">Select Payment Method &amp; EMI Options</p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <label className="flex items-center gap-2 bg-white border border-[#cbd5e1] p-3 rounded-lg cursor-pointer hover:border-[#3b82f6]">
+                  <input type="radio" name="flightPayMethod" defaultChecked className="text-[#1a3a6b]" />
+                  <div>
+                    <p className="text-xs font-bold text-[#0f172a]">📱 BHIM UPI / GPay / PhonePe</p>
+                    <p className="text-[10px] text-[#64748b]">Instant 0% fee payment</p>
+                  </div>
+                </label>
+
+                <label className="flex items-center gap-2 bg-white border border-[#cbd5e1] p-3 rounded-lg cursor-pointer hover:border-[#3b82f6]">
+                  <input type="radio" name="flightPayMethod" className="text-[#1a3a6b]" />
+                  <div>
+                    <p className="text-xs font-bold text-[#0f172a]">💳 Credit / Debit Card</p>
+                    <p className="text-[10px] text-[#64748b]">Visa, Mastercard, RuPay</p>
+                  </div>
+                </label>
+
+                <label className="flex items-center gap-2 bg-white border border-[#cbd5e1] p-3 rounded-lg cursor-pointer hover:border-[#3b82f6]">
+                  <input type="radio" name="flightPayMethod" className="text-[#1a3a6b]" />
+                  <div>
+                    <p className="text-xs font-bold text-[#0f172a]">🏦 Net Banking</p>
+                    <p className="text-[10px] text-[#64748b]">SBI, HDFC, ICICI, Axis</p>
+                  </div>
+                </label>
+
+                <label className="flex items-center gap-2 bg-[#eff6ff] border border-[#bfdbfe] p-3 rounded-lg cursor-pointer hover:border-[#2563eb]">
+                  <input type="radio" name="flightPayMethod" className="text-[#1a3a6b]" />
+                  <div>
+                    <p className="text-xs font-bold text-[#1e40af]">📊 Easy No-Cost EMI</p>
+                    <p className="text-[10px] text-[#2563eb] font-semibold">Pay in 3, 6, or 12 monthly installments</p>
+                  </div>
+                </label>
+              </div>
+
+              <div className="bg-white p-3 rounded-lg border border-[#e2e8f0] text-xs text-[#334155] flex justify-between items-center">
+                <span>Monthly EMI Estimate (No-Cost):</span>
+                <span className="font-extrabold text-[#1e3a8a]">{formatINR(Math.round(total / 3))}/mo for 3 months</span>
+              </div>
+            </div>
+
             <Button
               type="submit"
               disabled={submitting}

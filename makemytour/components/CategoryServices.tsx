@@ -77,13 +77,20 @@ export function CategoryServices({ category }: CategoryServicesProps) {
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <MapPin className="w-4 h-4 text-[#5b9bd5]" /> Destination / Property
               </Label>
-              <Input
+              <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="Goa, Manali, Coorg..."
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4 font-medium"
-                required
-              />
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Destination</option>
+                <option value="Goa Beach Villa">Goa Beachfront Villa</option>
+                <option value="Manali Mountain Cottage">Manali Mountain Cottage</option>
+                <option value="Coorg Plantation Villa">Coorg Plantation Estate</option>
+                <option value="Jaipur Royal Haveli">Jaipur Royal Heritage Haveli</option>
+                <option value="Udaipur Lake Villa">Udaipur Lake View Villa</option>
+                <option value="Kerala Backwater Houseboat">Kerala Luxury Houseboat</option>
+                <option value="Lonavala Hill Villa">Lonavala Private Pool Villa</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
@@ -111,16 +118,18 @@ export function CategoryServices({ category }: CategoryServicesProps) {
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
-                <Users className="w-4 h-4 text-[#5b9bd5]" /> Guests & Rooms
+                <Users className="w-4 h-4 text-[#5b9bd5]" /> Guests &amp; Rooms
               </Label>
-              <Input
-                type="number"
-                min={1}
+              <select
                 value={passengers}
                 onChange={(e) => setPassengers(e.target.value)}
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="1">2 Guests (1 Bedroom)</option>
+                <option value="2">4 Guests (2 Bedrooms)</option>
+                <option value="3">6 Guests (3 Bedroom Villa)</option>
+                <option value="4">8+ Guests (Full Private Estate)</option>
+              </select>
             </div>
           </div>
         )}
@@ -130,15 +139,22 @@ export function CategoryServices({ category }: CategoryServicesProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
-                <MapPin className="w-4 h-4 text-[#5b9bd5]" /> Destination
+                <MapPin className="w-4 h-4 text-[#5b9bd5]" /> Destination Package
               </Label>
-              <Input
+              <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="Kashmir, Kerala, Bali, Dubai..."
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Holiday Destination</option>
+                <option value="Kashmir">Kashmir Paradise 5D/4N Deluxe Package</option>
+                <option value="Kerala">Kerala Backwaters 6D/5N Premium Package</option>
+                <option value="Dubai">Dubai Shopping &amp; Safari 6D/5N Package</option>
+                <option value="Bali">Bali Beach &amp; Culture 5D/4N Package</option>
+                <option value="Goa">Goa Sun &amp; Sand 4D/3N Vacation Package</option>
+                <option value="Himachal">Himachal Hills &amp; Manali 6D/5N Package</option>
+                <option value="Thailand">Thailand Island Hopping 5D/4N Package</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
@@ -156,14 +172,15 @@ export function CategoryServices({ category }: CategoryServicesProps) {
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <Users className="w-4 h-4 text-[#5b9bd5]" /> Travellers Count
               </Label>
-              <Input
-                type="number"
-                min={1}
+              <select
                 value={passengers}
                 onChange={(e) => setPassengers(e.target.value)}
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="2">2 Travellers (Couple / Friends)</option>
+                <option value="4">4 Travellers (Family Pack)</option>
+                <option value="6">6 Travellers (Group Package)</option>
+              </select>
             </div>
           </div>
         )}
@@ -175,23 +192,40 @@ export function CategoryServices({ category }: CategoryServicesProps) {
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <MapPin className="w-4 h-4 text-[#5b9bd5]" /> From Station
               </Label>
-              <Input
+              <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="New Delhi (NDLS)"
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Origin Station</option>
+                <option value="NDLS">New Delhi (NDLS)</option>
+                <option value="CSMT">Mumbai Central (CSMT / MMCT)</option>
+                <option value="SBC">Bengaluru City (SBC)</option>
+                <option value="HWH">Kolkata Howrah (HWH)</option>
+                <option value="MAS">Chennai Central (MAS)</option>
+                <option value="HYB">Hyderabad Deccan (HYB)</option>
+                <option value="MAO">Goa Madgaon (MAO)</option>
+                <option value="JP">Jaipur Junction (JP)</option>
+                <option value="ADI">Ahmedabad Junction (ADI)</option>
+                <option value="BSB">Varanasi Junction (BSB)</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <MapPin className="w-4 h-4 text-[#5b9bd5]" /> To Station
               </Label>
-              <Input
-                placeholder="Varanasi (BSB) / Mumbai (CSMT)"
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+              <select
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Destination Station</option>
+                <option value="BSB">Varanasi Junction (BSB)</option>
+                <option value="CSMT">Mumbai CSMT</option>
+                <option value="NDLS">New Delhi (NDLS)</option>
+                <option value="MAO">Goa Madgaon (MAO)</option>
+                <option value="AY">Ayodhya Dham (AY)</option>
+                <option value="CDG">Chandigarh / Manali (CDG)</option>
+                <option value="HWH">Kolkata Howrah (HWH)</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
@@ -227,23 +261,37 @@ export function CategoryServices({ category }: CategoryServicesProps) {
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <MapPin className="w-4 h-4 text-[#5b9bd5]" /> From City
               </Label>
-              <Input
+              <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="Delhi, Bengaluru, Hyderabad..."
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Departure City</option>
+                <option value="Delhi">New Delhi</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <MapPin className="w-4 h-4 text-[#5b9bd5]" /> To City
               </Label>
-              <Input
-                placeholder="Manali, Goa, Chennai..."
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+              <select
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Destination City</option>
+                <option value="Manali">Manali (Himachal Pradesh)</option>
+                <option value="Goa">Goa Beach Terminal</option>
+                <option value="Shimla">Shimla</option>
+                <option value="Udaipur">Udaipur</option>
+                <option value="Coorg">Coorg</option>
+                <option value="Pondicherry">Pondicherry</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
@@ -267,23 +315,35 @@ export function CategoryServices({ category }: CategoryServicesProps) {
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <MapPin className="w-4 h-4 text-[#5b9bd5]" /> Pickup Location
               </Label>
-              <Input
+              <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="Delhi Airport (DEL) / City Center"
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Pickup Location</option>
+                <option value="DEL">Delhi Airport (DEL)</option>
+                <option value="BOM">Mumbai Airport (BOM)</option>
+                <option value="BLR">Bengaluru Airport (BLR)</option>
+                <option value="HYD">Hyderabad Airport (HYD)</option>
+                <option value="CCU">Kolkata Airport (CCU)</option>
+                <option value="GOI">Goa Dabolim Airport (GOI)</option>
+                <option value="NDLS">Railway Station Pickup</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
                 <MapPin className="w-4 h-4 text-[#5b9bd5]" /> Drop Address
               </Label>
-              <Input
-                placeholder="Agra / Hotel Location"
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
+              <select
+                className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
+              >
+                <option value="">Select Drop Address</option>
+                <option value="Agra">Agra Taj Mahal Hotel</option>
+                <option value="Goa">Goa Beach Resort</option>
+                <option value="Manali">Manali Hotel</option>
+                <option value="Lonavala">Lonavala Hill Resort</option>
+                <option value="CityCenter">City Center Hotel</option>
+              </select>
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">

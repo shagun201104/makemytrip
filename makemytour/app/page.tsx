@@ -323,15 +323,10 @@ export default function Home() {
   return (
     <div
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(9, 21, 43, 0.45), rgba(15, 26, 46, 0.75), rgba(9, 21, 43, 0.95)), url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQHGbTMM630aKYG-7kgc3Sb3RzIGmoNFhLKxxWxrCZVNBfSAMjm4ziOVqg8VXxd')`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQHGbTMM630aKYG-7kgc3Sb3RzIGmoNFhLKxxWxrCZVNBfSAMjm4ziOVqg8VXxd')`,
       }}
       className="min-h-screen w-full bg-cover bg-center bg-fixed text-white relative overflow-x-hidden"
     >
-      {/* Ambient background light flares */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3b82f6]/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[30rem] h-[30rem] bg-[#0ea5e9]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/3 w-[28rem] h-[28rem] bg-[#8b5cf6]/15 rounded-full blur-3xl pointer-events-none" />
-
       <div className="relative min-h-screen w-full">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-10">
 
