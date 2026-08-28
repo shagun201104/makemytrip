@@ -146,7 +146,29 @@ export default function FlightStatusPage() {
     setPushEnabled(perm === "granted");
   };
 
+  const handleUntrack = (id: string) => {
+    flightStatusApi.untrack(id);
+    setTracked((prev) => prev.filter((f) => f.id !== id));
+  };
+
+  const handleTrack = (id: string) => {
+    flightStatusApi.track(id);
+    setTracked(flightStatusApi.getTracked());
+  };
+
+  const handleAddCustom = (num: string) => {
+    if (!num.trim()) return;
+    flightStatusApi.trackCustomFlight(num);
+    setTracked(flightStatusApi.getTracked());
+    setQuery("");
+    setSearched(false);
+  };
+
   const trackedIds = useMemo(() => new Set(tracked.map((f) => f.id)), [tracked]);
+  const availableCatalog = useMemo(
+    () => flightStatusApi.getAllCatalog().filter((f) => !trackedIds.has(f.id)),
+    [trackedIds]
+  );
 
   return (
     <div className="min-h-screen bg-[#f4f7fb]">
@@ -245,31 +267,75 @@ export default function FlightStatusPage() {
 
       <div className="container mx-auto px-4 py-8">
         {/* search / add flights */}
-        <div className="bg-white rounded-2xl border border-[#d5e2f0] shadow-sm p-5 mb-8">
-          <div className="flex items-center gap-2 mb-3">
-            <Search className="w-4 h-4 text-[#5b9bd5]" />
-            <h2 className="text-sm font-bold text-[#1a3a6b] uppercase tracking-wide">Add a flight to track</h2>
+        <div className="bg-white rounded-2xl border border-[#d5e2f0] shadow-sm p-6 mb-8">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <div className="flex items-center gap-2">
+              <Plus className="w-5 h-5 text-[#215190]" />
+              <h2 className="text-base font-bold text-[#0f1a2e]">Track More Flights</h2>
+            </div>
+            <span className="text-xs font-semibold text-[#5b6b82] bg-[#f0f4f9] px-3 py-1 rounded-full border border-[#d5e2f0]">
+              {availableCatalog.length} More Available to Track
+            </span>
           </div>
+
           <div className="flex flex-col sm:flex-row gap-3">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && runSearch()}
-              placeholder="Flight number, airline or city (e.g. 6E, Vistara, Delhi, BOM)"
-              className="flex-1 bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-xl h-12 px-4 font-medium shadow-sm hover:border-[#5b9bd5] focus:border-[#5b9bd5] focus:outline-none focus:ring-2 focus:ring-[#5b9bd5]/20 transition-all"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  if (query.trim()) handleAddCustom(query);
+                }
+              }}
+              placeholder="Enter flight number, airline or city (e.g., 6E 505, AI 101, Vistara, Delhi)"
+              className="flex-1 bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] placeholder:text-[#9aa8bd] rounded-xl h-12 px-4 font-semibold shadow-sm hover:border-[#215190] focus:border-[#215190] focus:outline-none focus:ring-2 focus:ring-[#215190]/20 transition-all text-sm"
             />
             <button
-              onClick={runSearch}
-              className="h-12 px-6 rounded-xl bg-[#0f1a2e] text-white font-semibold hover:bg-[#1c3454] transition-all shadow-sm flex items-center justify-center gap-2"
+              onClick={() => {
+                if (query.trim()) handleAddCustom(query);
+                else runSearch();
+              }}
+              className="h-12 px-6 rounded-xl bg-[#215190] hover:bg-[#1b3e6c] text-white font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Search className="w-4 h-4" /> Search
+              <Plus className="w-4 h-4" /> Track Flight
             </button>
           </div>
+
+          {/* Quick Add Available Flights */}
+          {availableCatalog.length > 0 && (
+            <div className="mt-4 pt-4 border-t border-[#eef3f9]">
+              <p className="text-xs font-bold text-[#5b6b82] uppercase tracking-wider mb-2.5">
+                Quick Track Available Flights:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {availableCatalog.map((f) => (
+                  <button
+                    key={f.id}
+                    onClick={() => handleTrack(f.id)}
+                    className="flex items-center gap-2 bg-[#f8fafc] hover:bg-[#eaf2fc] border border-[#cbd5e1] hover:border-[#215190] text-[#0f1a2e] text-xs font-bold px-3.5 py-2 rounded-xl transition-all cursor-pointer shadow-xs"
+                  >
+                    <Plane className="w-3.5 h-3.5 text-[#215190]" />
+                    <span>{f.flightNumber}</span>
+                    <span className="text-[11px] text-[#64748b]">({f.from.code} → {f.to.code})</span>
+                    <Plus className="w-3.5 h-3.5 text-[#215190] ml-1" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {searched && (
             <div className="mt-4 space-y-2">
               {results.length === 0 ? (
-                <p className="text-sm text-[#9aa8bd] py-2">No flights match “{query}”. Try a code like 6E, AI or a city.</p>
+                <div className="flex items-center justify-between bg-[#f8fafc] p-3 rounded-xl border border-[#cbd5e1]">
+                  <p className="text-xs text-[#64748b]">Flight “{query}” not found in standard schedule.</p>
+                  <button
+                    onClick={() => handleAddCustom(query)}
+                    className="bg-[#215190] hover:bg-[#1b3e6c] text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 cursor-pointer"
+                  >
+                    <Plus className="w-3.5 h-3.5" /> Track Custom {query.toUpperCase()}
+                  </button>
+                </div>
               ) : (
                 results.map((f) => {
                   const meta = PHASE_META[f.phase];
@@ -301,8 +367,8 @@ export default function FlightStatusPage() {
                         </span>
                       ) : (
                         <button
-                          onClick={() => flightStatusApi.track(f.id)}
-                          className="shrink-0 flex items-center gap-1.5 rounded-lg bg-[#5b9bd5] text-white text-sm font-semibold px-3 py-2 hover:bg-[#4a86c9] transition-all"
+                          onClick={() => handleTrack(f.id)}
+                          className="shrink-0 flex items-center gap-1.5 rounded-lg bg-[#215190] hover:bg-[#1b3e6c] text-white text-xs font-bold px-3.5 py-2 transition-all cursor-pointer"
                         >
                           <Plus className="w-4 h-4" /> Track
                         </button>
@@ -318,21 +384,21 @@ export default function FlightStatusPage() {
         {/* tracked flights */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-bold text-[#0f1a2e] flex items-center gap-2">
-            <Plane className="w-5 h-5 text-[#5b9bd5]" /> Tracked flights
-            <span className="text-sm font-semibold text-[#9aa8bd]">({tracked.length})</span>
+            <Plane className="w-5 h-5 text-[#215190]" /> Tracked Flights
+            <span className="text-sm font-semibold text-[#64748b]">({tracked.length})</span>
           </h2>
         </div>
 
         {tracked.length === 0 ? (
           <div className="bg-white rounded-2xl border border-dashed border-[#c3d1e2] p-12 text-center">
             <Radar className="w-10 h-10 text-[#c3d1e2] mx-auto mb-3" />
-            <p className="text-[#5b6b82] font-medium">You&apos;re not tracking any flights yet.</p>
-            <p className="text-sm text-[#9aa8bd] mt-1">Search above and hit “Track” to watch them live.</p>
+            <p className="text-[#5b6b82] font-medium">You are not tracking any flights right now.</p>
+            <p className="text-sm text-[#9aa8bd] mt-1">Type any flight number above or pick from quick list to start tracking live!</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
             {tracked.map((f) => (
-              <FlightCard key={f.id} f={f} sim={sim} onUntrack={() => flightStatusApi.untrack(f.id)} />
+              <FlightCard key={f.id} f={f} sim={sim} onUntrack={() => handleUntrack(f.id)} />
             ))}
           </div>
         )}

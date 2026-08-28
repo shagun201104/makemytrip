@@ -277,6 +277,41 @@ class FlightStatusEngine {
       this.derivePhase(f, now, []); // set an accurate starting phase
       return f;
     });
+
+    // Load initial tracked flights from localStorage or default to first 4
+    this.loadTracked();
+  }
+
+  private loadTracked() {
+    this.tracked.clear();
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("mmt_tracked_flights");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            parsed.forEach((id: string) => {
+              if (this.catalog.some((f) => f.id === id)) {
+                this.tracked.add(id);
+              }
+            });
+          }
+        }
+      } catch {}
+    }
+    // If no saved state, track first 4 flights by default
+    if (this.tracked.size === 0) {
+      CATALOG_SPECS.slice(0, 4).forEach((s) => this.tracked.add(s.id));
+      this.saveTracked();
+    }
+  }
+
+  private saveTracked() {
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("mmt_tracked_flights", JSON.stringify(Array.from(this.tracked)));
+      } catch {}
+    }
   }
 
   private simNow(): number {
@@ -318,6 +353,10 @@ class FlightStatusEngine {
     });
   }
 
+  getAllCatalog(): LiveFlight[] {
+    return this.catalog.slice();
+  }
+
   getFlight(id: string): LiveFlight | undefined {
     return this.catalog.find((f) => f.id === id);
   }
@@ -334,13 +373,51 @@ class FlightStatusEngine {
     if (this.getFlight(id)) {
       this.tracked.add(id);
       if (!this.milestones.has(id)) this.milestones.set(id, new Set());
+      this.saveTracked();
       this.emit([]);
     }
   }
 
   untrack(id: string) {
     this.tracked.delete(id);
+    this.saveTracked();
     this.emit([]);
+  }
+
+  trackCustomFlight(flightNumber: string, fromCity = "New Delhi", toCity = "Mumbai"): LiveFlight {
+    const cleanNum = flightNumber.trim().toUpperCase();
+    const existing = this.catalog.find((f) => f.flightNumber.replace(/\s+/g, "") === cleanNum.replace(/\s+/g, ""));
+    if (existing) {
+      this.track(existing.id);
+      return existing;
+    }
+
+    const id = `custom-${Date.now()}`;
+    const now = Date.now();
+    const newFlight: LiveFlight = {
+      id,
+      flightNumber: cleanNum,
+      airline: cleanNum.startsWith("6E") ? "IndiGo" : cleanNum.startsWith("AI") ? "Air India" : cleanNum.startsWith("UK") ? "Vistara" : cleanNum.startsWith("SG") ? "SpiceJet" : "Commercial Airline",
+      aircraft: "Airbus A320neo",
+      from: { city: fromCity, code: fromCity.slice(0, 3).toUpperCase(), name: `${fromCity} International Airport`, terminal: "T3", gate: "12" },
+      to: { city: toCity, code: toCity.slice(0, 3).toUpperCase(), name: `${toCity} International Airport`, terminal: "T2", gate: "28" },
+      scheduledDeparture: now + 10 * MIN,
+      scheduledArrival: now + 130 * MIN,
+      estimatedDeparture: now + 10 * MIN,
+      estimatedArrival: now + 130 * MIN,
+      phase: "ON_TIME",
+      statusLabel: "On Time",
+      delayMinutes: 0,
+      progressPercent: 5,
+      altitudeFt: 12000,
+      groundSpeedKmh: 580,
+      lastUpdated: now,
+    };
+    this.catalog.unshift(newFlight);
+    this.tracked.add(id);
+    this.saveTracked();
+    this.emit([]);
+    return newFlight;
   }
 
   subscribe(fn: Listener): () => void {
