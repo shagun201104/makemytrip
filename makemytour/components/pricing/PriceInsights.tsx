@@ -72,27 +72,27 @@ export function LivePrice({
     <div className={`flex flex-col ${alignCls} gap-1`}>
       {/* was-price when dynamic pricing moved it */}
       {quote && raised && !freeze && (
-        <span className="text-xs text-[#2e4d38]/60 font-bold line-through leading-none">
+        <span className="text-xs text-white/50 font-bold line-through leading-none">
           {formatINR(quote.basePrice)}
         </span>
       )}
 
-      <span className="flex items-center gap-1.5 text-2xl font-black text-[#15803d] leading-none">
+      <span className="flex items-center gap-1.5 text-2xl font-black text-[#facc15] leading-none drop-shadow-md">
         {formatINR(effective)}
         {live && quote && !freeze && <TrendIcon trend={quote.trend} />}
-        {freeze && <Lock className="w-4 h-4 text-[#15803d]" />}
+        {freeze && <Lock className="w-4 h-4 text-[#4ade80]" />}
       </span>
 
-      {suffix && <span className="text-xs text-[#2e4d38] font-bold">{suffix}</span>}
+      {suffix && <span className="text-xs text-white/80 font-bold">{suffix}</span>}
 
       {freeze ? (
-        <span className="text-[11px] font-black text-[#15803d]">Price locked</span>
+        <span className="text-[11px] font-black text-[#4ade80]">Price locked</span>
       ) : (
         quote && (
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="flex items-center gap-1 text-[11px] font-black text-[#15803d] hover:underline transition-colors"
+            className="flex items-center gap-1 text-[11px] font-black text-[#60a5fa] hover:text-[#93c5fd] hover:underline transition-colors"
           >
             <ChartSpline className="w-3 h-3" />
             Price trend
@@ -317,35 +317,35 @@ export function BookingPriceBanner({ input }: { input: QuoteInput }) {
 
   return (
     <>
-      <div className="rounded-2xl border-2 border-[#b6d7c1] bg-[#eff5f0] text-[#15281c] shadow-md p-4 mb-4">
+      <div className="rounded-2xl border-2 border-[#3b82f6]/40 bg-[#0f1a2e] text-white shadow-xl p-4 mb-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="h-10 w-10 rounded-xl bg-[#15803d] text-white flex items-center justify-center shrink-0 shadow-md">
+            <div className="h-10 w-10 rounded-xl bg-[#2563eb] text-white flex items-center justify-center shrink-0 shadow-md">
               {freeze ? (
-                <Lock className="w-5 h-5 text-white" />
+                <Lock className="w-5 h-5 text-[#4ade80]" />
               ) : (
-                <ChartSpline className="w-5 h-5 text-white" />
+                <ChartSpline className="w-5 h-5 text-[#60a5fa]" />
               )}
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-black text-[#15281c] flex items-center gap-2 flex-wrap">
+              <p className="text-sm font-black text-white flex items-center gap-2 flex-wrap">
                 {freeze ? (
                   <>
-                    Price locked at <span className="text-[#15803d] font-black text-base">{formatINR(freeze.frozenPrice)}</span>
-                    <span className="flex items-center gap-1 text-[11px] font-black text-[#15803d] bg-[#d4e6d9] border border-[#b6d7c1] rounded-full px-2.5 py-0.5 uppercase tracking-wider">
+                    Price locked at <span className="text-[#facc15] font-black text-base">{formatINR(freeze.frozenPrice)}</span>
+                    <span className="flex items-center gap-1 text-[11px] font-black text-[#4ade80] bg-[#166534] border border-[#22c55e]/40 rounded-full px-2.5 py-0.5 uppercase tracking-wider">
                       <Hourglass className="w-3 h-3" />
                       {formatCountdown(freeze.expiresAt - (now || freeze.createdAt))}
                     </span>
                   </>
                 ) : (
                   <>
-                    Live Guaranteed Price <span className="text-[#15803d] font-black text-base">{formatINR(quote.currentPrice)}</span>
+                    Live Guaranteed Price <span className="text-[#facc15] font-black text-base">{formatINR(quote.currentPrice)}</span>
                     {movedPct !== 0 && (
                       <span
                         className={`text-[11px] font-black rounded-full px-2.5 py-0.5 uppercase tracking-wider border ${
                           movedPct > 0
-                            ? "bg-[#fef3c7] text-[#b45309] border-[#fde68a]"
-                            : "bg-[#d4e6d9] text-[#15803d] border-[#b6d7c1]"
+                            ? "bg-[#78350f] text-[#facc15] border-[#f59e0b]/50"
+                            : "bg-[#166534] text-[#4ade80] border-[#22c55e]/50"
                         }`}
                       >
                         {movedPct > 0 ? "+" : ""}
@@ -355,7 +355,7 @@ export function BookingPriceBanner({ input }: { input: QuoteInput }) {
                   </>
                 )}
               </p>
-              <p className="text-xs text-[#2e4d38] font-bold mt-0.5 truncate">
+              <p className="text-xs text-white/80 font-bold mt-0.5 truncate">
                 {peak ? peak.reason : quote.stats.verdict}
               </p>
             </div>
@@ -364,9 +364,9 @@ export function BookingPriceBanner({ input }: { input: QuoteInput }) {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="shrink-0 flex items-center gap-1.5 text-xs font-black text-white bg-[#15803d] hover:bg-[#166534] border border-[#b6d7c1] rounded-full px-4 py-2 shadow-md transition-all uppercase tracking-wider cursor-pointer"
+            className="shrink-0 flex items-center gap-1.5 text-xs font-black text-white bg-[#2563eb] hover:bg-[#1d4ed8] border border-[#60a5fa]/50 rounded-full px-4 py-2 shadow-md transition-all uppercase tracking-wider cursor-pointer"
           >
-            <ChartSpline className="w-4 h-4 text-white" />
+            <ChartSpline className="w-4 h-4 text-[#facc15]" />
             {freeze ? "View Lock Details" : "Price History & Freeze"}
           </button>
         </div>
