@@ -608,7 +608,7 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={handleSearchFlights}
-                    className="bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#1d4ed8] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_30px_rgba(37,99,235,0.45)] hover:shadow-[0_15px_40px_rgba(37,99,235,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/40"
+                    className="bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-extrabold text-lg rounded-full px-12 h-14 shadow-[0_12px_35px_rgba(29,78,216,0.45)] hover:shadow-[0_16px_45px_rgba(29,78,216,0.65)] hover:scale-105 flex items-center justify-center gap-2.5 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/60"
                   >
                     <Search className="w-6 h-6 stroke-[3]" />
                     Search Flights
@@ -794,7 +794,7 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={handleSearchHotels}
-                    className="bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#1d4ed8] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_30px_rgba(37,99,235,0.45)] hover:shadow-[0_15px_40px_rgba(37,99,235,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/40"
+                    className="bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-extrabold text-lg rounded-full px-12 h-14 shadow-[0_12px_35px_rgba(29,78,216,0.45)] hover:shadow-[0_16px_45px_rgba(29,78,216,0.65)] hover:scale-105 flex items-center justify-center gap-2.5 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/60"
                   >
                     <Search className="w-6 h-6 stroke-[3]" />
                     Search Hotels
