@@ -454,55 +454,65 @@ export default function Home() {
               {/* FLIGHTS SEARCH */}
               <TabsContent value="flights" className="mt-2 space-y-5 sm:space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-                  <div className="space-y-2">
+                  {/* DEPARTURE CITY */}
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
                       <MapPin className="w-4 h-4 text-[#475569] shrink-0" /> Departure City
                     </Label>
-                    <select
-                      value={fromCity}
-                      onChange={(e) => setFromCity(e.target.value)}
-                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3.5 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm outline-none"
-                    >
-                      <option value="" disabled>Select Departure City</option>
-                      {indianCities.map((city) => (
-                        <option key={city} value={city}>{city}</option>
-                      ))}
-                    </select>
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs focus-within:border-[#0f172a] focus-within:ring-2 focus-within:ring-[#0f172a]/20 transition-all flex items-center h-12 sm:h-14 px-3.5">
+                      <select
+                        value={fromCity}
+                        onChange={(e) => setFromCity(e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-[#0f172a] font-black text-xs sm:text-sm outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0"
+                      >
+                        <option value="" disabled>Select Departure City</option>
+                        {indianCities.map((city) => (
+                          <option key={city} value={city}>{city}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
+                  {/* DESTINATION CITY */}
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
                       <ArrowRightLeft className="w-4 h-4 text-[#475569] shrink-0" /> Destination City
                     </Label>
-                    <select
-                      value={toCity}
-                      onChange={(e) => setToCity(e.target.value)}
-                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3.5 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm outline-none"
-                    >
-                      <option value="" disabled>Select Destination City</option>
-                      {indianCities.map((city) => (
-                        <option key={city} value={city}>{city}</option>
-                      ))}
-                    </select>
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs focus-within:border-[#0f172a] focus-within:ring-2 focus-within:ring-[#0f172a]/20 transition-all flex items-center h-12 sm:h-14 px-3.5">
+                      <select
+                        value={toCity}
+                        onChange={(e) => setToCity(e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-[#0f172a] font-black text-xs sm:text-sm outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0"
+                      >
+                        <option value="" disabled>Select Destination City</option>
+                        {indianCities.map((city) => (
+                          <option key={city} value={city}>{city}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
-                  <div className="space-y-2 min-w-0">
+                  {/* DEPARTURE DATE */}
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
                       <CalendarDays className="w-4 h-4 text-[#475569] shrink-0" /> Departure Date
                     </Label>
-                    <Input
-                      type="date"
-                      value={departDate}
-                      onChange={(e) => setDepartDate(e.target.value)}
-                      className="w-full max-w-full min-w-0 box-border bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all text-xs sm:text-sm block"
-                    />
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs focus-within:border-[#0f172a] focus-within:ring-2 focus-within:ring-[#0f172a]/20 transition-all flex items-center h-12 sm:h-14 px-3">
+                      <input
+                        type="date"
+                        value={departDate}
+                        onChange={(e) => setDepartDate(e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-[#0f172a] font-black text-xs sm:text-sm outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0"
+                      />
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
+                  {/* TOTAL TRAVELLERS */}
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
                       <Users className="w-4 h-4 text-[#475569] shrink-0" /> Total Travellers
                     </Label>
-                    <div className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3.5 font-black shadow-xs flex items-center justify-between text-xs sm:text-sm">
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center justify-between h-12 sm:h-14 px-3.5 text-xs sm:text-sm font-black text-[#0f172a]">
                       <span>{flightAdults + flightChildren} Person(s)</span>
                       <span className="text-[11px] sm:text-xs font-bold text-[#64748b]">({flightAdults} A / {flightChildren} C)</span>
                     </div>
@@ -523,7 +533,7 @@ export default function Home() {
                     {/* ADULTS STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
-                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0">
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0 overflow-hidden">
                         <button
                           type="button"
                           disabled={flightAdults <= 1}
@@ -556,7 +566,7 @@ export default function Home() {
                     {/* CHILDREN STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Children (2-12 yrs)</Label>
-                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0">
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0 overflow-hidden">
                         <button
                           type="button"
                           disabled={flightChildren <= 0}
@@ -587,19 +597,21 @@ export default function Home() {
                     </div>
 
                     {/* CHILD 1 AGE */}
-                    <div className="space-y-1.5">
+                    <div className="space-y-1.5 min-w-0 w-full">
                       <Label className="text-xs font-bold text-[#475569]">Child 1 Age Selection</Label>
-                      <select
-                        value={flightChildAge}
-                        onChange={(e) => setFlightChildAge(e.target.value)}
-                        disabled={flightChildren === 0}
-                        className="w-full bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50 cursor-pointer outline-none"
-                      >
-                        <option value="2">2 years (Child Fare)</option>
-                        <option value="5">5 years (Child Fare)</option>
-                        <option value="8">8 years (Child Fare)</option>
-                        <option value="11">11 years (Child Fare)</option>
-                      </select>
+                      <div className="w-full min-w-0 overflow-hidden rounded-xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center h-12 px-2.5">
+                        <select
+                          value={flightChildAge}
+                          onChange={(e) => setFlightChildAge(e.target.value)}
+                          disabled={flightChildren === 0}
+                          className="w-full min-w-0 bg-transparent text-xs font-black text-[#0f172a] outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0 disabled:opacity-50"
+                        >
+                          <option value="2">2 years (Child Fare)</option>
+                          <option value="5">5 years (Child Fare)</option>
+                          <option value="8">8 years (Child Fare)</option>
+                          <option value="11">11 years (Child Fare)</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -619,78 +631,86 @@ export default function Home() {
               {/* HOTELS SEARCH */}
               <TabsContent value="hotels" className="mt-2 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
-                  <div className="space-y-2 lg:col-span-1">
+                  <div className="space-y-2 lg:col-span-1 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <MapPin className="w-4 h-4 text-[#475569]" /> Hotel Location
+                      <MapPin className="w-4 h-4 text-[#475569] shrink-0" /> Hotel Location
                     </Label>
-                    <select
-                      value={hotelLocation}
-                      onChange={(e) => setHotelLocation(e.target.value)}
-                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer"
-                    >
-                      <option value="" disabled>Select Location or Hotel</option>
-                      {indianCities.map((city) => (
-                        <option key={city} value={city}>{city}</option>
-                      ))}
-                      {sampleHotels.map((h) => (
-                        <option key={h.name} value={h.name}>{h.name} ({h.city})</option>
-                      ))}
-                    </select>
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center h-12 sm:h-14 px-3">
+                      <select
+                        value={hotelLocation}
+                        onChange={(e) => setHotelLocation(e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-[#0f172a] font-black text-xs sm:text-sm outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0"
+                      >
+                        <option value="" disabled>Select Location or Hotel</option>
+                        {indianCities.map((city) => (
+                          <option key={city} value={city}>{city}</option>
+                        ))}
+                        {sampleHotels.map((h) => (
+                          <option key={h.name} value={h.name}>{h.name} ({h.city})</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <CalendarDays className="w-4 h-4 text-[#475569]" /> Check-in Date
+                      <CalendarDays className="w-4 h-4 text-[#475569] shrink-0" /> Check-in Date
                     </Label>
-                    <Input
-                      type="date"
-                      value={checkInDate}
-                      onChange={(e) => setCheckInDate(e.target.value)}
-                      className="bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all"
-                    />
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center h-12 sm:h-14 px-3">
+                      <input
+                        type="date"
+                        value={checkInDate}
+                        onChange={(e) => setCheckInDate(e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-[#0f172a] font-black text-xs sm:text-sm outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0"
+                      />
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <CalendarDays className="w-4 h-4 text-[#475569]" /> Check-out Date
+                      <CalendarDays className="w-4 h-4 text-[#475569] shrink-0" /> Check-out Date
                     </Label>
-                    <Input
-                      type="date"
-                      value={checkOutDate}
-                      onChange={(e) => setCheckOutDate(e.target.value)}
-                      className="bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all"
-                    />
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center h-12 sm:h-14 px-3">
+                      <input
+                        type="date"
+                        value={checkOutDate}
+                        onChange={(e) => setCheckOutDate(e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-[#0f172a] font-black text-xs sm:text-sm outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0"
+                      />
+                    </div>
                   </div>
 
                   {/* ROOMS SELECTOR */}
-                  <div className="space-y-2">
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <BedDouble className="w-4 h-4 text-[#475569]" /> Rooms
+                      <BedDouble className="w-4 h-4 text-[#475569] shrink-0" /> Rooms
                     </Label>
-                    <select
-                      value={rooms}
-                      onChange={(e) => setRooms(e.target.value)}
-                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer"
-                    >
-                      <option value="1">1 Room</option>
-                      <option value="2">2 Rooms</option>
-                      <option value="3">3 Rooms</option>
-                      <option value="4">4 Rooms</option>
-                      <option value="5">5 Rooms</option>
-                      <option value="6">6 Rooms</option>
-                      <option value="8">8 Rooms</option>
-                      <option value="10">10+ Rooms</option>
-                    </select>
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center h-12 sm:h-14 px-3">
+                      <select
+                        value={rooms}
+                        onChange={(e) => setRooms(e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-[#0f172a] font-black text-xs sm:text-sm outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0"
+                      >
+                        <option value="1">1 Room</option>
+                        <option value="2">2 Rooms</option>
+                        <option value="3">3 Rooms</option>
+                        <option value="4">4 Rooms</option>
+                        <option value="5">5 Rooms</option>
+                        <option value="6">6 Rooms</option>
+                        <option value="8">8 Rooms</option>
+                        <option value="10">10+ Rooms</option>
+                      </select>
+                    </div>
                   </div>
 
                   {/* GUESTS SUMMARY */}
-                  <div className="space-y-2">
+                  <div className="space-y-2 min-w-0 w-full">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <Users className="w-4 h-4 text-[#475569]" /> Total Guests
+                      <Users className="w-4 h-4 text-[#475569] shrink-0" /> Total Guests
                     </Label>
-                    <div className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black shadow-xs flex items-center justify-between text-sm">
+                    <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center justify-between h-12 sm:h-14 px-3.5 text-xs sm:text-sm font-black text-[#0f172a]">
                       <span>{hotelAdults + hotelChildren} Guest(s)</span>
-                      <span className="text-xs font-bold text-[#64748b]">({hotelAdults} A / {hotelChildren} C)</span>
+                      <span className="text-[11px] sm:text-xs font-bold text-[#64748b]">({hotelAdults} A / {hotelChildren} C)</span>
                     </div>
                   </div>
                 </div>
