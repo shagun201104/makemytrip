@@ -327,34 +327,34 @@ function HotelBookingContent() {
           {/* Dynamic price banner */}
           {pricingInput && <BookingPriceBanner input={pricingInput} />}
 
-          {/* ---- LUXURY HOTEL DETAILS CARD ---- */}
-          <div className="bg-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/30 overflow-hidden text-[#0f1a2e]">
+          {/* ---- OPTION M PASTEL SAGE GREEN HOTEL DETAILS CARD ---- */}
+          <div className="bg-[#eff5f0] rounded-3xl shadow-xl border-4 border-[#b6d7c1] overflow-hidden text-[#15281c]">
             {/* Header Banner */}
-            <div className="bg-gradient-to-r from-[#0f1a2e] via-[#1e3a8a] to-[#0f1a2e] p-6 md:p-8 text-white space-y-3">
+            <div className="bg-gradient-to-r from-[#d4e6d9] via-[#e2ece4] to-[#d4e6d9] p-6 md:p-8 text-[#15281c] space-y-3 border-b border-[#b6d7c1]">
               <div className="flex items-center justify-between gap-3 flex-wrap">
                 <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="bg-[#2563eb] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                  <span className="bg-[#15803d] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
                     {tag || "LUXURY STAY"}
                   </span>
-                  <span className="bg-[#16a34a] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md flex items-center gap-1">
+                  <span className="bg-[#15803d] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md flex items-center gap-1">
                     <ShieldCheck className="w-3.5 h-3.5" /> FREE CANCELLATION
                   </span>
                 </div>
-                <button className="flex items-center gap-1 text-[#60a5fa] hover:text-white text-xs font-extrabold">
+                <button className="flex items-center gap-1 text-[#15803d] hover:underline text-xs font-extrabold">
                   <Info className="w-4 h-4" /> View Property Rules
                 </button>
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-black text-white drop-shadow-md">{name}</h1>
+              <h1 className="text-3xl md:text-4xl font-black text-[#15281c]">{name}</h1>
 
-              <div className="flex items-center gap-4 text-xs md:text-sm text-white/90">
+              <div className="flex items-center gap-4 text-xs md:text-sm text-[#2e4d38]">
                 <span className="flex items-center gap-1 font-bold">
-                  <MapPin className="w-4 h-4 text-[#60a5fa]" /> {city}
+                  <MapPin className="w-4 h-4 text-[#15803d]" /> {city}
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#60a5fa]" />
-                <span className="flex items-center gap-1 font-black text-[#facc15] bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-full">
-                  <Star className="w-4 h-4 fill-[#facc15] text-[#facc15]" /> {rating}
-                  <span className="text-white/80 font-normal ml-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#15803d]" />
+                <span className="flex items-center gap-1 font-black text-[#b45309] bg-[#d4e6d9] px-2.5 py-0.5 rounded-full border border-[#b6d7c1]">
+                  <Star className="w-4 h-4 fill-[#b45309] text-[#b45309]" /> {rating}
+                  <span className="text-[#2e4d38] font-semibold ml-1">
                     ({reviews.toLocaleString("en-IN")} verified reviews)
                   </span>
                 </span>
@@ -507,70 +507,70 @@ function HotelBookingContent() {
             </div>
           </div>
 
-          {/* ---- LUXURY GUEST DETAILS & PAYMENT FORM ---- */}
+          {/* ---- OPTION M PASTEL SAGE GREEN GUEST DETAILS & PAYMENT FORM ---- */}
           <form
             onSubmit={handleConfirm}
-            className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-6 md:p-8 space-y-6"
+            className="bg-[#eff5f0] text-[#15281c] rounded-3xl shadow-xl border-4 border-[#b6d7c1] p-6 md:p-8 space-y-6"
           >
-            <div className="flex items-center justify-between border-b border-[#1e293b] pb-4">
-              <h2 className="text-2xl font-black text-white flex items-center gap-2">
-                <User className="w-6 h-6 text-[#60a5fa]" /> Guest Details &amp; Options
+            <div className="flex items-center justify-between border-b border-[#b6d7c1] pb-4">
+              <h2 className="text-2xl font-black text-[#15281c] flex items-center gap-2">
+                <User className="w-6 h-6 text-[#15803d]" /> Guest Details &amp; Options
               </h2>
-              <span className="bg-[#2563eb] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+              <span className="bg-[#15803d] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
                 Step 2 of 2
               </span>
             </div>
 
             <div className="space-y-2">
-              <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
-                <User className="w-4 h-4 text-[#60a5fa]" /> Primary Guest Full Name
+              <Label className="text-[#15281c] text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                <User className="w-4 h-4 text-[#15803d]" /> Primary Guest Full Name
               </Label>
               <Input
                 value={guest.name}
                 onChange={(e) => setGuest({ ...guest, name: e.target.value })}
                 placeholder="Enter full name as on Govt ID"
-                className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
+                className="bg-[#e2ece4] border-2 border-[#b6d7c1] text-[#15281c] placeholder:text-[#2e4d38]/60 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#15803d]"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
-                  <Mail className="w-4 h-4 text-[#60a5fa]" /> Email Address (For E-Ticket)
+                <Label className="text-[#15281c] text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                  <Mail className="w-4 h-4 text-[#15803d]" /> Email Address (For E-Ticket)
                 </Label>
                 <Input
                   type="email"
                   value={guest.email}
                   onChange={(e) => setGuest({ ...guest, email: e.target.value })}
                   placeholder="you@example.com"
-                  className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
+                  className="bg-[#e2ece4] border-2 border-[#b6d7c1] text-[#15281c] placeholder:text-[#2e4d38]/60 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#15803d]"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
-                  <Phone className="w-4 h-4 text-[#60a5fa]" /> Mobile Number (For SMS/WhatsApp)
+                <Label className="text-[#15281c] text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                  <Phone className="w-4 h-4 text-[#15803d]" /> Mobile Number (For SMS/WhatsApp)
                 </Label>
                 <Input
                   type="tel"
                   value={guest.phone}
                   onChange={(e) => setGuest({ ...guest, phone: e.target.value })}
                   placeholder="+91 98765 43210"
-                  className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
+                  className="bg-[#e2ece4] border-2 border-[#b6d7c1] text-[#15281c] placeholder:text-[#2e4d38]/60 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#15803d]"
                 />
               </div>
             </div>
 
             {/* Guest Composition & Children Age Selector */}
-            <div className="rounded-2xl bg-[#1e293b]/90 border-2 border-[#3b82f6]/40 p-5 space-y-4">
-              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa]">Guest Composition &amp; Age Breakdown</p>
+            <div className="rounded-2xl bg-[#e2ece4] border-2 border-[#b6d7c1] p-5 space-y-4">
+              <p className="text-xs font-black uppercase tracking-wider text-[#15803d]">Guest Composition &amp; Age Breakdown</p>
               
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <Label className="text-xs font-bold text-white/90">Adults (12+ yrs)</Label>
+                  <Label className="text-xs font-bold text-[#15281c]">Adults (12+ yrs)</Label>
                   <select
                     value={numAdults}
                     onChange={(e) => setNumAdults(Number(e.target.value))}
-                    className="w-full mt-1.5 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
+                    className="w-full mt-1.5 bg-[#d4e6d9] border-2 border-[#b6d7c1] text-[#15281c] rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
@@ -579,11 +579,11 @@ function HotelBookingContent() {
                 </div>
 
                 <div>
-                  <Label className="text-xs font-bold text-white/90">Children (0-12 yrs)</Label>
+                  <Label className="text-xs font-bold text-[#15281c]">Children (0-12 yrs)</Label>
                   <select
                     value={numChildren}
                     onChange={(e) => setNumChildren(Number(e.target.value))}
-                    className="w-full mt-1.5 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
+                    className="w-full mt-1.5 bg-[#d4e6d9] border-2 border-[#b6d7c1] text-[#15281c] rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[0, 1, 2, 3, 4].map((n) => (
                       <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
@@ -592,11 +592,11 @@ function HotelBookingContent() {
                 </div>
 
                 <div>
-                  <Label className="text-xs font-bold text-white/90">Infants (Under 2 yrs)</Label>
+                  <Label className="text-xs font-bold text-[#15281c]">Infants (Under 2 yrs)</Label>
                   <select
                     value={numInfants}
                     onChange={(e) => setNumInfants(Number(e.target.value))}
-                    className="w-full mt-1.5 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
+                    className="w-full mt-1.5 bg-[#d4e6d9] border-2 border-[#b6d7c1] text-[#15281c] rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[0, 1, 2].map((n) => (
                       <option key={n} value={n}>{n} Infant{n !== 1 ? "s" : ""}</option>
@@ -606,13 +606,13 @@ function HotelBookingContent() {
               </div>
 
               {numChildren > 0 && (
-                <div className="bg-[#0f1a2e] p-4 rounded-xl border border-[#3b82f6]/40 space-y-1.5">
-                  <Label className="text-xs font-black text-[#60a5fa]">Child Age Limit Selection</Label>
-                  <p className="text-[11px] text-white/80 font-medium">Children below 12 years receive complimentary stay without extra bed.</p>
+                <div className="bg-[#d4e6d9] p-4 rounded-xl border border-[#b6d7c1] space-y-1.5">
+                  <Label className="text-xs font-black text-[#15803d]">Child Age Limit Selection</Label>
+                  <p className="text-[11px] text-[#2e4d38] font-medium">Children below 12 years receive complimentary stay without extra bed.</p>
                   <select
                     value={childAge}
                     onChange={(e) => setChildAge(e.target.value)}
-                    className="w-full bg-[#1e293b] border border-[#3b82f6]/40 text-white rounded-lg h-10 px-3 text-xs font-bold"
+                    className="w-full bg-[#e2ece4] border border-[#b6d7c1] text-[#15281c] rounded-lg h-10 px-3 text-xs font-bold"
                   >
                     <option value="2">Child 1 Age: 2 years (Infant Bed Included)</option>
                     <option value="5">Child 1 Age: 5 years (Junior Stay Included)</option>
@@ -624,76 +624,76 @@ function HotelBookingContent() {
             </div>
 
             {/* Room Add-ons & Facilities */}
-            <div className="rounded-2xl bg-[#14532d]/40 border-2 border-[#22c55e]/60 p-5 space-y-3">
-              <p className="text-xs font-black uppercase tracking-wider text-[#4ade80]">Optional Add-ons &amp; Facilities</p>
+            <div className="rounded-2xl bg-[#d4e6d9] border-2 border-[#b6d7c1] p-5 space-y-3">
+              <p className="text-xs font-black uppercase tracking-wider text-[#15803d]">Optional Add-ons &amp; Facilities</p>
 
-              <label className="flex items-center justify-between cursor-pointer p-3 bg-[#0f1a2e] rounded-xl border border-[#22c55e]/40 hover:border-[#22c55e] transition-all">
+              <label className="flex items-center justify-between cursor-pointer p-3 bg-[#e2ece4] rounded-xl border border-[#b6d7c1] hover:border-[#15803d] transition-all">
                 <div className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     checked={includeBreakfast}
                     onChange={(e) => setIncludeBreakfast(e.target.checked)}
-                    className="w-5 h-5 text-[#22c55e] rounded cursor-pointer"
+                    className="w-5 h-5 text-[#15803d] rounded cursor-pointer"
                   />
                   <div>
-                    <span className="text-sm font-extrabold text-white">Complimentary Daily Breakfast Buffet</span>
-                    <p className="text-xs text-white/80">Includes Continental, South Indian &amp; Hot Chef Specialities</p>
+                    <span className="text-sm font-extrabold text-[#15281c]">Complimentary Daily Breakfast Buffet</span>
+                    <p className="text-xs text-[#2e4d38]">Includes Continental, South Indian &amp; Hot Chef Specialities</p>
                   </div>
                 </div>
-                <span className="text-xs font-black text-[#4ade80] bg-[#16a34a]/20 px-3 py-1 rounded-lg border border-[#4ade80]/30">+₹350/person/night</span>
+                <span className="text-xs font-black text-[#15803d] bg-[#d4e6d9] px-3 py-1 rounded-lg border border-[#b6d7c1]">+₹350/person/night</span>
               </label>
 
-              <label className="flex items-center justify-between cursor-pointer p-3 bg-[#0f1a2e] rounded-xl border border-[#22c55e]/40 hover:border-[#22c55e] transition-all">
+              <label className="flex items-center justify-between cursor-pointer p-3 bg-[#e2ece4] rounded-xl border border-[#b6d7c1] hover:border-[#15803d] transition-all">
                 <div className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     checked={extraMattress}
                     onChange={(e) => setExtraMattress(e.target.checked)}
-                    className="w-5 h-5 text-[#22c55e] rounded cursor-pointer"
+                    className="w-5 h-5 text-[#15803d] rounded cursor-pointer"
                   />
                   <div>
-                    <span className="text-sm font-extrabold text-white">Extra Bed / Rollaway Mattress</span>
-                    <p className="text-xs text-white/80">Plush extra mattress with luxury duvet &amp; pillow</p>
+                    <span className="text-sm font-extrabold text-[#15281c]">Extra Bed / Rollaway Mattress</span>
+                    <p className="text-xs text-[#2e4d38]">Plush extra mattress with luxury duvet &amp; pillow</p>
                   </div>
                 </div>
-                <span className="text-xs font-black text-[#4ade80] bg-[#16a34a]/20 px-3 py-1 rounded-lg border border-[#4ade80]/30">+₹500/night</span>
+                <span className="text-xs font-black text-[#15803d] bg-[#d4e6d9] px-3 py-1 rounded-lg border border-[#b6d7c1]">+₹500/night</span>
               </label>
             </div>
 
             {/* Payment Method & EMI Installment Options */}
-            <div className="rounded-2xl bg-[#1e293b]/90 border-2 border-[#3b82f6]/40 p-5 space-y-3">
-              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa]">Select Payment Method &amp; EMI Options</p>
+            <div className="rounded-2xl bg-[#e2ece4] border-2 border-[#b6d7c1] p-5 space-y-3">
+              <p className="text-xs font-black uppercase tracking-wider text-[#15803d]">Select Payment Method &amp; EMI Options</p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
-                  <input type="radio" name="payMethod" defaultChecked className="w-4 h-4 text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#b6d7c1] p-3.5 rounded-xl cursor-pointer hover:border-[#15803d] transition-all">
+                  <input type="radio" name="payMethod" defaultChecked className="w-4 h-4 text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-white">📱 BHIM UPI / GPay / PhonePe</p>
-                    <p className="text-[11px] text-white/80 font-medium">Instant 0% fee payment</p>
+                    <p className="text-xs font-black text-[#15281c]">📱 BHIM UPI / GPay / PhonePe</p>
+                    <p className="text-[11px] text-[#2e4d38] font-medium">Instant 0% fee payment</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
-                  <input type="radio" name="payMethod" className="w-4 h-4 text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#b6d7c1] p-3.5 rounded-xl cursor-pointer hover:border-[#15803d] transition-all">
+                  <input type="radio" name="payMethod" className="w-4 h-4 text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-white">💳 Credit / Debit Card</p>
-                    <p className="text-[11px] text-white/80 font-medium">Visa, Mastercard, RuPay</p>
+                    <p className="text-xs font-black text-[#15281c]">💳 Credit / Debit Card</p>
+                    <p className="text-[11px] text-[#2e4d38] font-medium">Visa, Mastercard, RuPay</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
-                  <input type="radio" name="payMethod" className="text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#b6d7c1] p-3.5 rounded-xl cursor-pointer hover:border-[#15803d] transition-all">
+                  <input type="radio" name="payMethod" className="text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-white">🏦 Net Banking</p>
-                    <p className="text-[11px] text-white/80 font-medium">SBI, HDFC, ICICI, Axis</p>
+                    <p className="text-xs font-black text-[#15281c]">🏦 Net Banking</p>
+                    <p className="text-[11px] text-[#2e4d38] font-medium">SBI, HDFC, ICICI, Axis</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-3 bg-[#1e3a8a]/60 border-2 border-[#60a5fa] p-3.5 rounded-xl cursor-pointer hover:bg-[#1e3a8a] transition-all">
-                  <input type="radio" name="payMethod" className="text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#15803d] p-3.5 rounded-xl cursor-pointer hover:bg-[#c8e6c9] transition-all">
+                  <input type="radio" name="payMethod" className="text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-[#facc15]">📊 Easy No-Cost EMI</p>
-                    <p className="text-[11px] text-white font-bold">Pay in 3, 6, or 12 monthly installments</p>
+                    <p className="text-xs font-black text-[#b45309]">📊 Easy No-Cost EMI</p>
+                    <p className="text-[11px] text-[#15281c] font-bold">Pay in 3, 6, or 12 monthly installments</p>
                   </div>
                 </label>
               </div>

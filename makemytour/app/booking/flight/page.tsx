@@ -415,33 +415,33 @@ function FlightBookingContent() {
             </div>
           </div>
 
-          {/* ---- LUXURY CANCELLATION & DATE CHANGE POLICY ---- */}
-          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-6 md:p-8 space-y-4">
+          {/* ---- OPTION M PASTEL SAGE GREEN CANCELLATION & DATE CHANGE POLICY ---- */}
+          <div className="bg-[#eff5f0] text-[#15281c] rounded-3xl shadow-xl border-4 border-[#b6d7c1] p-6 md:p-8 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 font-black text-white text-xl">
-                <CircleAlert className="w-6 h-6 text-[#facc15]" /> Cancellation &amp; Date Change Policy
+              <h2 className="flex items-center gap-2 font-black text-[#15281c] text-xl">
+                <CircleAlert className="w-6 h-6 text-[#15803d]" /> Cancellation &amp; Date Change Policy
               </h2>
-              <button className="text-[#60a5fa] hover:text-[#93c5fd] text-xs font-black uppercase tracking-wider">
+              <button className="text-[#15803d] hover:underline text-xs font-black uppercase tracking-wider">
                 View Detailed Rules
               </button>
             </div>
 
-            <div className="rounded-2xl bg-[#1e293b] border-2 border-[#3b82f6]/40 p-5">
+            <div className="rounded-2xl bg-[#e2ece4] border-2 border-[#b6d7c1] p-5">
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-2.5 font-black text-white">
-                  <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#2563eb]">
+                <span className="flex items-center gap-2.5 font-black text-[#15281c]">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#15803d]">
                     <Plane className="w-4 h-4 text-white" />
                   </span>
                   {fromCode} &rarr; {toCode}
                 </span>
-                <span className="font-black text-[#facc15] text-lg">
+                <span className="font-black text-[#15803d] text-lg">
                   {formatINR(Math.round(baseFare * 0.85))} Fee
                 </span>
               </div>
 
               {/* Gradient time bar */}
-              <div className="mt-4 h-2.5 rounded-full bg-gradient-to-r from-[#22c55e] via-[#eab308] to-[#ef4444]" />
-              <div className="flex items-center justify-between text-xs font-bold text-white/80 mt-2">
+              <div className="mt-4 h-2.5 rounded-full bg-gradient-to-r from-[#15803d] via-[#eab308] to-[#ef4444]" />
+              <div className="flex items-center justify-between text-xs font-bold text-[#2e4d38] mt-2">
                 <span>Today</span>
                 <span>Tiered Refund Structure</span>
                 <span>2 hrs before departure</span>
@@ -450,13 +450,13 @@ function FlightBookingContent() {
           </div>
 
           {/* ---- Offers strip ---- */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6 md:p-7">
+          <div className="bg-[#eff5f0] rounded-3xl shadow-xl border-4 border-[#b6d7c1] p-6 md:p-7">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="flex items-center gap-2 font-bold text-[#0f1a2e] text-lg">
-                <Gift className="w-5 h-5 text-[#e5573f]" /> Book a Flight &amp; unlock these
+              <h2 className="flex items-center gap-2 font-bold text-[#15281c] text-lg">
+                <Gift className="w-5 h-5 text-[#15803d]" /> Book a Flight &amp; unlock these
                 offers
               </h2>
-              <span className="bg-[#fde8e4] text-[#e5573f] text-xs font-semibold px-3 py-1 rounded-full">
+              <span className="bg-[#15803d] text-white text-xs font-semibold px-3 py-1 rounded-full">
                 Flyer Exclusive Deal
               </span>
             </div>
@@ -464,14 +464,14 @@ function FlightBookingContent() {
               {FLIGHT_OFFERS.map((offer) => (
                 <div
                   key={offer.title}
-                  className="relative rounded-xl overflow-hidden h-32 group"
+                  className="relative rounded-xl overflow-hidden h-32 group border border-[#b6d7c1]"
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
                     style={{ backgroundImage: `url("${offer.img}")` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <span className="absolute top-2 left-2 bg-white text-[#0f1a2e] text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <span className="absolute top-2 left-2 bg-[#15281c] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                     Best Seller
                   </span>
                   <div className="absolute bottom-2 left-3 right-3 text-white">
@@ -483,71 +483,71 @@ function FlightBookingContent() {
             </div>
           </div>
 
-          {/* ---- LUXURY PASSENGER DETAILS & PAYMENT FORM ---- */}
+          {/* ---- OPTION M PASTEL SAGE GREEN PASSENGER DETAILS & PAYMENT FORM ---- */}
           <form
             onSubmit={handleConfirm}
-            className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-6 md:p-8 space-y-6"
+            className="bg-[#eff5f0] text-[#15281c] rounded-3xl shadow-xl border-4 border-[#b6d7c1] p-6 md:p-8 space-y-6"
           >
-            <div className="flex items-center justify-between border-b border-[#1e293b] pb-4">
-              <h2 className="text-2xl font-black text-white flex items-center gap-2">
-                <User className="w-6 h-6 text-[#60a5fa]" /> Primary Passenger Details
+            <div className="flex items-center justify-between border-b border-[#b6d7c1] pb-4">
+              <h2 className="text-2xl font-black text-[#15281c] flex items-center gap-2">
+                <User className="w-6 h-6 text-[#15803d]" /> Primary Passenger Details
               </h2>
-              <span className="bg-[#2563eb] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+              <span className="bg-[#15803d] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
                 Step 2 of 2
               </span>
             </div>
 
             <div className="space-y-2">
-              <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
-                <User className="w-4 h-4 text-[#60a5fa]" /> Full Name (As per Govt Photo ID / Passport)
+              <Label className="text-[#15281c] text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                <User className="w-4 h-4 text-[#15803d]" /> Full Name (As per Govt Photo ID / Passport)
               </Label>
               <Input
                 value={passenger.name}
                 onChange={(e) => setPassenger({ ...passenger, name: e.target.value })}
                 placeholder="Enter full name as on Passport or Aadhaar"
-                className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
+                className="bg-[#e2ece4] border-2 border-[#b6d7c1] text-[#15281c] placeholder:text-[#2e4d38]/60 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#15803d]"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
-                  <Mail className="w-4 h-4 text-[#60a5fa]" /> Email Address (For E-Ticket)
+                <Label className="text-[#15281c] text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                  <Mail className="w-4 h-4 text-[#15803d]" /> Email Address (For E-Ticket)
                 </Label>
                 <Input
                   type="email"
                   value={passenger.email}
                   onChange={(e) => setPassenger({ ...passenger, email: e.target.value })}
                   placeholder="you@example.com"
-                  className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
+                  className="bg-[#e2ece4] border-2 border-[#b6d7c1] text-[#15281c] placeholder:text-[#2e4d38]/60 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#15803d]"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-white text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
-                  <Phone className="w-4 h-4 text-[#60a5fa]" /> Mobile Number (For Flight Status SMS)
+                <Label className="text-[#15281c] text-xs font-black flex items-center gap-1.5 uppercase tracking-wider">
+                  <Phone className="w-4 h-4 text-[#15803d]" /> Mobile Number (For Flight Status SMS)
                 </Label>
                 <Input
                   type="tel"
                   value={passenger.phone}
                   onChange={(e) => setPassenger({ ...passenger, phone: e.target.value })}
                   placeholder="+91 98765 43210"
-                  className="bg-[#1e293b] border-2 border-[#3b82f6]/50 text-white placeholder:text-white/40 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#60a5fa]"
+                  className="bg-[#e2ece4] border-2 border-[#b6d7c1] text-[#15281c] placeholder:text-[#2e4d38]/60 rounded-xl h-12 px-4 font-bold shadow-inner focus:border-[#15803d]"
                 />
               </div>
             </div>
 
             {/* Traveller Age Breakdown */}
-            <div className="rounded-2xl bg-[#1e293b]/90 border-2 border-[#3b82f6]/40 p-5 space-y-4">
-              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa]">Passenger Breakdown &amp; Age Limits</p>
+            <div className="rounded-2xl bg-[#e2ece4] border-2 border-[#b6d7c1] p-5 space-y-4">
+              <p className="text-xs font-black uppercase tracking-wider text-[#15803d]">Passenger Breakdown &amp; Age Limits</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <Label className="text-xs font-bold text-white/90">Adults (12+ yrs)</Label>
-                  <p className="text-[10px] text-white/70 mb-1 font-semibold">Standard Adult Fare</p>
+                  <Label className="text-xs font-bold text-[#15281c]">Adults (12+ yrs)</Label>
+                  <p className="text-[10px] text-[#2e4d38] mb-1 font-semibold">Standard Adult Fare</p>
                   <select
                     value={numAdults}
                     onChange={(e) => setNumAdults(Number(e.target.value))}
-                    className="w-full bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
+                    className="w-full bg-[#d4e6d9] border-2 border-[#b6d7c1] text-[#15281c] rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
                       <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
@@ -556,12 +556,12 @@ function FlightBookingContent() {
                 </div>
 
                 <div>
-                  <Label className="text-xs font-bold text-white/90">Children (2-12 yrs)</Label>
-                  <p className="text-[10px] text-[#4ade80] mb-1 font-bold">25% Discounted Fare</p>
+                  <Label className="text-xs font-bold text-[#15281c]">Children (2-12 yrs)</Label>
+                  <p className="text-[10px] text-[#15803d] mb-1 font-bold">25% Discounted Fare</p>
                   <select
                     value={numChildren}
                     onChange={(e) => setNumChildren(Number(e.target.value))}
-                    className="w-full bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
+                    className="w-full bg-[#d4e6d9] border-2 border-[#b6d7c1] text-[#15281c] rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[0, 1, 2, 3, 4, 5, 6].map((n) => (
                       <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
@@ -570,12 +570,12 @@ function FlightBookingContent() {
                 </div>
 
                 <div>
-                  <Label className="text-xs font-bold text-white/90">Infants (Under 2 yrs)</Label>
-                  <p className="text-[10px] text-[#60a5fa] mb-1 font-bold">Flat ₹1,500 Lap Fee</p>
+                  <Label className="text-xs font-bold text-[#15281c]">Infants (Under 2 yrs)</Label>
+                  <p className="text-[10px] text-[#15803d] mb-1 font-bold">Flat ₹1,500 Lap Fee</p>
                   <select
                     value={numInfants}
                     onChange={(e) => setNumInfants(Number(e.target.value))}
-                    className="w-full bg-[#0f1a2e] border-2 border-[#3b82f6]/50 text-white rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
+                    className="w-full bg-[#d4e6d9] border-2 border-[#b6d7c1] text-[#15281c] rounded-xl h-11 px-3 text-sm font-extrabold cursor-pointer"
                   >
                     {[0, 1, 2, 3, 4].map((n) => (
                       <option key={n} value={n}>{n} Infant{n !== 1 ? "s" : ""}</option>
@@ -585,13 +585,13 @@ function FlightBookingContent() {
               </div>
 
               {numChildren > 0 && (
-                <div className="bg-[#0f1a2e] p-4 rounded-xl border border-[#3b82f6]/40 space-y-1.5">
-                  <Label className="text-xs font-black text-[#60a5fa]">Child Age Limit &amp; Identification</Label>
-                  <p className="text-[11px] text-white/80 font-medium">Government photo ID or birth certificate required at airport check-in desk for age verification.</p>
+                <div className="bg-[#d4e6d9] p-4 rounded-xl border border-[#b6d7c1] space-y-1.5">
+                  <Label className="text-xs font-black text-[#15803d]">Child Age Limit &amp; Identification</Label>
+                  <p className="text-[11px] text-[#2e4d38] font-medium">Government photo ID or birth certificate required at airport check-in desk for age verification.</p>
                   <select
                     value={childAge}
                     onChange={(e) => setChildAge(e.target.value)}
-                    className="w-full bg-[#1e293b] border border-[#3b82f6]/40 text-white rounded-lg h-10 px-3 text-xs font-bold"
+                    className="w-full bg-[#e2ece4] border border-[#b6d7c1] text-[#15281c] rounded-lg h-10 px-3 text-xs font-bold"
                   >
                     <option value="3">Child 1 Age: 3 years (Seat assigned)</option>
                     <option value="6">Child 1 Age: 6 years (Seat assigned)</option>
@@ -603,39 +603,39 @@ function FlightBookingContent() {
             </div>
 
             {/* Payment Method & EMI Installment Options */}
-            <div className="rounded-2xl bg-[#1e293b]/90 border-2 border-[#3b82f6]/40 p-5 space-y-3">
-              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa]">Select Payment Method &amp; EMI Options</p>
+            <div className="rounded-2xl bg-[#e2ece4] border-2 border-[#b6d7c1] p-5 space-y-3">
+              <p className="text-xs font-black uppercase tracking-wider text-[#15803d]">Select Payment Method &amp; EMI Options</p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
-                  <input type="radio" name="flightPayMethod" defaultChecked className="w-4 h-4 text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#b6d7c1] p-3.5 rounded-xl cursor-pointer hover:border-[#15803d] transition-all">
+                  <input type="radio" name="flightPayMethod" defaultChecked className="w-4 h-4 text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-white">📱 BHIM UPI / GPay / PhonePe</p>
-                    <p className="text-[11px] text-white/80 font-medium">Instant 0% fee payment</p>
+                    <p className="text-xs font-black text-[#15281c]">📱 BHIM UPI / GPay / PhonePe</p>
+                    <p className="text-[11px] text-[#2e4d38] font-medium">Instant 0% fee payment</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
-                  <input type="radio" name="flightPayMethod" className="w-4 h-4 text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#b6d7c1] p-3.5 rounded-xl cursor-pointer hover:border-[#15803d] transition-all">
+                  <input type="radio" name="flightPayMethod" className="w-4 h-4 text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-white">💳 Credit / Debit Card</p>
-                    <p className="text-[11px] text-white/80 font-medium">Visa, Mastercard, RuPay</p>
+                    <p className="text-xs font-black text-[#15281c]">💳 Credit / Debit Card</p>
+                    <p className="text-[11px] text-[#2e4d38] font-medium">Visa, Mastercard, RuPay</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-3 bg-[#0f1a2e] border-2 border-[#3b82f6]/50 p-3.5 rounded-xl cursor-pointer hover:border-[#60a5fa] transition-all">
-                  <input type="radio" name="flightPayMethod" className="text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#b6d7c1] p-3.5 rounded-xl cursor-pointer hover:border-[#15803d] transition-all">
+                  <input type="radio" name="flightPayMethod" className="text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-white">🏦 Net Banking</p>
-                    <p className="text-[11px] text-white/80 font-medium">SBI, HDFC, ICICI, Axis</p>
+                    <p className="text-xs font-black text-[#15281c]">🏦 Net Banking</p>
+                    <p className="text-[11px] text-[#2e4d38] font-medium">SBI, HDFC, ICICI, Axis</p>
                   </div>
                 </label>
 
-                <label className="flex items-center gap-3 bg-[#1e3a8a]/60 border-2 border-[#60a5fa] p-3.5 rounded-xl cursor-pointer hover:bg-[#1e3a8a] transition-all">
-                  <input type="radio" name="flightPayMethod" className="text-[#2563eb]" />
+                <label className="flex items-center gap-3 bg-[#d4e6d9] border-2 border-[#15803d] p-3.5 rounded-xl cursor-pointer hover:bg-[#c8e6c9] transition-all">
+                  <input type="radio" name="flightPayMethod" className="text-[#15803d]" />
                   <div>
-                    <p className="text-xs font-black text-[#facc15]">📊 Easy No-Cost EMI</p>
-                    <p className="text-[11px] text-white font-bold">Pay in 3, 6, or 12 monthly installments</p>
+                    <p className="text-xs font-black text-[#b45309]">📊 Easy No-Cost EMI</p>
+                    <p className="text-[11px] text-[#15281c] font-bold">Pay in 3, 6, or 12 monthly installments</p>
                   </div>
                 </label>
               </div>
