@@ -414,20 +414,20 @@ export default function Home() {
           </nav>
 
           {/* SEARCH CARD WITH FLIGHTS / HOTELS TOGGLE — CLEAN NEUTRAL LUXURY CARD */}
-          <div className="bg-white/95 backdrop-blur-2xl border border-[#cbd5e1] rounded-[32px] shadow-[0_25px_60px_-15px_rgba(15,26,46,0.25)] p-6 md:p-10 text-[#0f172a] relative overflow-hidden">
+          <div className="bg-white/95 backdrop-blur-2xl border border-[#cbd5e1] rounded-2xl sm:rounded-[32px] shadow-[0_25px_60px_-15px_rgba(15,26,46,0.25)] p-4 sm:p-6 md:p-10 text-[#0f172a] relative overflow-hidden">
             {/* Top status header */}
-            <div className="bg-[#0f172a] p-3.5 rounded-2xl text-white shadow-md mb-6 flex items-center justify-between flex-wrap gap-3">
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-3 w-3 rounded-full bg-[#3b82f6] animate-ping" />
-                <span className="text-xs font-black text-[#93c5fd] uppercase tracking-wider bg-white/10 px-3 py-1 rounded-full border border-white/15">
+            <div className="bg-[#0f172a] p-3 sm:p-3.5 rounded-2xl text-white shadow-md mb-5 sm:mb-6 flex items-center justify-between flex-wrap gap-2.5">
+              <div className="flex items-center gap-2">
+                <span className="flex h-2.5 w-2.5 rounded-full bg-[#3b82f6] animate-ping shrink-0" />
+                <span className="text-[10px] sm:text-xs font-black text-[#93c5fd] uppercase tracking-wider bg-white/10 px-2.5 sm:px-3 py-1 rounded-full border border-white/15">
                   ⚡ Live Fare Engine &bull; Instant Lowest Price Guarantee
                 </span>
               </div>
-              <div className="flex items-center gap-4 text-xs font-bold text-white/90">
-                <span className="flex items-center gap-1.5 text-[#4ade80]">
+              <div className="flex items-center gap-3 text-[11px] sm:text-xs font-bold text-white/90">
+                <span className="flex items-center gap-1 text-[#4ade80]">
                   ✓ 100% Refundable Fares
                 </span>
-                <span className="flex items-center gap-1.5 text-[#60a5fa]">
+                <span className="flex items-center gap-1 text-[#60a5fa]">
                   ✓ 0% Gateway Fee
                 </span>
               </div>
@@ -437,31 +437,31 @@ export default function Home() {
               <TabsList className="w-full max-w-md mx-auto grid grid-cols-2 bg-[#f1f5f9] rounded-2xl p-1.5 border border-[#cbd5e1] shadow-inner mb-6">
                 <TabsTrigger
                   value="flights"
-                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-[#0f172a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3.5 transition-all cursor-pointer"
+                  className="rounded-xl font-black text-sm sm:text-base flex items-center justify-center gap-2 data-[state=active]:bg-[#0f172a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3 transition-all cursor-pointer"
                 >
-                  <Plane className="w-5 h-5" />
+                  <Plane className="w-4 h-4 sm:w-5 sm:h-5" />
                   Flights
                 </TabsTrigger>
                 <TabsTrigger
                   value="hotels"
-                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-[#0f172a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3.5 transition-all cursor-pointer"
+                  className="rounded-xl font-black text-sm sm:text-base flex items-center justify-center gap-2 data-[state=active]:bg-[#0f172a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3 transition-all cursor-pointer"
                 >
-                  <BedDouble className="w-5 h-5" />
+                  <BedDouble className="w-4 h-4 sm:w-5 sm:h-5" />
                   Hotels
                 </TabsTrigger>
               </TabsList>
 
               {/* FLIGHTS SEARCH */}
-              <TabsContent value="flights" className="mt-2 space-y-6">
+              <TabsContent value="flights" className="mt-2 space-y-5 sm:space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
                   <div className="space-y-2">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <MapPin className="w-4 h-4 text-[#475569]" /> Departure City
+                      <MapPin className="w-4 h-4 text-[#475569] shrink-0" /> Departure City
                     </Label>
                     <select
                       value={fromCity}
                       onChange={(e) => setFromCity(e.target.value)}
-                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm"
+                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3.5 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm outline-none"
                     >
                       <option value="" disabled>Select Departure City</option>
                       {indianCities.map((city) => (
@@ -472,12 +472,12 @@ export default function Home() {
 
                   <div className="space-y-2">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <ArrowRightLeft className="w-4 h-4 text-[#475569]" /> Destination City
+                      <ArrowRightLeft className="w-4 h-4 text-[#475569] shrink-0" /> Destination City
                     </Label>
                     <select
                       value={toCity}
                       onChange={(e) => setToCity(e.target.value)}
-                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm"
+                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3.5 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm outline-none"
                     >
                       <option value="" disabled>Select Destination City</option>
                       {indianCities.map((city) => (
@@ -486,44 +486,44 @@ export default function Home() {
                     </select>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 min-w-0">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <CalendarDays className="w-4 h-4 text-[#475569]" /> Departure Date
+                      <CalendarDays className="w-4 h-4 text-[#475569] shrink-0" /> Departure Date
                     </Label>
                     <Input
                       type="date"
                       value={departDate}
                       onChange={(e) => setDepartDate(e.target.value)}
-                      className="bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all text-sm"
+                      className="w-full max-w-full min-w-0 box-border bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all text-xs sm:text-sm block"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <Users className="w-4 h-4 text-[#475569]" /> Total Travellers
+                      <Users className="w-4 h-4 text-[#475569] shrink-0" /> Total Travellers
                     </Label>
-                    <div className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs flex items-center justify-between text-sm">
+                    <div className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-12 sm:h-14 px-3.5 font-black shadow-xs flex items-center justify-between text-xs sm:text-sm">
                       <span>{flightAdults + flightChildren} Person(s)</span>
-                      <span className="text-xs font-bold text-[#64748b]">({flightAdults} A / {flightChildren} C)</span>
+                      <span className="text-[11px] sm:text-xs font-bold text-[#64748b]">({flightAdults} A / {flightChildren} C)</span>
                     </div>
                   </div>
                 </div>
 
                 {/* FLIGHT AGE & TRAVELLER BREAKDOWN WITH +/- STEPPERS */}
-                <div className="bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-5 space-y-3 shadow-inner">
-                  <div className="flex items-center justify-between">
+                <div className="bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-4 sm:p-5 space-y-3 shadow-inner">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <span className="text-xs font-black uppercase tracking-wider text-[#0f172a] flex items-center gap-2">
-                      <Users className="w-4 h-4 text-[#475569]" /> Passenger Count (+ / - Stepper)
+                      <Users className="w-4 h-4 text-[#475569] shrink-0" /> Passenger Count (+ / - Stepper)
                     </span>
-                    <span className="text-[11px] font-black text-[#475569] bg-white px-3 py-1 rounded-full border border-[#cbd5e1] shadow-xs">
+                    <span className="text-[10px] sm:text-[11px] font-black text-[#475569] bg-white px-2.5 py-0.5 rounded-full border border-[#cbd5e1] shadow-xs self-start sm:self-auto">
                       Tap + or - to Adjust
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                     {/* ADULTS STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
-                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs">
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0">
                         <button
                           type="button"
                           disabled={flightAdults <= 1}
@@ -532,11 +532,11 @@ export default function Home() {
                             setFlightAdults(next);
                             setTravellers(String(next + flightChildren));
                           }}
-                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer"
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer shrink-0"
                         >
                           -
                         </button>
-                        <span className="font-black text-sm text-[#0f172a]">
+                        <span className="font-black text-sm text-[#0f172a] truncate px-1">
                           {flightAdults} Adult{flightAdults > 1 ? "s" : ""}
                         </span>
                         <button
@@ -546,7 +546,7 @@ export default function Home() {
                             setFlightAdults(next);
                             setTravellers(String(next + flightChildren));
                           }}
-                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer shrink-0"
                         >
                           +
                         </button>
@@ -556,7 +556,7 @@ export default function Home() {
                     {/* CHILDREN STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Children (2-12 yrs)</Label>
-                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs">
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0">
                         <button
                           type="button"
                           disabled={flightChildren <= 0}
@@ -565,11 +565,11 @@ export default function Home() {
                             setFlightChildren(next);
                             setTravellers(String(flightAdults + next));
                           }}
-                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer"
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer shrink-0"
                         >
                           -
                         </button>
-                        <span className="font-black text-sm text-[#0f172a]">
+                        <span className="font-black text-sm text-[#0f172a] truncate px-1">
                           {flightChildren} Child{flightChildren !== 1 ? "ren" : ""}
                         </span>
                         <button
@@ -579,7 +579,7 @@ export default function Home() {
                             setFlightChildren(next);
                             setTravellers(String(flightAdults + next));
                           }}
-                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer shrink-0"
                         >
                           +
                         </button>
@@ -593,7 +593,7 @@ export default function Home() {
                         value={flightChildAge}
                         onChange={(e) => setFlightChildAge(e.target.value)}
                         disabled={flightChildren === 0}
-                        className="w-full bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50 cursor-pointer"
+                        className="w-full bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50 cursor-pointer outline-none"
                       >
                         <option value="2">2 years (Child Fare)</option>
                         <option value="5">5 years (Child Fare)</option>
@@ -1176,79 +1176,84 @@ export default function Home() {
 
       {/* FLIGHT SEARCH RESULTS DIALOG — LUXURY DARK NAVY STYLING */}
       <Dialog open={showResults} onOpenChange={setShowResults}>
-        <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
+        <DialogContent className="w-[95vw] sm:max-w-[700px] p-0 overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white max-h-[90vh] flex flex-col">
           {/* Luxury Gradient header showing the route */}
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
-            <div className="flex items-center justify-between">
-              <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <Plane className="w-7 h-7 text-[#60a5fa] animate-pulse" />
-                  <span>{fromCity || "New Delhi"}</span>
-                  <ArrowRight className="w-5 h-5 text-[#60a5fa]" />
-                  <span>{toCity || "Goa"}</span>
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] p-4 sm:px-7 sm:py-6 text-left text-white relative border-b border-[#1e293b] shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="min-w-0">
+                <DialogTitle className="text-lg sm:text-2xl font-black text-white flex items-center gap-2 flex-wrap leading-tight">
+                  <Plane className="w-5 h-5 sm:w-7 sm:h-7 text-[#60a5fa] shrink-0 animate-pulse" />
+                  <span className="truncate">{fromCity || "New Delhi"}</span>
+                  <ArrowRight className="w-4 h-4 text-[#60a5fa] shrink-0" />
+                  <span className="truncate">{toCity || "Goa"}</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5 flex items-center gap-2">
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1 flex items-center gap-2 flex-wrap">
                   <span>{departDate ? `Departure: ${departDate}` : "Daily Direct Flights"}</span>
                   <span>•</span>
                   <span>{travellers} {Number(travellers) > 1 ? "Travellers" : "Traveller"}</span>
                 </DialogDescription>
               </div>
-              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-sm w-fit shrink-0">
                 Lowest Fare Guaranteed
               </span>
             </div>
           </DialogHeader>
 
           {/* Scrollable list of flight results */}
-          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+          <div className="px-3 sm:px-6 py-4 max-h-[75vh] overflow-y-auto space-y-3 sm:space-y-4">
             {sampleFlights.map((flight, idx) => (
               <div
                 key={flight.code}
-                className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+                className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-4 sm:p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col gap-3 group"
               >
                 {/* Airline logo badge + details */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#2563eb] text-white font-black text-sm flex items-center justify-center shrink-0 shadow-md">
-                    {flight.airline.substring(0, 2).toUpperCase()}
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#2563eb] text-white font-black text-xs flex items-center justify-center shrink-0 shadow-md">
+                      {flight.airline.substring(0, 2).toUpperCase()}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="font-black text-base sm:text-lg text-white group-hover:text-[#60a5fa] transition-colors truncate">
+                          {flight.airline}
+                        </span>
+                        <span className="text-[10px] font-extrabold text-[#60a5fa] bg-[#0f1a2e] px-2 py-0.5 rounded-md border border-[#3b82f6]/40">
+                          {flight.code}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-black text-lg text-white group-hover:text-[#60a5fa] transition-colors">
-                        {flight.airline}
-                      </span>
-                      <span className="text-[11px] font-extrabold text-[#60a5fa] bg-[#0f1a2e] px-2 py-0.5 rounded-md border border-[#3b82f6]/40">
-                        {flight.code}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3 mt-1.5 text-xs font-bold text-white/80">
-                      <span className="bg-[#166534] text-[#4ade80] text-[10px] px-2 py-0.5 rounded-md font-black uppercase">Non-Stop</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#60a5fa]" /> {flight.duration}</span>
-                      <span>• Cabin Bag Included</span>
-                    </div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-white/80 flex-wrap">
+                    <span className="bg-[#166534] text-[#4ade80] text-[10px] px-2 py-0.5 rounded-md font-black uppercase">Non-Stop</span>
+                    <span className="flex items-center gap-1 text-[11px]"><Clock className="w-3 h-3 text-[#60a5fa]" /> {flight.duration}</span>
+                    <span className="text-[11px]">• Cabin Bag Included</span>
                   </div>
                 </div>
 
                 {/* Timing route */}
-                <div className="text-left md:text-center bg-[#0f1a2e] px-4 py-2.5 rounded-xl border border-[#3b82f6]/30">
-                  <p className="font-black text-base text-white">{flight.depart} → {flight.arrive}</p>
-                  <p className="text-[10px] font-black text-[#60a5fa] uppercase tracking-wider mt-0.5">Direct Flight</p>
+                <div className="bg-[#0f1a2e] px-3.5 py-2 rounded-xl border border-[#3b82f6]/30 flex items-center justify-between text-xs sm:text-sm font-black text-white">
+                  <span>{flight.depart}</span>
+                  <span className="text-[#60a5fa] text-[10px] font-extrabold uppercase tracking-wider px-2">→ Direct Flight →</span>
+                  <span>{flight.arrive}</span>
                 </div>
 
                 {/* Price in ₹ + book button */}
-                <div className="flex items-center md:flex-col items-end justify-between md:justify-center gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-[#3b82f6]/30">
-                  <LivePrice
-                    input={{
-                      kind: "FLIGHT",
-                      itemId: flight.code,
-                      label: `${flight.airline} ${flight.code}`,
-                      basePrice: flight.price,
-                      date: departDate || undefined,
-                    }}
-                  />
+                <div className="flex items-center justify-between gap-2 border-t border-[#3b82f6]/30 pt-3">
+                  <div>
+                    <LivePrice
+                      input={{
+                        kind: "FLIGHT",
+                        itemId: flight.code,
+                        label: `${flight.airline} ${flight.code}`,
+                        basePrice: flight.price,
+                        date: departDate || undefined,
+                      }}
+                    />
+                  </div>
                   <Button
                     type="button"
                     onClick={() => handleBookNow(flight)}
-                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                    className="h-10 px-4 sm:px-6 text-[11px] sm:text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 cursor-pointer shrink-0"
                   >
                     Select &amp; Reserve Seat &rarr;
                   </Button>
@@ -1261,29 +1266,29 @@ export default function Home() {
 
       {/* HOTEL SEARCH RESULTS DIALOG — LUXURY DARK NAVY STYLING (MATCHING FLIGHT MODAL) */}
       <Dialog open={showHotelResults} onOpenChange={setShowHotelResults}>
-        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
+        <DialogContent className="w-[95vw] sm:max-w-[720px] p-0 overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white max-h-[90vh] flex flex-col">
           {/* Luxury Header */}
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
-            <div className="flex items-center justify-between">
-              <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <BedDouble className="w-7 h-7 text-[#60a5fa]" />
-                  <span>Hotels in {hotelLocation || "Your Selected Destination"}</span>
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] p-4 sm:px-7 sm:py-6 text-left text-white relative border-b border-[#1e293b] shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="min-w-0">
+                <DialogTitle className="text-lg sm:text-2xl font-black text-white flex items-center gap-2 flex-wrap leading-tight">
+                  <BedDouble className="w-5 h-5 sm:w-7 sm:h-7 text-[#60a5fa] shrink-0" />
+                  <span className="truncate">Hotels in {hotelLocation || "Your Selected Destination"}</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
-                  {checkInDate && checkOutDate ? `${checkInDate} to ${checkOutDate}` : "Luxury & Handpicked Hotels"}
-                  {" • "}
-                  {guests} {Number(guests) > 1 ? "Guests" : "Guest"}
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1 flex items-center gap-2 flex-wrap">
+                  <span>{checkInDate && checkOutDate ? `${checkInDate} to ${checkOutDate}` : "Luxury & Handpicked Hotels"}</span>
+                  <span>•</span>
+                  <span>{guests} {Number(guests) > 1 ? "Guests" : "Guest"}</span>
                 </DialogDescription>
               </div>
-              <span className="bg-[#f59e0b] text-[#0f172a] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#f59e0b] text-[#0f172a] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-sm w-fit shrink-0">
                 Up to 25% OFF
               </span>
             </div>
           </DialogHeader>
 
           {/* Scrollable list of hotel results */}
-          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+          <div className="px-3 sm:px-6 py-4 max-h-[75vh] overflow-y-auto space-y-3 sm:space-y-4">
             {sampleHotels.map((hotel, idx) => {
               const hotelImages = [
                 "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
@@ -1298,47 +1303,47 @@ export default function Home() {
               return (
                 <div
                   key={hotel.name}
-                  className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-4 p-4 group"
+                  className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-3 p-3.5 sm:p-4 group"
                 >
                   {/* Property Cover Photo */}
-                  <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
+                  <div className="relative w-full sm:w-44 h-40 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
                     <img
                       src={hotelImg}
                       alt={hotel.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span className="absolute top-2 left-2 bg-[#0f172a]/95 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full border border-white/20">
+                    <span className="absolute top-2 left-2 bg-[#0f172a]/95 text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-white/20">
                       {hotel.tag}
                     </span>
                   </div>
 
                   {/* Property Info */}
-                  <div className="flex-1 flex flex-col justify-between space-y-2">
+                  <div className="flex-1 flex flex-col justify-between space-y-2 min-w-0">
                     <div>
-                      <div className="flex items-center justify-between">
-                        <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors leading-snug">
+                      <div className="flex items-start justify-between gap-2">
+                        <h4 className="font-black text-sm sm:text-base text-white group-hover:text-[#60a5fa] transition-colors leading-tight">
                           {hotel.name}
                         </h4>
                         <span className="bg-[#fef3c7] text-[#b45309] text-xs font-black px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
                           ★ {hotel.rating}
                         </span>
                       </div>
-                      <p className="text-xs text-white/80 font-bold flex items-center gap-1 mt-1">
-                        <MapPin className="w-3.5 h-3.5 text-[#60a5fa]" /> {hotel.city} • Prime Location
+                      <p className="text-xs text-white/80 font-bold flex items-center gap-1 mt-1 truncate">
+                        <MapPin className="w-3.5 h-3.5 text-[#60a5fa] shrink-0" /> {hotel.city} • Prime Location
                       </p>
                     </div>
 
                     {/* Amenities chips */}
-                    <div className="flex flex-wrap gap-1.5">
-                      <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-2 py-0.5 rounded-md">Free Breakfast</span>
-                      <span className="bg-[#1e3a8a] text-[#60a5fa] text-[10px] font-black px-2 py-0.5 rounded-md">Free High-Speed WiFi</span>
-                      <span className="bg-[#991b1b]/80 text-[#fca5a5] text-[10px] font-black px-2 py-0.5 rounded-md">Swimming Pool</span>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="bg-[#166534] text-[#4ade80] text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-md">Free Breakfast</span>
+                      <span className="bg-[#1e3a8a] text-[#60a5fa] text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-md">Free High-Speed WiFi</span>
+                      <span className="bg-[#991b1b]/80 text-[#fca5a5] text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-md">Swimming Pool</span>
                     </div>
 
                     {/* Price & Book */}
-                    <div className="flex items-center justify-between border-t border-[#3b82f6]/30 pt-2.5 mt-1">
+                    <div className="flex items-center justify-between gap-2 border-t border-[#3b82f6]/30 pt-2.5 mt-1">
                       <div>
-                        <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Special Nightly Rate</span>
+                        <span className="text-[9px] sm:text-[10px] font-black text-[#60a5fa] uppercase block">Special Nightly Rate</span>
                         <LivePrice
                           input={{
                             kind: "HOTEL",
@@ -1353,7 +1358,7 @@ export default function Home() {
                       <Button
                         type="button"
                         onClick={() => handleBookHotel(hotel)}
-                        className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                        className="h-10 px-4 sm:px-6 text-[11px] sm:text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 cursor-pointer shrink-0"
                       >
                         Book &amp; Reserve Room &rarr;
                       </Button>
