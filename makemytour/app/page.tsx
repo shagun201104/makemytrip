@@ -529,7 +529,7 @@ export default function Home() {
                       Tap + or - to Adjust
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {/* ADULTS STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
@@ -593,24 +593,6 @@ export default function Home() {
                         >
                           +
                         </button>
-                      </div>
-                    </div>
-
-                    {/* CHILD 1 AGE */}
-                    <div className="space-y-1.5 min-w-0 w-full">
-                      <Label className="text-xs font-bold text-[#475569]">Child 1 Age Selection</Label>
-                      <div className="w-full min-w-0 overflow-hidden rounded-xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center h-12 px-2.5">
-                        <select
-                          value={flightChildAge}
-                          onChange={(e) => setFlightChildAge(e.target.value)}
-                          disabled={flightChildren === 0}
-                          className="w-full min-w-0 bg-transparent text-xs font-black text-[#0f172a] outline-none cursor-pointer border-0 ring-0 focus:ring-0 appearance-none block box-border p-0 disabled:opacity-50"
-                        >
-                          <option value="2">2 years (Child Fare)</option>
-                          <option value="5">5 years (Child Fare)</option>
-                          <option value="8">8 years (Child Fare)</option>
-                          <option value="11">11 years (Child Fare)</option>
-                        </select>
                       </div>
                     </div>
                   </div>
@@ -725,7 +707,7 @@ export default function Home() {
                       Tap + or - to Adjust
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* HOTEL ADULTS STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
@@ -790,22 +772,6 @@ export default function Home() {
                           +
                         </button>
                       </div>
-                    </div>
-
-                    {/* CHILD 1 AGE */}
-                    <div className="space-y-1.5">
-                      <Label className="text-xs font-bold text-[#475569]">Child 1 Age Selection</Label>
-                      <select
-                        value={hotelChildAge}
-                        onChange={(e) => setHotelChildAge(e.target.value)}
-                        disabled={hotelChildren === 0}
-                        className="w-full bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50 cursor-pointer"
-                      >
-                        <option value="2">2 years (Infant Bed Included)</option>
-                        <option value="5">5 years (Junior Free Stay)</option>
-                        <option value="8">8 years (Child Bed Discount)</option>
-                        <option value="11">11 years (Child Bed Discount)</option>
-                      </select>
                     </div>
                   </div>
                 </div>
