@@ -517,7 +517,11 @@ export default function Home() {
                       <option value="3">3 Travellers</option>
                       <option value="4">4 Travellers</option>
                       <option value="5">5 Travellers</option>
-                      <option value="6">6+ Travellers (Family / Group)</option>
+                      <option value="6">6 Travellers</option>
+                      <option value="8">8 Travellers</option>
+                      <option value="10">10 Travellers</option>
+                      <option value="12">12 Travellers</option>
+                      <option value="15">15+ Travellers (Group Booking)</option>
                     </select>
                   </div>
                 </div>
@@ -529,7 +533,7 @@ export default function Home() {
                       <Users className="w-4 h-4 text-[#2563eb]" /> Passenger Breakdown &amp; Child Age Options
                     </span>
                     <span className="text-[11px] font-black text-[#1d4ed8] bg-white px-3 py-1 rounded-full border border-[#bfdbfe] shadow-xs">
-                      Custom Family Size
+                      Custom Family &amp; Group Booking
                     </span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -542,9 +546,9 @@ export default function Home() {
                           setFlightAdults(a);
                           setTravellers(String(a + flightChildren));
                         }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs"
+                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
                       >
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((n) => (
                           <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
                         ))}
                       </select>
@@ -559,9 +563,9 @@ export default function Home() {
                           setFlightChildren(c);
                           setTravellers(String(flightAdults + c));
                         }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs"
+                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
                       >
-                        {[0, 1, 2, 3, 4, 5].map((n) => (
+                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => (
                           <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
                         ))}
                       </select>
@@ -573,7 +577,7 @@ export default function Home() {
                         value={flightChildAge}
                         onChange={(e) => setFlightChildAge(e.target.value)}
                         disabled={flightChildren === 0}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs disabled:opacity-50"
+                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs disabled:opacity-50 cursor-pointer"
                       >
                         <option value="2">2 years (Child Fare)</option>
                         <option value="5">5 years (Child Fare)</option>
@@ -656,7 +660,10 @@ export default function Home() {
                       <option value="2">2 Rooms (e.g. 2 Adults / 2 Rooms)</option>
                       <option value="3">3 Rooms</option>
                       <option value="4">4 Rooms</option>
-                      <option value="5">5+ Rooms (Group)</option>
+                      <option value="5">5 Rooms</option>
+                      <option value="6">6 Rooms</option>
+                      <option value="8">8 Rooms</option>
+                      <option value="10">10+ Rooms (Group)</option>
                     </select>
                   </div>
 
@@ -680,7 +687,11 @@ export default function Home() {
                       <option value="3">3 Guests</option>
                       <option value="4">4 Guests</option>
                       <option value="5">5 Guests</option>
-                      <option value="6">6+ Guests (Family)</option>
+                      <option value="6">6 Guests</option>
+                      <option value="8">8 Guests</option>
+                      <option value="10">10 Guests</option>
+                      <option value="12">12 Guests</option>
+                      <option value="15">15+ Guests (Family / Group)</option>
                     </select>
                   </div>
                 </div>
@@ -705,9 +716,9 @@ export default function Home() {
                           setHotelAdults(a);
                           setGuests(String(a + hotelChildren));
                         }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs"
+                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
                       >
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((n) => (
                           <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
                         ))}
                       </select>
@@ -722,9 +733,9 @@ export default function Home() {
                           setHotelChildren(c);
                           setGuests(String(hotelAdults + c));
                         }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs"
+                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
                       >
-                        {[0, 1, 2, 3, 4, 5].map((n) => (
+                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => (
                           <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
                         ))}
                       </select>
@@ -736,7 +747,7 @@ export default function Home() {
                         value={hotelChildAge}
                         onChange={(e) => setHotelChildAge(e.target.value)}
                         disabled={hotelChildren === 0}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs disabled:opacity-50"
+                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs disabled:opacity-50 cursor-pointer"
                       >
                         <option value="2">2 years (Infant Bed Included)</option>
                         <option value="5">5 years (Junior Free Stay)</option>
