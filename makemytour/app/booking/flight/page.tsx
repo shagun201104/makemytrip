@@ -130,8 +130,10 @@ function FlightBookingContent() {
   const depart = params.get("depart") || "06:15";
   const arrive = params.get("arrive") || "08:30";
   const duration = params.get("duration") || "2h 15m";
-  const from = params.get("from") || "New Delhi";
-  const to = params.get("to") || "Mumbai";
+  const rawFrom = params.get("from") || "New Delhi";
+  const rawTo = params.get("to") || "Mumbai";
+  const from = rawFrom.includes("→") ? rawFrom.split("→")[0].trim() : rawFrom;
+  const to = rawTo.includes("→") ? rawTo.split("→").pop()?.trim() || rawTo : rawTo;
   const date = params.get("date") || "";
   const travellers = Number(params.get("travellers") || "1");
   const basePrice = Number(params.get("price") || "4899");
