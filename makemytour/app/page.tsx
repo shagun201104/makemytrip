@@ -1105,68 +1105,63 @@ export default function Home() {
 
 
 
-      {/* FLIGHT SEARCH RESULTS DIALOG — LUXURY DARK NAVY STYLING */}
+      {/* FLIGHT SEARCH RESULTS DIALOG — OPTION M PASTEL SAGE GREEN */}
       <Dialog open={showResults} onOpenChange={setShowResults}>
-        <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
-          {/* Luxury Gradient header showing the route */}
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+        <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden rounded-3xl border-4 border-[#b6d7c1] shadow-2xl bg-[#eff5f0] text-[#15281c]">
+          <DialogHeader className="bg-gradient-to-r from-[#d4e6d9] via-[#e2ece4] to-[#d4e6d9] px-7 py-6 text-left text-[#15281c] relative border-b border-[#b6d7c1]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <Plane className="w-7 h-7 text-[#60a5fa] animate-pulse" />
+                <DialogTitle className="text-2xl font-black text-[#15281c] flex items-center gap-3">
+                  <Plane className="w-7 h-7 text-[#15803d] animate-pulse" />
                   <span>{fromCity || "New Delhi"}</span>
-                  <ArrowRight className="w-5 h-5 text-[#60a5fa]" />
+                  <ArrowRight className="w-5 h-5 text-[#15803d]" />
                   <span>{toCity || "Goa"}</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5 flex items-center gap-2">
+                <DialogDescription className="text-[#2e4d38] text-xs font-bold mt-1.5 flex items-center gap-2">
                   <span>{departDate ? `Departure: ${departDate}` : "Daily Direct Flights"}</span>
                   <span>•</span>
                   <span>{travellers} {Number(travellers) > 1 ? "Travellers" : "Traveller"}</span>
                 </DialogDescription>
               </div>
-              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#15803d] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
                 Lowest Fare Guaranteed
               </span>
             </div>
           </DialogHeader>
 
-          {/* Scrollable list of flight results */}
           <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
-            {sampleFlights.map((flight, idx) => (
+            {sampleFlights.map((flight) => (
               <div
                 key={flight.code}
-                className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+                className="bg-[#e2ece4] rounded-2xl border-2 border-[#b6d7c1] p-5 shadow-md hover:border-[#15803d] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group"
               >
-                {/* Airline logo badge + details */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#2563eb] text-white font-black text-sm flex items-center justify-center shrink-0 shadow-md">
+                  <div className="w-12 h-12 rounded-2xl bg-[#15803d] text-white font-black text-sm flex items-center justify-center shrink-0 shadow-md">
                     {flight.airline.substring(0, 2).toUpperCase()}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-black text-lg text-white group-hover:text-[#60a5fa] transition-colors">
+                      <span className="font-black text-lg text-[#15281c] group-hover:text-[#15803d] transition-colors">
                         {flight.airline}
                       </span>
-                      <span className="text-[11px] font-extrabold text-[#60a5fa] bg-[#0f1a2e] px-2 py-0.5 rounded-md border border-[#3b82f6]/40">
+                      <span className="text-[11px] font-extrabold text-[#15803d] bg-[#d4e6d9] px-2 py-0.5 rounded-md border border-[#b6d7c1]">
                         {flight.code}
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 mt-1.5 text-xs font-bold text-white/80">
-                      <span className="bg-[#166534] text-[#4ade80] text-[10px] px-2 py-0.5 rounded-md font-black uppercase">Non-Stop</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#60a5fa]" /> {flight.duration}</span>
+                    <div className="flex items-center gap-3 mt-1.5 text-xs font-bold text-[#2e4d38]">
+                      <span className="bg-[#15803d] text-white text-[10px] px-2 py-0.5 rounded-md font-black uppercase">Non-Stop</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#15803d]" /> {flight.duration}</span>
                       <span>• Cabin Bag Included</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Timing route */}
-                <div className="text-left md:text-center bg-[#0f1a2e] px-4 py-2.5 rounded-xl border border-[#3b82f6]/30">
-                  <p className="font-black text-base text-white">{flight.depart} → {flight.arrive}</p>
-                  <p className="text-[10px] font-black text-[#60a5fa] uppercase tracking-wider mt-0.5">Direct Flight</p>
+                <div className="text-left md:text-center bg-[#d4e6d9] px-4 py-2.5 rounded-xl border border-[#b6d7c1]">
+                  <p className="font-black text-base text-[#15281c]">{flight.depart} → {flight.arrive}</p>
+                  <p className="text-[10px] font-black text-[#15803d] uppercase tracking-wider mt-0.5">Direct Flight</p>
                 </div>
 
-                {/* Price in ₹ + book button */}
-                <div className="flex items-center md:flex-col items-end justify-between md:justify-center gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-[#3b82f6]/30">
+                <div className="flex items-center md:flex-col items-end justify-between md:justify-center gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-[#b6d7c1]">
                   <LivePrice
                     input={{
                       kind: "FLIGHT",
@@ -1179,7 +1174,7 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={() => handleBookNow(flight)}
-                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                   >
                     Select &amp; Reserve Seat &rarr;
                   </Button>
@@ -1190,18 +1185,17 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* HOTEL SEARCH RESULTS DIALOG — LUXURY DARK NAVY STYLING (MATCHING FLIGHT MODAL) */}
+      {/* HOTEL SEARCH RESULTS DIALOG — OPTION M PASTEL SAGE GREEN */}
       <Dialog open={showHotelResults} onOpenChange={setShowHotelResults}>
-        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
-          {/* Luxury Header */}
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#b6d7c1] shadow-2xl bg-[#eff5f0] text-[#15281c]">
+          <DialogHeader className="bg-gradient-to-r from-[#d4e6d9] via-[#e2ece4] to-[#d4e6d9] px-7 py-6 text-left text-[#15281c] relative border-b border-[#b6d7c1]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <BedDouble className="w-7 h-7 text-[#60a5fa]" />
+                <DialogTitle className="text-2xl font-black text-[#15281c] flex items-center gap-3">
+                  <BedDouble className="w-7 h-7 text-[#15803d]" />
                   <span>Hotels in {hotelLocation || "Your Selected Destination"}</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                <DialogDescription className="text-[#2e4d38] text-xs font-bold mt-1.5">
                   {checkInDate && checkOutDate ? `${checkInDate} to ${checkOutDate}` : "Luxury & Handpicked Hotels"}
                   {" • "}
                   {guests} {Number(guests) > 1 ? "Guests" : "Guest"}
@@ -1213,7 +1207,6 @@ export default function Home() {
             </div>
           </DialogHeader>
 
-          {/* Scrollable list of hotel results */}
           <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
             {sampleHotels.map((hotel, idx) => {
               const hotelImages = [
@@ -1229,47 +1222,43 @@ export default function Home() {
               return (
                 <div
                   key={hotel.name}
-                  className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-4 p-4 group"
+                  className="bg-[#e2ece4] rounded-2xl border-2 border-[#b6d7c1] overflow-hidden shadow-md hover:border-[#15803d] transition-all flex flex-col sm:flex-row gap-4 p-4 group"
                 >
-                  {/* Property Cover Photo */}
-                  <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
+                  <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#d4e6d9]">
                     <img
                       src={hotelImg}
                       alt={hotel.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span className="absolute top-2 left-2 bg-[#0f172a]/95 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full border border-white/20">
+                    <span className="absolute top-2 left-2 bg-[#15281c] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full border border-white/20">
                       {hotel.tag}
                     </span>
                   </div>
 
-                  {/* Property Info */}
                   <div className="flex-1 flex flex-col justify-between space-y-2">
                     <div>
                       <div className="flex items-center justify-between">
-                        <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors leading-snug">
+                        <h4 className="font-black text-base text-[#15281c] group-hover:text-[#15803d] transition-colors leading-snug">
                           {hotel.name}
                         </h4>
                         <span className="bg-[#fef3c7] text-[#b45309] text-xs font-black px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
                           ★ {hotel.rating}
                         </span>
                       </div>
-                      <p className="text-xs text-white/80 font-bold flex items-center gap-1 mt-1">
-                        <MapPin className="w-3.5 h-3.5 text-[#60a5fa]" /> {hotel.city} • Prime Location
+                      <p className="text-xs text-[#2e4d38] font-bold flex items-center gap-1 mt-1">
+                        <MapPin className="w-3.5 h-3.5 text-[#15803d]" /> {hotel.city} • Prime Location
                       </p>
                     </div>
 
-                    {/* Amenities chips */}
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-2 py-0.5 rounded-md">Free Breakfast</span>
-                      <span className="bg-[#1e3a8a] text-[#60a5fa] text-[10px] font-black px-2 py-0.5 rounded-md">Free High-Speed WiFi</span>
-                      <span className="bg-[#991b1b]/80 text-[#fca5a5] text-[10px] font-black px-2 py-0.5 rounded-md">Swimming Pool</span>
+                      <span className="bg-[#15803d] text-white text-[10px] font-black px-2 py-0.5 rounded-md">Free Breakfast</span>
+                      <span className="bg-[#d4e6d9] text-[#15803d] text-[10px] font-black px-2 py-0.5 rounded-md border border-[#b6d7c1]">Free High-Speed WiFi</span>
+                      <span className="bg-[#fee2e2] text-[#991b1b] text-[10px] font-black px-2 py-0.5 rounded-md">Swimming Pool</span>
                     </div>
 
-                    {/* Price & Book */}
-                    <div className="flex items-center justify-between border-t border-[#3b82f6]/30 pt-2.5 mt-1">
+                    <div className="flex items-center justify-between border-t border-[#b6d7c1] pt-2.5 mt-1">
                       <div>
-                        <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Special Nightly Rate</span>
+                        <span className="text-[10px] font-black text-[#15803d] uppercase block">Special Nightly Rate</span>
                         <LivePrice
                           input={{
                             kind: "HOTEL",
@@ -1284,7 +1273,7 @@ export default function Home() {
                       <Button
                         type="button"
                         onClick={() => handleBookHotel(hotel)}
-                        className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                        className="h-11 px-6 text-xs bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                       >
                         Book &amp; Reserve Room &rarr;
                       </Button>
@@ -1297,21 +1286,21 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* HOMESTAYS & VILLAS RESULTS DIALOG — LUXURY DARK NAVY */}
+      {/* HOMESTAYS & VILLAS RESULTS DIALOG — OPTION M PASTEL SAGE GREEN */}
       <Dialog open={showHomestayResults} onOpenChange={setShowHomestayResults}>
-        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#b6d7c1] shadow-2xl bg-[#eff5f0] text-[#15281c]">
+          <DialogHeader className="bg-gradient-to-r from-[#d4e6d9] via-[#e2ece4] to-[#d4e6d9] px-7 py-6 text-left text-[#15281c] relative border-b border-[#b6d7c1]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <House className="w-7 h-7 text-[#60a5fa]" />
+                <DialogTitle className="text-2xl font-black text-[#15281c] flex items-center gap-3">
+                  <House className="w-7 h-7 text-[#15803d]" />
                   <span>Luxury Homestays &amp; Private Villas</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                <DialogDescription className="text-[#2e4d38] text-xs font-bold mt-1.5">
                   Private Swimming Pools • Beachfront &amp; Mountain Cottages • 25% Off Deal
                 </DialogDescription>
               </div>
-              <span className="bg-[#e5573f] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#e05638] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
                 Flat 25% OFF
               </span>
             </div>
@@ -1324,31 +1313,31 @@ export default function Home() {
               { name: "Coorg Coffee Estate Bungalow", location: "Madikeri, Coorg", price: 11200, rating: "4.9", bedrooms: "4 Bedrooms • Private Chef", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" },
               { name: "Lonavala Royal Pool Villa", location: "Lonavala, Maharashtra", price: 13800, rating: "4.7", bedrooms: "3 Bedrooms • BBQ Lawn", img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80" }
             ].map((stay) => (
-              <div key={stay.name} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-4 p-4 group">
-                <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
+              <div key={stay.name} className="bg-[#e2ece4] rounded-2xl border-2 border-[#b6d7c1] overflow-hidden shadow-md hover:border-[#15803d] transition-all flex flex-col sm:flex-row gap-4 p-4 group">
+                <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#d4e6d9]">
                   <img src={stay.img} alt={stay.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <span className="absolute top-2 left-2 bg-[#0f172a]/95 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full border border-white/20">Private Villa</span>
+                  <span className="absolute top-2 left-2 bg-[#15281c] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full border border-white/20">Private Villa</span>
                 </div>
                 <div className="flex-1 flex flex-col justify-between space-y-2">
                   <div>
                     <div className="flex items-center justify-between">
-                      <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors leading-snug">{stay.name}</h4>
+                      <h4 className="font-black text-base text-[#15281c] group-hover:text-[#15803d] transition-colors leading-snug">{stay.name}</h4>
                       <span className="bg-[#fef3c7] text-[#b45309] text-xs font-black px-2 py-0.5 rounded-md">★ {stay.rating}</span>
                     </div>
-                    <p className="text-xs text-white/80 font-bold flex items-center gap-1 mt-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#60a5fa]" /> {stay.location}
+                    <p className="text-xs text-[#2e4d38] font-bold flex items-center gap-1 mt-1">
+                      <MapPin className="w-3.5 h-3.5 text-[#15803d]" /> {stay.location}
                     </p>
-                    <p className="text-[11px] text-[#60a5fa] font-extrabold mt-1">{stay.bedrooms}</p>
+                    <p className="text-[11px] text-[#15803d] font-extrabold mt-1">{stay.bedrooms}</p>
                   </div>
-                  <div className="flex items-center justify-between border-t border-[#3b82f6]/30 pt-2.5">
+                  <div className="flex items-center justify-between border-t border-[#b6d7c1] pt-2.5">
                     <div>
-                      <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Pamphlet Offer Rate</span>
-                      <span className="font-black text-lg text-[#facc15]">{formatINR(stay.price)}/night</span>
+                      <span className="text-[10px] font-black text-[#15803d] uppercase block">Pamphlet Offer Rate</span>
+                      <span className="font-black text-lg text-[#15803d]">{formatINR(stay.price)}/night</span>
                     </div>
                     <Button
                       type="button"
                       onClick={() => handleBookHotel({ name: stay.name, city: stay.location, price: stay.price, rating: parseFloat(stay.rating), reviews: 120, tag: "Private Villa" })}
-                      className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                      className="h-11 px-6 text-xs bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                     >
                       Book Villa &rarr;
                     </Button>
@@ -1360,21 +1349,21 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* HOLIDAY PACKAGES RESULTS DIALOG — LUXURY DARK NAVY */}
+      {/* HOLIDAY PACKAGES RESULTS DIALOG — OPTION M PASTEL SAGE GREEN */}
       <Dialog open={showHolidayResults} onOpenChange={setShowHolidayResults}>
-        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#b6d7c1] shadow-2xl bg-[#eff5f0] text-[#15281c]">
+          <DialogHeader className="bg-gradient-to-r from-[#d4e6d9] via-[#e2ece4] to-[#d4e6d9] px-7 py-6 text-left text-[#15281c] relative border-b border-[#b6d7c1]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <Umbrella className="w-7 h-7 text-[#60a5fa]" />
+                <DialogTitle className="text-2xl font-black text-[#15281c] flex items-center gap-3">
+                  <Umbrella className="w-7 h-7 text-[#15803d]" />
                   <span>All-Inclusive Holiday Packages</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                <DialogDescription className="text-[#2e4d38] text-xs font-bold mt-1.5">
                   Flights + 5-Star Hotel + Sightseeing + Transfers Included
                 </DialogDescription>
               </div>
-              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#15803d] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
                 Exclusive Deals
               </span>
             </div>
@@ -1387,26 +1376,26 @@ export default function Home() {
               { name: "Dubai Desert Safari & Burj Khalifa Tour", duration: "5 Nights / 6 Days", price: 38900, tag: "International Deal", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80" },
               { name: "Manali & Solang Valley Snow Vacation", duration: "4 Nights / 5 Days", price: 14999, tag: "Family Favorite", img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" }
             ].map((pkg) => (
-              <div key={pkg.name} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-4 p-4 group">
-                <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
+              <div key={pkg.name} className="bg-[#e2ece4] rounded-2xl border-2 border-[#b6d7c1] overflow-hidden shadow-md hover:border-[#15803d] transition-all flex flex-col sm:flex-row gap-4 p-4 group">
+                <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#d4e6d9]">
                   <img src={pkg.img} alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <span className="absolute top-2 left-2 bg-[#2563eb] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full">{pkg.tag}</span>
+                  <span className="absolute top-2 left-2 bg-[#15803d] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full">{pkg.tag}</span>
                 </div>
                 <div className="flex-1 flex flex-col justify-between space-y-2">
                   <div>
-                    <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors leading-snug">{pkg.name}</h4>
-                    <p className="text-xs text-[#60a5fa] font-extrabold mt-1">🗓️ {pkg.duration}</p>
-                    <p className="text-[11px] text-white/80 mt-1 font-semibold">Includes Airfare, 5-Star Stay, Meals &amp; Guided Tours</p>
+                    <h4 className="font-black text-base text-[#15281c] group-hover:text-[#15803d] transition-colors leading-snug">{pkg.name}</h4>
+                    <p className="text-xs text-[#15803d] font-extrabold mt-1">🗓️ {pkg.duration}</p>
+                    <p className="text-[11px] text-[#2e4d38] mt-1 font-semibold">Includes Airfare, 5-Star Stay, Meals &amp; Guided Tours</p>
                   </div>
-                  <div className="flex items-center justify-between border-t border-[#3b82f6]/30 pt-2.5">
+                  <div className="flex items-center justify-between border-t border-[#b6d7c1] pt-2.5">
                     <div>
-                      <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Package Price</span>
-                      <span className="font-black text-lg text-[#facc15]">{formatINR(pkg.price)}/person</span>
+                      <span className="text-[10px] font-black text-[#15803d] uppercase block">Package Price</span>
+                      <span className="font-black text-lg text-[#15803d]">{formatINR(pkg.price)}/person</span>
                     </div>
                     <Button
                       type="button"
                       onClick={() => handleBookHotel({ name: pkg.name, city: "Holiday Tour", price: pkg.price, rating: 4.9, reviews: 120, tag: pkg.tag })}
-                      className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                      className="h-11 px-6 text-xs bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                     >
                       Book Package &rarr;
                     </Button>
@@ -1418,21 +1407,21 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* CABS & BUSES RESULTS DIALOG — LUXURY DARK NAVY */}
+      {/* CABS & BUSES RESULTS DIALOG — OPTION M PASTEL SAGE GREEN */}
       <Dialog open={showCabResults} onOpenChange={setShowCabResults}>
-        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#b6d7c1] shadow-2xl bg-[#eff5f0] text-[#15281c]">
+          <DialogHeader className="bg-gradient-to-r from-[#d4e6d9] via-[#e2ece4] to-[#d4e6d9] px-7 py-6 text-left text-[#15281c] relative border-b border-[#b6d7c1]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <CarTaxiFront className="w-7 h-7 text-[#60a5fa]" />
+                <DialogTitle className="text-2xl font-black text-[#15281c] flex items-center gap-3">
+                  <CarTaxiFront className="w-7 h-7 text-[#15803d]" />
                   <span>Intercity Cabs &amp; Luxury Sleeper Buses</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                <DialogDescription className="text-[#2e4d38] text-xs font-bold mt-1.5">
                   Doorstep Pickup • Sanitized Vehicles • Flat ₹500 Discount
                 </DialogDescription>
               </div>
-              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#15803d] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
                 Save ₹500 Instant
               </span>
             </div>
@@ -1445,21 +1434,21 @@ export default function Home() {
               { title: "Bengaluru ➔ Ooty SUV Cab Sale", fare: 4800, type: "Innova Crysta (7 Seater)", duration: "6 Hrs", seats: "6 Seats" },
               { title: "Delhi ➔ Manali Overnight Volvo Bus", fare: 1290, type: "Scania AC Sleeper", duration: "12 Hrs", seats: "Recliner Seats" }
             ].map((cab) => (
-              <div key={cab.title} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+              <div key={cab.title} className="bg-[#e2ece4] rounded-2xl border-2 border-[#b6d7c1] p-5 shadow-md hover:border-[#15803d] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group">
                 <div>
-                  <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors">{cab.title}</h4>
-                  <p className="text-xs text-[#60a5fa] font-extrabold mt-1">{cab.type} • {cab.seats}</p>
-                  <p className="text-[11px] text-white/80 mt-1 font-semibold">Estimated Travel Duration: {cab.duration}</p>
+                  <h4 className="font-black text-base text-[#15281c] group-hover:text-[#15803d] transition-colors">{cab.title}</h4>
+                  <p className="text-xs text-[#15803d] font-extrabold mt-1">{cab.type} • {cab.seats}</p>
+                  <p className="text-[11px] text-[#2e4d38] mt-1 font-semibold">Estimated Travel Duration: {cab.duration}</p>
                 </div>
-                <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 pt-3 md:pt-0 border-[#3b82f6]/30">
+                <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 pt-3 md:pt-0 border-[#b6d7c1]">
                   <div>
-                    <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Special Fare</span>
-                    <span className="font-black text-lg text-[#facc15]">{formatINR(cab.fare)}</span>
+                    <span className="text-[10px] font-black text-[#15803d] uppercase block">Special Fare</span>
+                    <span className="font-black text-lg text-[#15803d]">{formatINR(cab.fare)}</span>
                   </div>
                   <Button
                     type="button"
                     onClick={() => handleBookHotel({ name: cab.title, city: "Cab/Bus Transfer", price: cab.fare, rating: 4.8, reviews: 120, tag: "Transfer" })}
-                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                   >
                     Reserve Ride &rarr;
                   </Button>
@@ -1470,21 +1459,21 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* TRAINS & RAIL PASS RESULTS DIALOG — LUXURY DARK NAVY */}
+      {/* TRAINS & RAIL PASS RESULTS DIALOG — OPTION M PASTEL SAGE GREEN */}
       <Dialog open={showTrainResults} onOpenChange={setShowTrainResults}>
-        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#b6d7c1] shadow-2xl bg-[#eff5f0] text-[#15281c]">
+          <DialogHeader className="bg-gradient-to-r from-[#d4e6d9] via-[#e2ece4] to-[#d4e6d9] px-7 py-6 text-left text-[#15281c] relative border-b border-[#b6d7c1]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
-                  <TrainFront className="w-7 h-7 text-[#60a5fa]" />
+                <DialogTitle className="text-2xl font-black text-[#15281c] flex items-center gap-3">
+                  <TrainFront className="w-7 h-7 text-[#15803d]" />
                   <span>IRCTC Train Tickets &amp; Vande Bharat Sale</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                <DialogDescription className="text-[#2e4d38] text-xs font-bold mt-1.5">
                   Zero Gateway Fees • Instant PNR Confirmation • Vande Bharat Express
                 </DialogDescription>
               </div>
-              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#15803d] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
                 0% Gateway Fee
               </span>
             </div>
@@ -1497,21 +1486,21 @@ export default function Home() {
               { train: "Tejas Express (82502)", route: "New Delhi (NDLS) ➔ Lucknow (LJN)", fare: 1420, time: "15:30 ➔ 21:55 (6h 25m)", class: "AC Chair Car" },
               { train: "Goa Sampark Kranti (12484)", route: "Delhi (NZM) ➔ Goa Madgaon (MAO)", fare: 1980, time: "11:00 ➔ 12:45 (+1d)", class: "2nd AC (2A)" }
             ].map((t) => (
-              <div key={t.train} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+              <div key={t.train} className="bg-[#e2ece4] rounded-2xl border-2 border-[#b6d7c1] p-5 shadow-md hover:border-[#15803d] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group">
                 <div>
-                  <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors">{t.train}</h4>
-                  <p className="text-xs text-[#60a5fa] font-extrabold mt-1">{t.route}</p>
-                  <p className="text-[11px] text-white/80 mt-1 font-semibold">Timing: {t.time} • Class: {t.class}</p>
+                  <h4 className="font-black text-base text-[#15281c] group-hover:text-[#15803d] transition-colors">{t.train}</h4>
+                  <p className="text-xs text-[#15803d] font-extrabold mt-1">{t.route}</p>
+                  <p className="text-[11px] text-[#2e4d38] mt-1 font-semibold">Timing: {t.time} • Class: {t.class}</p>
                 </div>
-                <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 pt-3 md:pt-0 border-[#3b82f6]/30">
+                <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 pt-3 md:pt-0 border-[#b6d7c1]">
                   <div>
-                    <span className="text-[10px] font-black text-[#60a5fa] uppercase block">IRCTC Ticket Price</span>
-                    <span className="font-black text-lg text-[#facc15]">{formatINR(t.fare)}</span>
+                    <span className="text-[10px] font-black text-[#15803d] uppercase block">IRCTC Ticket Price</span>
+                    <span className="font-black text-lg text-[#15803d]">{formatINR(t.fare)}</span>
                   </div>
                   <Button
                     type="button"
                     onClick={() => handleBookHotel({ name: t.train, city: t.route, price: t.fare, rating: 4.9, reviews: 120, tag: "Train Ticket" })}
-                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                   >
                     Book Train &rarr;
                   </Button>

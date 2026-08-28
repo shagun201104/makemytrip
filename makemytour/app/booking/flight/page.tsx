@@ -326,93 +326,91 @@ function FlightBookingContent() {
           {/* Dynamic price banner */}
           {pricingInput && <BookingPriceBanner input={pricingInput} />}
 
-          {/* ---- LUXURY FLIGHT ROUTE DETAILS CARD ---- */}
-          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-6 md:p-8 space-y-6">
-            <div className="flex items-start justify-between gap-4 flex-wrap border-b border-[#1e293b] pb-4">
+          {/* ---- OPTION M PASTEL SAGE GREEN FLIGHT ROUTE DETAILS CARD ---- */}
+          <div className="bg-[#eff5f0] text-[#15281c] rounded-3xl shadow-xl border-4 border-[#b6d7c1] p-6 md:p-8 space-y-6">
+            <div className="flex items-start justify-between gap-4 flex-wrap border-b border-[#b6d7c1] pb-4">
               <div className="flex items-center gap-3 flex-wrap">
-                <h1 className="text-2xl md:text-3xl font-black text-white flex items-center gap-2">
-                  {from} <span className="text-[#60a5fa]">&rarr;</span> {to}
+                <h1 className="text-2xl md:text-3xl font-black text-[#15281c] flex items-center gap-2">
+                  {from} <span className="text-[#15803d]">&rarr;</span> {to}
                 </h1>
-                <span className="inline-flex items-center bg-[#166534] text-[#4ade80] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                <span className="inline-flex items-center bg-[#15803d] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
                   Refundable &bull; Cancellation Protection
                 </span>
               </div>
-              <button className="flex items-center gap-1.5 text-[#60a5fa] hover:text-[#93c5fd] text-xs font-black uppercase tracking-wider">
+              <button className="flex items-center gap-1.5 text-[#15803d] hover:underline text-xs font-black uppercase tracking-wider">
                 <Info className="w-4 h-4" /> View Fare Rules
               </button>
             </div>
 
-            <div className="flex items-center gap-4 text-xs font-bold text-white/80">
-              <span className="flex items-center gap-1.5 bg-[#1e293b] px-3 py-1.5 rounded-lg border border-[#3b82f6]/40">
-                <CalendarDays className="w-4 h-4 text-[#60a5fa]" />
+            <div className="flex items-center gap-4 text-xs font-bold text-[#2e4d38]">
+              <span className="flex items-center gap-1.5 bg-[#e2ece4] px-3 py-1.5 rounded-lg border border-[#b6d7c1]">
+                <CalendarDays className="w-4 h-4 text-[#15803d]" />
                 {formatDateTime(date, depart)}
               </span>
-              <span className="flex items-center gap-1.5 bg-[#1e293b] px-3 py-1.5 rounded-lg border border-[#3b82f6]/40">
-                <Clock className="w-4 h-4 text-[#60a5fa]" /> Non Stop &bull; {duration}
+              <span className="flex items-center gap-1.5 bg-[#e2ece4] px-3 py-1.5 rounded-lg border border-[#b6d7c1]">
+                <Clock className="w-4 h-4 text-[#15803d]" /> Non Stop &bull; {duration}
               </span>
             </div>
 
             {/* Airline row */}
-            <div className="flex items-center gap-4 bg-[#1e293b]/90 p-4 rounded-2xl border border-[#3b82f6]/40">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#2563eb] text-white shrink-0 shadow-md">
+            <div className="flex items-center gap-4 bg-[#e2ece4] p-4 rounded-2xl border border-[#b6d7c1]">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#15803d] text-white shrink-0 shadow-md">
                 <Plane className="w-6 h-6" />
               </div>
               <div>
-                <p className="font-extrabold text-white text-base">{airline}</p>
-                <p className="text-xs text-white/70 font-semibold">
+                <p className="font-extrabold text-[#15281c] text-base">{airline}</p>
+                <p className="text-xs text-[#2e4d38] font-semibold">
                   {code} &bull; {aircraft}
                 </p>
               </div>
               <div className="flex items-center gap-2 ml-auto">
-                <span className="bg-[#2563eb] text-white text-xs font-black px-3 py-1 rounded-lg">
+                <span className="bg-[#15803d] text-white text-xs font-black px-3 py-1 rounded-lg">
                   Economy Class
                 </span>
-                <span className="text-[#facc15] text-xs font-black tracking-wider uppercase">MMTSPECIAL</span>
+                <span className="text-[#b45309] text-xs font-black tracking-wider uppercase">MMTSPECIAL</span>
               </div>
             </div>
 
             {/* Timeline: depart -> arrive */}
-            <div className="flex items-center justify-between gap-3 bg-[#0f1a2e] p-4 rounded-2xl border border-[#1e293b]">
+            <div className="flex items-center justify-between gap-3 bg-[#d4e6d9] p-4 rounded-2xl border border-[#b6d7c1]">
               <div className="max-w-[38%]">
-                <p className="text-2xl md:text-3xl font-black text-white leading-tight">
+                <p className="text-2xl md:text-3xl font-black text-[#15281c] leading-tight">
                   {formatDateTime(date, depart)}
                 </p>
-                <p className="text-xs text-white/70 font-bold mt-1.5">
+                <p className="text-xs text-[#2e4d38] font-bold mt-1.5">
                   {from} Airport ({fromCode}), Terminal T2
                 </p>
               </div>
 
               <div className="flex-1 flex flex-col items-center px-2">
-                <span className="text-xs font-black text-[#60a5fa] mb-1">{duration}</span>
+                <span className="text-xs font-black text-[#15803d] mb-1">{duration}</span>
                 <div className="w-full flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#60a5fa]" />
-                  <div className="h-0.5 bg-gradient-to-r from-[#60a5fa] to-[#2563eb] flex-1" />
-                  <Plane className="w-5 h-5 text-[#60a5fa] rotate-90" />
-                  <div className="h-0.5 bg-gradient-to-r from-[#2563eb] to-[#60a5fa] flex-1" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#60a5fa]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#15803d]" />
+                  <div className="h-0.5 bg-gradient-to-r from-[#15803d] to-[#22c55e] flex-1" />
+                  <Plane className="w-5 h-5 text-[#15803d] rotate-90" />
+                  <div className="h-0.5 bg-gradient-to-r from-[#22c55e] to-[#15803d] flex-1" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#15803d]" />
                 </div>
-                <span className="text-[11px] font-extrabold text-[#4ade80] mt-1">Direct Flight</span>
+                <span className="text-[11px] font-extrabold text-[#15803d] mt-1">Direct Flight</span>
               </div>
 
               <div className="max-w-[38%] text-right">
-                <p className="text-2xl md:text-3xl font-black text-white leading-tight">
+                <p className="text-2xl md:text-3xl font-black text-[#15281c] leading-tight">
                   {formatDateTime(date, arrive)}
                 </p>
-                <p className="text-xs text-white/70 font-bold mt-1.5">
+                <p className="text-xs text-[#2e4d38] font-bold mt-1.5">
                   {to} Airport ({toCode}), Terminal T3
                 </p>
               </div>
             </div>
 
-            {/* Baggage */}
-            <div className="flex flex-wrap items-center gap-6 bg-[#1e293b]/80 p-4 rounded-xl border border-[#3b82f6]/30">
-              <span className="flex items-center gap-2 text-xs font-extrabold text-white">
-                <Luggage className="w-4 h-4 text-[#60a5fa]" />
-                Cabin Baggage: <span className="text-[#60a5fa]">7 Kgs / Passenger</span>
+            {/* Baggage chips */}
+            <div className="flex items-center gap-6 pt-2 border-t border-[#b6d7c1] text-xs font-bold text-[#2e4d38] flex-wrap">
+              <span className="flex items-center gap-2">
+                <Luggage className="w-4 h-4 text-[#15803d]" /> Cabin Baggage: <strong className="text-[#15281c]">7 Kgs / Passenger</strong>
               </span>
-              <span className="flex items-center gap-2 text-xs font-extrabold text-white">
-                <Luggage className="w-4 h-4 text-[#60a5fa]" />
-                Check-in Baggage: <span className="text-[#60a5fa]">15 Kgs (1 Piece) / Passenger</span>
+              <span className="flex items-center gap-2">
+                <Luggage className="w-4 h-4 text-[#15803d]" /> Check-in Baggage: <strong className="text-[#15281c]">15 Kgs (1 Piece) / Passenger</strong>
               </span>
             </div>
           </div>
@@ -669,44 +667,44 @@ function FlightBookingContent() {
 
         {/* ============ RIGHT COLUMN (sticky) ============ */}
         <div className="space-y-6 lg:sticky lg:top-6">
-          {/* Fare summary — Luxury High Contrast Dark Navy Card */}
-          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-7 space-y-5">
-            <h2 className="flex items-center gap-2.5 text-xl font-black text-white border-b border-[#1e293b] pb-4">
-              <TicketPercent className="w-6 h-6 text-[#60a5fa]" /> Fare Summary
+          {/* Fare summary — Option M Soft Pastel Sage Green Card */}
+          <div className="bg-[#eff5f0] text-[#15281c] rounded-3xl shadow-xl border-4 border-[#b6d7c1] p-7 space-y-5">
+            <h2 className="flex items-center gap-2.5 text-xl font-black text-[#15281c] border-b border-[#b6d7c1] pb-4">
+              <TicketPercent className="w-6 h-6 text-[#15803d]" /> Fare Summary
             </h2>
             <div className="space-y-3.5 text-sm">
-              <div className="flex justify-between items-center text-white/90 font-medium">
+              <div className="flex justify-between items-center text-[#2e4d38] font-semibold">
                 <span>
                   Base Fare ({travellers} {travellers > 1 ? "travellers" : "traveller"})
                 </span>
-                <span className="font-extrabold text-white">{formatINR(baseFare)}</span>
+                <span className="font-extrabold text-[#15281c]">{formatINR(baseFare)}</span>
               </div>
-              <div className="flex justify-between items-center text-white/90 font-medium">
+              <div className="flex justify-between items-center text-[#2e4d38] font-semibold">
                 <span>Taxes &amp; Surcharges</span>
-                <span className="font-extrabold text-white">{formatINR(taxes)}</span>
+                <span className="font-extrabold text-[#15281c]">{formatINR(taxes)}</span>
               </div>
               {seatCharge > 0 && (
-                <div className="flex justify-between items-center text-[#60a5fa] font-bold">
+                <div className="flex justify-between items-center text-[#15803d] font-bold">
                   <span>Selected Seat ({selectedSeat?.id})</span>
-                  <span className="font-black text-[#60a5fa]">+{formatINR(seatCharge)}</span>
+                  <span className="font-black text-[#15803d]">+{formatINR(seatCharge)}</span>
                 </div>
               )}
-              <div className="flex justify-between items-center text-white/90 font-medium">
+              <div className="flex justify-between items-center text-[#2e4d38] font-semibold">
                 <span>Other Services</span>
-                <span className="font-extrabold text-white">
+                <span className="font-extrabold text-[#15281c]">
                   {formatINR(otherServices)}
                 </span>
               </div>
               {discount > 0 && (
-                <div className="flex justify-between items-center text-[#4ade80] font-bold bg-[#16a34a]/20 px-3 py-1.5 rounded-xl border border-[#4ade80]/30">
+                <div className="flex justify-between items-center text-[#15803d] font-bold bg-[#d4e6d9] px-3 py-1.5 rounded-xl border border-[#b6d7c1]">
                   <span>Applied Promo Discount</span>
                   <span className="font-black">- {formatINR(discount)}</span>
                 </div>
               )}
-              <div className="h-px bg-[#1e293b] my-2" />
+              <div className="h-px bg-[#b6d7c1] my-2" />
               <div className="flex justify-between items-center pt-1">
-                <span className="font-black text-base text-white">Total Amount</span>
-                <span className="flex items-center text-2xl font-black text-[#facc15] drop-shadow-md">
+                <span className="font-black text-base text-[#15281c]">Total Amount</span>
+                <span className="flex items-center text-2xl font-black text-[#15803d]">
                   <IndianRupee className="w-5 h-5" />
                   {total.toLocaleString("en-IN")}
                 </span>
@@ -716,7 +714,7 @@ function FlightBookingContent() {
             <Button
               onClick={handleConfirm}
               disabled={submitting}
-              className="w-full mt-4 bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-lg rounded-full h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all tracking-wide uppercase cursor-pointer disabled:opacity-70"
+              className="w-full mt-4 bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 font-black text-lg rounded-full h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all tracking-wide uppercase cursor-pointer disabled:opacity-70"
             >
               {submitting ? "Processing…" : <>Confirm &amp; Pay {formatINR(total)}</>}
             </Button>

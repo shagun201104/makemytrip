@@ -726,38 +726,38 @@ function HotelBookingContent() {
 
         {/* ============ RIGHT COLUMN (sticky) ============ */}
         <div className="space-y-6 lg:sticky lg:top-6">
-          {/* Price summary — Luxury High Contrast Dark Navy Card */}
-          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-7 space-y-5">
-            <h2 className="flex items-center gap-2.5 text-xl font-black text-white border-b border-[#1e293b] pb-4">
-              <TicketPercent className="w-6 h-6 text-[#60a5fa]" /> Price Summary
+          {/* Price summary — Option M Soft Pastel Sage Green Card */}
+          <div className="bg-[#eff5f0] text-[#15281c] rounded-3xl shadow-xl border-4 border-[#b6d7c1] p-7 space-y-5">
+            <h2 className="flex items-center gap-2.5 text-xl font-black text-[#15281c] border-b border-[#b6d7c1] pb-4">
+              <TicketPercent className="w-6 h-6 text-[#15803d]" /> Price Summary
             </h2>
             <div className="space-y-3.5 text-sm">
-              <div className="flex justify-between items-center text-white/90 font-medium">
+              <div className="flex justify-between items-center text-[#2e4d38] font-semibold">
                 <span>
                   {formatINR(nightly)} &times; {nights} {nights > 1 ? "nights" : "night"}
                 </span>
-                <span className="font-extrabold text-white">{formatINR(roomTotal)}</span>
+                <span className="font-extrabold text-[#15281c]">{formatINR(roomTotal)}</span>
               </div>
-              <div className="flex justify-between items-center text-white/90 font-medium">
+              <div className="flex justify-between items-center text-[#2e4d38] font-semibold">
                 <span>Taxes &amp; Service Fees</span>
-                <span className="font-extrabold text-white">{formatINR(taxes)}</span>
+                <span className="font-extrabold text-[#15281c]">{formatINR(taxes)}</span>
               </div>
-              <div className="flex justify-between items-center text-white/90 font-medium">
+              <div className="flex justify-between items-center text-[#2e4d38] font-semibold">
                 <span>Other Included Services</span>
-                <span className="font-extrabold text-white">
+                <span className="font-extrabold text-[#15281c]">
                   {formatINR(otherServices)}
                 </span>
               </div>
               {discount > 0 && (
-                <div className="flex justify-between items-center text-[#4ade80] font-bold bg-[#16a34a]/20 px-3 py-1.5 rounded-xl border border-[#4ade80]/30">
+                <div className="flex justify-between items-center text-[#15803d] font-bold bg-[#d4e6d9] px-3 py-1.5 rounded-xl border border-[#b6d7c1]">
                   <span>Applied Promo Discount</span>
                   <span className="font-black">- {formatINR(discount)}</span>
                 </div>
               )}
-              <div className="h-px bg-[#1e293b] my-2" />
+              <div className="h-px bg-[#b6d7c1] my-2" />
               <div className="flex justify-between items-center pt-1">
-                <span className="font-black text-base text-white">Total Amount</span>
-                <span className="flex items-center text-2xl font-black text-[#facc15] drop-shadow-md">
+                <span className="font-black text-base text-[#15281c]">Total Amount</span>
+                <span className="flex items-center text-2xl font-black text-[#15803d]">
                   <IndianRupee className="w-5 h-5" />
                   {total.toLocaleString("en-IN")}
                 </span>
@@ -767,13 +767,13 @@ function HotelBookingContent() {
             <Button
               onClick={handleConfirm}
               disabled={submitting}
-              className="w-full mt-4 bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-lg rounded-full h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all tracking-wide uppercase cursor-pointer disabled:opacity-70"
+              className="w-full mt-4 bg-gradient-to-r from-[#e05638] via-[#ea580c] to-[#e05638] text-white hover:opacity-95 font-black text-lg rounded-full h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all tracking-wide uppercase cursor-pointer disabled:opacity-70"
             >
-              {submitting ? "Processing…" : "Book Now &amp; Pay"}
+              {submitting ? "Processing…" : <>Confirm &amp; Reserve Room</>}
             </Button>
 
-            <div className="flex items-center gap-2 text-xs font-bold text-[#4ade80] bg-[#16a34a]/15 rounded-2xl px-4 py-3 border border-[#4ade80]/30">
-              <ShieldCheck className="w-4 h-4 shrink-0 text-[#4ade80]" />
+            <div className="flex items-center gap-2 text-xs font-bold text-[#15803d] bg-[#d4e6d9] rounded-2xl px-4 py-3 border border-[#b6d7c1]">
+              <ShieldCheck className="w-4 h-4 shrink-0 text-[#15803d]" />
               Free Cancellation &middot; Pay at Hotel Option Available
             </div>
           </div>
