@@ -667,47 +667,45 @@ function FlightBookingContent() {
 
         {/* ============ RIGHT COLUMN (sticky) ============ */}
         <div className="space-y-6 lg:sticky lg:top-6">
-          {/* Fare summary */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6">
-            <h2 className="flex items-center gap-2 text-lg font-bold text-[#0f1a2e] mb-5">
-              <TicketPercent className="w-5 h-5 text-[#5b9bd5]" /> Fare Summary
+          {/* Fare summary — Luxury High Contrast Dark Navy Card */}
+          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-7 space-y-5">
+            <h2 className="flex items-center gap-2.5 text-xl font-black text-white border-b border-[#1e293b] pb-4">
+              <TicketPercent className="w-6 h-6 text-[#60a5fa]" /> Fare Summary
             </h2>
             <div className="space-y-3.5 text-sm">
-              <div className="flex justify-between">
-                <span className="text-[#3d5170]">
+              <div className="flex justify-between items-center text-white/90 font-medium">
+                <span>
                   Base Fare ({travellers} {travellers > 1 ? "travellers" : "traveller"})
                 </span>
-                <span className="font-semibold text-[#0f1a2e]">{formatINR(baseFare)}</span>
+                <span className="font-extrabold text-white">{formatINR(baseFare)}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-[#3d5170]">Taxes and Surcharges</span>
-                <span className="font-semibold text-[#0f1a2e]">{formatINR(taxes)}</span>
+              <div className="flex justify-between items-center text-white/90 font-medium">
+                <span>Taxes &amp; Surcharges</span>
+                <span className="font-extrabold text-white">{formatINR(taxes)}</span>
               </div>
               {seatCharge > 0 && (
-                <div className="flex justify-between">
-                  <span className="text-[#3d5170]">Selected Seat ({selectedSeat?.id})</span>
-                  <span className="font-semibold text-[#5b9bd5]">+{formatINR(seatCharge)}</span>
+                <div className="flex justify-between items-center text-[#60a5fa] font-bold">
+                  <span>Selected Seat ({selectedSeat?.id})</span>
+                  <span className="font-black text-[#60a5fa]">+{formatINR(seatCharge)}</span>
                 </div>
               )}
-              <div className="flex justify-between">
-                <span className="text-[#3d5170]">Other Services</span>
-                <span className="font-semibold text-[#0f1a2e]">
+              <div className="flex justify-between items-center text-white/90 font-medium">
+                <span>Other Services</span>
+                <span className="font-extrabold text-white">
                   {formatINR(otherServices)}
                 </span>
               </div>
               {discount > 0 && (
-                <div className="flex justify-between">
-                  <span className="text-[#1f8a4c]">Discounts</span>
-                  <span className="font-semibold text-[#1f8a4c]">
-                    - {formatINR(discount)}
-                  </span>
+                <div className="flex justify-between items-center text-[#4ade80] font-bold bg-[#16a34a]/20 px-3 py-1.5 rounded-xl border border-[#4ade80]/30">
+                  <span>Applied Promo Discount</span>
+                  <span className="font-black">- {formatINR(discount)}</span>
                 </div>
               )}
-              <div className="h-px bg-[#eef2f7] my-1" />
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-[#0f1a2e]">Total Amount</span>
-                <span className="flex items-center text-xl font-extrabold text-[#0f1a2e]">
-                  <IndianRupee className="w-4 h-4" />
+              <div className="h-px bg-[#1e293b] my-2" />
+              <div className="flex justify-between items-center pt-1">
+                <span className="font-black text-base text-white">Total Amount</span>
+                <span className="flex items-center text-2xl font-black text-[#facc15] drop-shadow-md">
+                  <IndianRupee className="w-5 h-5" />
                   {total.toLocaleString("en-IN")}
                 </span>
               </div>
@@ -716,9 +714,9 @@ function FlightBookingContent() {
             <Button
               onClick={handleConfirm}
               disabled={submitting}
-              className="w-full mt-5 bg-[#3a2318] hover:bg-[#4a2e20] text-white font-bold rounded-xl h-12 shadow-md transition-all disabled:opacity-70"
+              className="w-full mt-4 bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-lg rounded-full h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all tracking-wide uppercase cursor-pointer disabled:opacity-70"
             >
-              {submitting ? "Processing…" : "Book Now"}
+              {submitting ? "Processing…" : <>Confirm &amp; Pay {formatINR(total)}</>}
             </Button>
 
             <div className="mt-4 flex items-center gap-2 text-xs text-[#4f9c7f] bg-[#4f9c7f]/10 rounded-lg px-3 py-2.5 border border-[#4f9c7f]/20">
