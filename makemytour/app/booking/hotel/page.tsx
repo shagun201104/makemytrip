@@ -262,6 +262,16 @@ function HotelBookingContent() {
               </div>
             </div>
 
+            {/* Instant Mobile SMS & WhatsApp Notification Alert */}
+            <div className="bg-[#1e3a8a]/90 border-2 border-[#3b82f6]/60 p-4 rounded-2xl text-left space-y-1 shadow-lg">
+              <p className="text-xs font-black text-[#60a5fa] flex items-center gap-1.5 uppercase tracking-wider">
+                📱 Instant Mobile SMS &amp; WhatsApp Alert Sent
+              </p>
+              <p className="text-xs text-white font-bold">
+                E-Voucher &amp; QR Code dispatched to <span className="text-[#facc15] font-black">{guest.phone}</span> &amp; <span className="text-[#60a5fa] font-black">{guest.email}</span>!
+              </p>
+            </div>
+
             {/* Action Buttons: View in Profile + Home */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
               <Button

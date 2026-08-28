@@ -393,6 +393,20 @@ export function CategoryServices({ category }: CategoryServicesProps) {
                 <option value="GBP">GBP (£) — British Pound</option>
                 <option value="AED">AED (AED) — UAE Dirham</option>
                 <option value="THB">THB (฿) — Thai Baht</option>
+                <option value="CAD">CAD ($) — Canadian Dollar</option>
+                <option value="AUD">AUD ($) — Australian Dollar</option>
+                <option value="SGD">SGD ($) — Singapore Dollar</option>
+                <option value="JPY">JPY (¥) — Japanese Yen</option>
+                <option value="CHF">CHF (CHF) — Swiss Franc</option>
+                <option value="MYR">MYR (RM) — Malaysian Ringgit</option>
+                <option value="SAR">SAR (SR) — Saudi Riyal</option>
+                <option value="QAR">QAR (QR) — Qatari Riyal</option>
+                <option value="NZD">NZD ($) — New Zealand Dollar</option>
+                <option value="HKD">HKD ($) — Hong Kong Dollar</option>
+                <option value="IDR">IDR (Rp) — Indonesian Rupiah</option>
+                <option value="VND">VND (₫) — Vietnamese Dong</option>
+                <option value="KRW">KRW (₩) — South Korean Won</option>
+                <option value="CNY">CNY (¥) — Chinese Yuan</option>
               </select>
             </div>
             <div className="space-y-2">

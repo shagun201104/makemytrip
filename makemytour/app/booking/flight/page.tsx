@@ -276,6 +276,16 @@ function FlightBookingContent() {
               </div>
             </div>
 
+            {/* Instant Mobile SMS & WhatsApp Notification Alert */}
+            <div className="bg-[#1e3a8a]/90 border-2 border-[#3b82f6]/60 p-4 rounded-2xl text-left space-y-1 shadow-lg">
+              <p className="text-xs font-black text-[#60a5fa] flex items-center gap-1.5 uppercase tracking-wider">
+                📱 Instant Mobile SMS &amp; WhatsApp Alert Sent
+              </p>
+              <p className="text-xs text-white font-bold">
+                E-Ticket PNR &amp; Boarding Pass dispatched to <span className="text-[#facc15] font-black">{passenger.phone}</span> &amp; <span className="text-[#60a5fa] font-black">{passenger.email}</span>!
+              </p>
+            </div>
+
             {/* Action Buttons: View in Profile + Home */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
               <Button
@@ -314,135 +324,127 @@ function FlightBookingContent() {
           {/* Dynamic price banner */}
           {pricingInput && <BookingPriceBanner input={pricingInput} />}
 
-          {/* ---- Flight itinerary card ---- */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6 md:p-7">
-            {/* Route header */}
-            <div className="flex items-start justify-between gap-4 flex-wrap">
+          {/* ---- LUXURY FLIGHT ROUTE DETAILS CARD ---- */}
+          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-6 md:p-8 space-y-6">
+            <div className="flex items-start justify-between gap-4 flex-wrap border-b border-[#1e293b] pb-4">
               <div className="flex items-center gap-3 flex-wrap">
-                <h1 className="text-2xl font-extrabold text-[#0f1a2e] flex items-center gap-2">
-                  {from} <span className="text-[#5b9bd5]">&rarr;</span> {to}
+                <h1 className="text-2xl md:text-3xl font-black text-white flex items-center gap-2">
+                  {from} <span className="text-[#60a5fa]">&rarr;</span> {to}
                 </h1>
-                <span className="inline-flex items-center bg-[#e6f4ea] text-[#1f8a4c] text-xs font-semibold px-3 py-1 rounded-full">
-                  CANCELLATION FEES APPLY
+                <span className="inline-flex items-center bg-[#166534] text-[#4ade80] text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                  Refundable &bull; Cancellation Protection
                 </span>
               </div>
-              <button className="flex items-center gap-1.5 text-[#2c5a9e] hover:text-[#1a3a6b] text-sm font-medium">
+              <button className="flex items-center gap-1.5 text-[#60a5fa] hover:text-[#93c5fd] text-xs font-black uppercase tracking-wider">
                 <Info className="w-4 h-4" /> View Fare Rules
               </button>
             </div>
 
-            <div className="flex items-center gap-4 text-sm text-[#7c8ba3] mt-3">
-              <span className="flex items-center gap-1.5">
-                <CalendarDays className="w-4 h-4" />
+            <div className="flex items-center gap-4 text-xs font-bold text-white/80">
+              <span className="flex items-center gap-1.5 bg-[#1e293b] px-3 py-1.5 rounded-lg border border-[#3b82f6]/40">
+                <CalendarDays className="w-4 h-4 text-[#60a5fa]" />
                 {formatDateTime(date, depart)}
               </span>
-              <span className="w-1 h-1 rounded-full bg-[#c3cfe0]" />
-              <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" /> Non Stop - {duration}
+              <span className="flex items-center gap-1.5 bg-[#1e293b] px-3 py-1.5 rounded-lg border border-[#3b82f6]/40">
+                <Clock className="w-4 h-4 text-[#60a5fa]" /> Non Stop &bull; {duration}
               </span>
             </div>
 
             {/* Airline row */}
-            <div className="flex items-center gap-4 mt-5">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#eaf3fb] shrink-0">
-                <Plane className="w-6 h-6 text-[#5b9bd5]" />
+            <div className="flex items-center gap-4 bg-[#1e293b]/90 p-4 rounded-2xl border border-[#3b82f6]/40">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#2563eb] text-white shrink-0 shadow-md">
+                <Plane className="w-6 h-6" />
               </div>
               <div>
-                <p className="font-bold text-[#0f1a2e]">{airline}</p>
-                <p className="text-xs text-[#7c8ba3]">
+                <p className="font-extrabold text-white text-base">{airline}</p>
+                <p className="text-xs text-white/70 font-semibold">
                   {code} &bull; {aircraft}
                 </p>
               </div>
-              <div className="flex items-center gap-2 ml-2">
-                <span className="bg-[#eaf3fb] text-[#2c5a9e] text-xs font-medium px-2.5 py-1 rounded-md">
-                  Economy
+              <div className="flex items-center gap-2 ml-auto">
+                <span className="bg-[#2563eb] text-white text-xs font-black px-3 py-1 rounded-lg">
+                  Economy Class
                 </span>
-                <span className="text-[#7c8ba3] text-xs font-medium">MMTSPECIAL</span>
+                <span className="text-[#facc15] text-xs font-black tracking-wider uppercase">MMTSPECIAL</span>
               </div>
             </div>
 
-            <div className="h-px bg-[#eef2f7] my-6" />
-
             {/* Timeline: depart -> arrive */}
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center justify-between gap-3 bg-[#0f1a2e] p-4 rounded-2xl border border-[#1e293b]">
               <div className="max-w-[38%]">
-                <p className="text-xl md:text-2xl font-extrabold text-[#0f1a2e] leading-tight">
+                <p className="text-2xl md:text-3xl font-black text-white leading-tight">
                   {formatDateTime(date, depart)}
                 </p>
-                <p className="text-sm text-[#7c8ba3] mt-1.5">
-                  {from} International Airport{fromCode ? ` (${fromCode})` : ""}, Terminal T2
+                <p className="text-xs text-white/70 font-bold mt-1.5">
+                  {from} Airport ({fromCode}), Terminal T2
                 </p>
               </div>
 
               <div className="flex-1 flex flex-col items-center px-2">
-                <span className="text-xs text-[#7c8ba3] mb-1">{duration}</span>
+                <span className="text-xs font-black text-[#60a5fa] mb-1">{duration}</span>
                 <div className="w-full flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#5b9bd5]" />
-                  <div className="h-px bg-[#c3daf0] flex-1" />
-                  <Plane className="w-4 h-4 text-[#5b9bd5] rotate-90" />
-                  <div className="h-px bg-[#c3daf0] flex-1" />
-                  <span className="w-2 h-2 rounded-full bg-[#5b9bd5]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#60a5fa]" />
+                  <div className="h-0.5 bg-gradient-to-r from-[#60a5fa] to-[#2563eb] flex-1" />
+                  <Plane className="w-5 h-5 text-[#60a5fa] rotate-90" />
+                  <div className="h-0.5 bg-gradient-to-r from-[#2563eb] to-[#60a5fa] flex-1" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#60a5fa]" />
                 </div>
-                <span className="text-xs text-[#7c8ba3] mt-1">Non-stop</span>
+                <span className="text-[11px] font-extrabold text-[#4ade80] mt-1">Direct Flight</span>
               </div>
 
               <div className="max-w-[38%] text-right">
-                <p className="text-xl md:text-2xl font-extrabold text-[#0f1a2e] leading-tight">
+                <p className="text-2xl md:text-3xl font-black text-white leading-tight">
                   {formatDateTime(date, arrive)}
                 </p>
-                <p className="text-sm text-[#7c8ba3] mt-1.5">
-                  {to} International Airport{toCode ? ` (${toCode})` : ""}, Terminal T3
+                <p className="text-xs text-white/70 font-bold mt-1.5">
+                  {to} Airport ({toCode}), Terminal T3
                 </p>
               </div>
             </div>
 
-            <div className="h-px bg-[#eef2f7] my-6" />
-
             {/* Baggage */}
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-3">
-              <span className="flex items-center gap-2 text-sm text-[#2c3e57]">
-                <Luggage className="w-5 h-5 text-[#7c8ba3]" />
-                Cabin Baggage: <span className="font-semibold">7 Kgs / Adult</span>
+            <div className="flex flex-wrap items-center gap-6 bg-[#1e293b]/80 p-4 rounded-xl border border-[#3b82f6]/30">
+              <span className="flex items-center gap-2 text-xs font-extrabold text-white">
+                <Luggage className="w-4 h-4 text-[#60a5fa]" />
+                Cabin Baggage: <span className="text-[#60a5fa]">7 Kgs / Passenger</span>
               </span>
-              <span className="flex items-center gap-2 text-sm text-[#2c3e57]">
-                <Luggage className="w-5 h-5 text-[#7c8ba3]" />
-                Check-in Baggage:{" "}
-                <span className="font-semibold">15 Kgs (1 piece only) / Adult</span>
+              <span className="flex items-center gap-2 text-xs font-extrabold text-white">
+                <Luggage className="w-4 h-4 text-[#60a5fa]" />
+                Check-in Baggage: <span className="text-[#60a5fa]">15 Kgs (1 Piece) / Passenger</span>
               </span>
             </div>
           </div>
 
-          {/* ---- Cancellation & Date Change Policy ---- */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#eef2f7] p-6 md:p-7">
+          {/* ---- LUXURY CANCELLATION & DATE CHANGE POLICY ---- */}
+          <div className="bg-[#0f1a2e] text-white rounded-3xl shadow-2xl border-4 border-[#3b82f6]/40 p-6 md:p-8 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 font-bold text-[#0f1a2e] text-lg">
-                <CircleAlert className="w-5 h-5 text-[#e0a800]" /> Cancellation &amp; Date
-                Change Policy
+              <h2 className="flex items-center gap-2 font-black text-white text-xl">
+                <CircleAlert className="w-6 h-6 text-[#facc15]" /> Cancellation &amp; Date Change Policy
               </h2>
-              <button className="text-[#2c5a9e] hover:text-[#1a3a6b] text-sm font-medium">
-                View Policy
+              <button className="text-[#60a5fa] hover:text-[#93c5fd] text-xs font-black uppercase tracking-wider">
+                View Detailed Rules
               </button>
             </div>
 
-            <div className="mt-5 rounded-xl bg-[#f8fafc] border border-[#eef2f7] p-5">
+            <div className="rounded-2xl bg-[#1e293b] border-2 border-[#3b82f6]/40 p-5">
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-2 font-semibold text-[#0f1a2e]">
-                  <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#eaf3fb]">
-                    <Plane className="w-4 h-4 text-[#5b9bd5]" />
+                <span className="flex items-center gap-2.5 font-black text-white">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#2563eb]">
+                    <Plane className="w-4 h-4 text-white" />
                   </span>
-                  {fromCode}-{toCode}
+                  {fromCode} &rarr; {toCode}
                 </span>
-                <span className="font-bold text-[#0f1a2e]">
-                  {formatINR(Math.round(baseFare * 0.85))}
+                <span className="font-black text-[#facc15] text-lg">
+                  {formatINR(Math.round(baseFare * 0.85))} Fee
                 </span>
               </div>
 
               {/* Gradient time bar */}
-              <div className="mt-4 h-2 rounded-full bg-gradient-to-r from-[#4caf50] via-[#f5b942] to-[#e5573f]" />
-              <div className="flex items-center justify-between text-xs text-[#7c8ba3] mt-2">
-                <span>Now</span>
-                <span>Cancellation charges increase over time</span>
-                <span>Before departure</span>
+              <div className="mt-4 h-2.5 rounded-full bg-gradient-to-r from-[#22c55e] via-[#eab308] to-[#ef4444]" />
+              <div className="flex items-center justify-between text-xs font-bold text-white/80 mt-2">
+                <span>Today</span>
+                <span>Tiered Refund Structure</span>
+                <span>2 hrs before departure</span>
               </div>
             </div>
           </div>

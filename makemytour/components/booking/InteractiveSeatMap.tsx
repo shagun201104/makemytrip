@@ -258,9 +258,16 @@ export function InteractiveSeatMap({
 
       {/* Aircraft Cabin Diagram */}
       <div className="relative max-w-md mx-auto bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-3xl p-6 shadow-inner">
-        {/* Cockpit Front Indicator */}
-        <div className="w-24 h-6 mx-auto bg-[#e2e8f0] rounded-t-full border-t border-x border-[#94a3b8] flex items-center justify-center text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-6">
-          Front / Cockpit
+        {/* Sleek Aircraft Cockpit Nose Header */}
+        <div className="relative w-52 mx-auto mb-6 flex flex-col items-center">
+          <div className="w-40 h-14 bg-gradient-to-b from-[#1e3a8a] via-[#0f1a2e] to-[#0f1a2e] text-white rounded-t-full border-t-2 border-x-2 border-[#60a5fa]/60 shadow-lg flex flex-col items-center justify-center text-center px-3 py-1.5">
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs">✈️</span>
+              <span className="text-[11px] font-black tracking-widest text-[#60a5fa] uppercase">FRONT / COCKPIT</span>
+            </div>
+            <span className="text-[9px] text-white/75 font-bold tracking-tight">Flight Deck &amp; Pilots Cabin</span>
+          </div>
+          <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent mt-1" />
         </div>
 
         {/* Row Labels & Cabin Grid */}

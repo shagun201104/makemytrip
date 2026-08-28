@@ -41,6 +41,7 @@ import {
   CreditCard,
   ShieldCheck,
   Sparkles,
+  Star,
 } from "lucide-react";
 import { LivePrice } from "@/components/pricing/PriceInsights";
 import { PersonalizedRecommendations } from "@/components/recommendations/PersonalizedRecommendations";
@@ -798,45 +799,64 @@ export default function Home() {
             </div>
           </section>
 
-          {/* BEST OFFERS — IMAGE CARDS (2 COLUMNS ON MOBILE) */}
+          {/* BEST OFFERS — ULTRA-LUXURY GLASS CARDS (ALL 6 CARDS FULLY INTERACTIVE) */}
           <section className="space-y-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-md">
-              Best Offers
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl md:text-3xl font-black text-white drop-shadow-md flex items-center gap-2">
+                <Sparkles className="w-6 h-6 text-[#facc15]" /> Best Offers &amp; Pamphlets
+              </h2>
+              <span className="text-xs font-bold text-white/80 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                6 Exclusive Deals Active
+              </span>
+            </div>
+
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
               {bestOffers.map((offer) => (
                 <div
                   key={offer.title}
                   onClick={() => {
                     if (offer.title.includes("Flights")) {
+                      setFromCity("New Delhi");
+                      setToCity("Goa");
                       setShowResults(true);
                     } else if (offer.title.includes("Hotels")) {
                       setHotelLocation("Goa");
                       setShowHotelResults(true);
+                    } else if (offer.title.includes("Homestays")) {
+                      handleCategory("Homestays");
+                    } else if (offer.title.includes("Cab")) {
+                      handleCategory("Cabs");
+                    } else if (offer.title.includes("Train")) {
+                      handleCategory("Trains");
                     } else {
                       handleCategory("Holiday");
                     }
                   }}
-                  className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all group cursor-pointer"
+                  className="relative overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20 hover:border-[#60a5fa] hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer"
                 >
                   {/* Background image */}
                   <div
                     style={{ backgroundImage: `url(${offer.image})` }}
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1a2e] via-black/50 to-transparent" />
+
+                  {/* Top discount badge */}
+                  <div className="absolute top-3 left-3 bg-[#e5573f] text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg border border-white/30 backdrop-blur-md">
+                    Special Pamphlet Deal
+                  </div>
 
                   {/* Content */}
-                  <div className="relative p-4 md:p-6 flex flex-col justify-end min-h-[220px] md:min-h-[280px]">
-                    <h3 className="text-white font-extrabold text-sm md:text-2xl mb-1 drop-shadow-md leading-tight">
+                  <div className="relative p-5 md:p-6 flex flex-col justify-end min-h-[230px] md:min-h-[290px] gap-2">
+                    <h3 className="text-white font-black text-base md:text-2xl drop-shadow-md leading-tight group-hover:text-[#60a5fa] transition-colors">
                       {offer.title}
                     </h3>
-                    <p className="text-white/90 text-xs mb-3 drop-shadow line-clamp-2">
+                    <p className="text-white/90 text-xs drop-shadow line-clamp-2 font-medium">
                       {offer.description}
                     </p>
                     <Button
                       type="button"
-                      className="bg-white/95 text-[#0f1a2e] hover:bg-white font-extrabold text-[10px] md:text-xs rounded-full px-4 h-8 md:h-10 shadow-md w-fit"
+                      className="bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-xs rounded-full px-5 h-9 md:h-10 shadow-xl uppercase tracking-wider w-fit cursor-pointer border border-white/20 mt-1"
                     >
                       Book Now &rarr;
                     </Button>
@@ -902,65 +922,79 @@ export default function Home() {
             </div>
           </section>
 
-          {/* FLAGSHIP STORES (AIRLINES & HOTELS) — 2 COLUMNS ON MOBILE (LIKE MAKEMYTRIP APP) */}
+          {/* FLAGSHIP STORES (AIRLINES & HOTELS) — ULTRA-PREMIUM CARDS */}
           <section className="space-y-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-md">
-              Flagship Airline &amp; Hotel Stores
+            <h2 className="text-2xl md:text-3xl font-black text-white drop-shadow-md flex items-center gap-2">
+              <Star className="w-6 h-6 text-[#facc15] fill-[#facc15]" /> Flagship Airline &amp; Luxury Hotel Stores
             </h2>
 
             <div className="space-y-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#60a5fa] drop-shadow">Flagship Airline Stores</p>
+              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa] drop-shadow">Flagship Airline Stores</p>
               <div className="grid grid-cols-2 gap-3 md:gap-5">
                 <div
-                  onClick={() => setShowResults(true)}
-                  className="relative overflow-hidden rounded-2xl h-36 bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] p-4 flex flex-col justify-between shadow-xl hover:scale-[1.02] transition-all cursor-pointer group"
+                  onClick={() => {
+                    setFromCity("New Delhi");
+                    setToCity("London");
+                    setShowResults(true);
+                  }}
+                  className="relative overflow-hidden rounded-3xl h-40 bg-gradient-to-r from-[#0f1a2e] via-[#1e3a8a] to-[#2563eb] p-5 flex flex-col justify-between shadow-2xl border-2 border-[#3b82f6]/50 hover:border-[#60a5fa] hover:scale-[1.02] transition-all cursor-pointer group"
                 >
-                  <span className="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">OFFICIAL STORE</span>
+                  <div className="flex items-center justify-between">
+                    <span className="bg-[#facc15] text-[#0f1a2e] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">OFFICIAL STORE</span>
+                    <span className="text-white/80 text-xs font-black">AI-501 Non-Stop</span>
+                  </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-white font-black text-lg md:text-2xl">Air India</h3>
-                      <p className="text-white/80 text-xs font-semibold">Fly nonstop worldwide</p>
+                      <h3 className="text-white font-black text-xl md:text-3xl flex items-center gap-2">Air India 🇮🇳</h3>
+                      <p className="text-white/90 text-xs font-bold mt-0.5">Nonstop Flights to London, NYC, Tokyo &amp; Dubai</p>
                     </div>
-                    <Plane className="w-8 h-8 text-white/80 transform group-hover:translate-x-1 transition-transform" />
+                    <Plane className="w-10 h-10 text-[#60a5fa] transform group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform" />
                   </div>
                 </div>
 
                 <div
-                  onClick={() => setShowResults(true)}
-                  className="relative overflow-hidden rounded-2xl h-36 bg-gradient-to-r from-[#78350f] to-[#d97706] p-4 flex flex-col justify-between shadow-xl hover:scale-[1.02] transition-all cursor-pointer group"
+                  onClick={() => {
+                    setFromCity("Mumbai");
+                    setToCity("Abu Dhabi");
+                    setShowResults(true);
+                  }}
+                  className="relative overflow-hidden rounded-3xl h-40 bg-gradient-to-r from-[#0f1a2e] via-[#78350f] to-[#d97706] p-5 flex flex-col justify-between shadow-2xl border-2 border-[#f59e0b]/50 hover:border-[#facc15] hover:scale-[1.02] transition-all cursor-pointer group"
                 >
-                  <span className="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">PREMIUM PARTNER</span>
+                  <div className="flex items-center justify-between">
+                    <span className="bg-[#facc15] text-[#0f1a2e] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">PREMIUM 5-STAR</span>
+                    <span className="text-white/80 text-xs font-black">EY-204 First Class</span>
+                  </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-white font-black text-lg md:text-2xl">Etihad Airways</h3>
-                      <p className="text-white/80 text-xs font-semibold">Luxury 5-star flying</p>
+                      <h3 className="text-white font-black text-xl md:text-3xl flex items-center gap-2">Etihad Airways 🇦🇪</h3>
+                      <p className="text-white/90 text-xs font-bold mt-0.5">World&apos;s Leading Luxury Airline &amp; Residence Suites</p>
                     </div>
-                    <Plane className="w-8 h-8 text-white/80 transform group-hover:translate-x-1 transition-transform" />
+                    <Plane className="w-10 h-10 text-[#facc15] transform group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform" />
                   </div>
                 </div>
               </div>
 
-              <p className="text-xs font-bold uppercase tracking-wider text-[#60a5fa] drop-shadow pt-2">Flagship Hotel Stores</p>
+              <p className="text-xs font-black uppercase tracking-wider text-[#60a5fa] drop-shadow pt-2">Flagship Luxury Hotel Stores</p>
               <div className="grid grid-cols-2 gap-3 md:gap-5">
                 {[
-                  { name: "ITC Hotels Limited", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" },
-                  { name: "Sterling Hotels & Resorts", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" },
-                  { name: "Hyatt Hotels", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=500&q=80" },
-                  { name: "Cinnamon Hotels", img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=500&q=80" },
+                  { name: "ITC Hotels Limited", tag: "5-Star Luxury", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" },
+                  { name: "Sterling Hotels & Resorts", tag: "Hill Resorts", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" },
+                  { name: "Hyatt Hotels & Palaces", tag: "Global Grand", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=500&q=80" },
+                  { name: "Cinnamon Hotels & Villas", tag: "Island Beach", img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=500&q=80" },
                 ].map((store) => (
                   <div
                     key={store.name}
                     onClick={() => {
-                      setHotelLocation("Goa");
+                      setHotelLocation(store.name.split(" ")[0]);
                       setShowHotelResults(true);
                     }}
-                    className="relative overflow-hidden rounded-2xl h-36 p-4 flex flex-col justify-end shadow-xl hover:scale-[1.02] transition-all cursor-pointer group"
+                    className="relative overflow-hidden rounded-3xl h-40 p-5 flex flex-col justify-end shadow-2xl border-2 border-white/20 hover:border-[#60a5fa] hover:scale-[1.02] transition-all cursor-pointer group"
                   >
-                    <div style={{ backgroundImage: `url(${store.img})` }} className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                    <div style={{ backgroundImage: `url(${store.img})` }} className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f1a2e] via-black/50 to-transparent" />
                     <div className="relative">
-                      <span className="bg-white/90 text-[#0f172a] text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider mb-1 inline-block">Official Flagship</span>
-                      <h4 className="text-white font-extrabold text-sm md:text-base leading-snug">{store.name}</h4>
+                      <span className="bg-[#2563eb] text-white text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-1.5 inline-block shadow-md">{store.tag}</span>
+                      <h4 className="text-white font-black text-base md:text-xl leading-tight drop-shadow-md">{store.name}</h4>
                     </div>
                   </div>
                 ))}
@@ -1067,26 +1101,26 @@ export default function Home() {
 
 
 
-      {/* FLIGHT SEARCH RESULTS DIALOG */}
+      {/* FLIGHT SEARCH RESULTS DIALOG — LUXURY DARK NAVY STYLING */}
       <Dialog open={showResults} onOpenChange={setShowResults}>
-        <DialogContent className="sm:max-w-[680px] p-0 overflow-hidden rounded-3xl border-0 shadow-2xl bg-[#f8fafc]">
+        <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
           {/* Luxury Gradient header showing the route */}
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#2c5a9e] px-7 py-6 text-left text-white relative">
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-extrabold text-white flex items-center gap-3">
+                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
                   <Plane className="w-7 h-7 text-[#60a5fa] animate-pulse" />
                   <span>{fromCity || "New Delhi"}</span>
-                  <ArrowRight className="w-5 h-5 text-white/80" />
+                  <ArrowRight className="w-5 h-5 text-[#60a5fa]" />
                   <span>{toCity || "Goa"}</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs mt-1.5 flex items-center gap-2">
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5 flex items-center gap-2">
                   <span>{departDate ? `Departure: ${departDate}` : "Daily Direct Flights"}</span>
                   <span>•</span>
                   <span>{travellers} {Number(travellers) > 1 ? "Travellers" : "Traveller"}</span>
                 </DialogDescription>
               </div>
-              <span className="bg-[#22c55e] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
                 Lowest Fare Guaranteed
               </span>
             </div>
@@ -1097,38 +1131,38 @@ export default function Home() {
             {sampleFlights.map((flight, idx) => (
               <div
                 key={flight.code}
-                className="bg-white rounded-2xl border border-[#e2e8f0] p-5 shadow-sm hover:shadow-xl hover:border-[#3b82f6] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+                className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group"
               >
                 {/* Airline logo badge + details */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] border border-[#bfdbfe] flex items-center justify-center font-black text-sm text-[#1e40af] shrink-0 shadow-xs">
+                  <div className="w-12 h-12 rounded-2xl bg-[#2563eb] text-white font-black text-sm flex items-center justify-center shrink-0 shadow-md">
                     {flight.airline.substring(0, 2).toUpperCase()}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-extrabold text-base text-[#0f172a] group-hover:text-[#2563eb] transition-colors">
+                      <span className="font-black text-lg text-white group-hover:text-[#60a5fa] transition-colors">
                         {flight.airline}
                       </span>
-                      <span className="text-[11px] font-bold text-[#64748b] bg-[#f1f5f9] px-2 py-0.5 rounded-md">
+                      <span className="text-[11px] font-extrabold text-[#60a5fa] bg-[#0f1a2e] px-2 py-0.5 rounded-md border border-[#3b82f6]/40">
                         {flight.code}
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 mt-1.5 text-xs font-semibold text-[#475569]">
-                      <span className="bg-[#dcfce7] text-[#15803d] text-[10px] px-2 py-0.5 rounded-md font-extrabold">Non-Stop</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#64748b]" /> {flight.duration}</span>
+                    <div className="flex items-center gap-3 mt-1.5 text-xs font-bold text-white/80">
+                      <span className="bg-[#166534] text-[#4ade80] text-[10px] px-2 py-0.5 rounded-md font-black uppercase">Non-Stop</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#60a5fa]" /> {flight.duration}</span>
                       <span>• Cabin Bag Included</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Timing route */}
-                <div className="text-left md:text-center bg-[#f8fafc] px-4 py-2 rounded-xl border border-[#f1f5f9]">
-                  <p className="font-extrabold text-base text-[#0f172a]">{flight.depart} → {flight.arrive}</p>
-                  <p className="text-[10px] font-bold text-[#2563eb] uppercase tracking-wider mt-0.5">Direct Flight</p>
+                <div className="text-left md:text-center bg-[#0f1a2e] px-4 py-2.5 rounded-xl border border-[#3b82f6]/30">
+                  <p className="font-black text-base text-white">{flight.depart} → {flight.arrive}</p>
+                  <p className="text-[10px] font-black text-[#60a5fa] uppercase tracking-wider mt-0.5">Direct Flight</p>
                 </div>
 
                 {/* Price in ₹ + book button */}
-                <div className="flex items-center md:flex-col items-end justify-between md:justify-center gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-[#f1f5f9]">
+                <div className="flex items-center md:flex-col items-end justify-between md:justify-center gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-[#3b82f6]/30">
                   <LivePrice
                     input={{
                       kind: "FLIGHT",
@@ -1141,7 +1175,7 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={() => handleBookNow(flight)}
-                    className="h-10 px-6 text-xs bg-gradient-to-r from-[#1a3a6b] to-[#2c5a9e] text-white hover:from-[#0f2847] hover:to-[#1a3a6b] rounded-full font-extrabold shadow-md hover:shadow-lg transition-all"
+                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                   >
                     Select &amp; Reserve Seat &rarr;
                   </Button>
