@@ -413,20 +413,38 @@ export default function Home() {
             </ul>
           </nav>
 
-          {/* SEARCH CARD WITH FLIGHTS / HOTELS TOGGLE — EYE CATCHING & HIGH CONTRAST */}
-          <div className="bg-white/95 backdrop-blur-2xl border-4 border-[#3b82f6]/40 rounded-3xl shadow-2xl p-6 md:p-9 text-[#0f1a2e]">
+          {/* SEARCH CARD WITH FLIGHTS / HOTELS TOGGLE — LUXURY HIGH-CONTRAST ATTRACTIVE CARD */}
+          <div className="bg-gradient-to-br from-[#ffffff] via-[#f8fafc] to-[#edf4fc] backdrop-blur-3xl border-4 border-[#3b82f6]/60 rounded-[32px] shadow-[0_25px_60px_-15px_rgba(15,26,46,0.35)] p-6 md:p-10 text-[#0f1a2e] relative overflow-hidden">
+            {/* Top decorative accent banner */}
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#cbd5e1]/60 flex-wrap gap-3">
+              <div className="flex items-center gap-2">
+                <span className="flex h-3 w-3 rounded-full bg-[#2563eb] animate-ping" />
+                <span className="text-xs font-black text-[#1d4ed8] uppercase tracking-wider bg-[#dbeafe] px-3 py-1 rounded-full border border-[#bfdbfe]">
+                  ⚡ Live Fare Engine &bull; Instant Lowest Price Guarantee
+                </span>
+              </div>
+              <div className="flex items-center gap-4 text-xs font-extrabold text-[#475569]">
+                <span className="flex items-center gap-1.5 text-[#16a34a]">
+                  ✓ 100% Refundable Fares
+                </span>
+                <span className="flex items-center gap-1.5 text-[#2563eb]">
+                  ✓ 0% Gateway Fees
+                </span>
+              </div>
+            </div>
+
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="w-full max-w-md mx-auto grid grid-cols-2 bg-[#f1f5f9] rounded-2xl p-1.5 border border-[#cbd5e1]">
+              <TabsList className="w-full max-w-md mx-auto grid grid-cols-2 bg-[#e2e8f0] rounded-2xl p-1.5 border border-[#cbd5e1] shadow-inner mb-6">
                 <TabsTrigger
                   value="flights"
-                  className="rounded-xl font-extrabold text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0f1a2e] data-[state=active]:to-[#1e3a8a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3 transition-all"
+                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0f1a2e] data-[state=active]:via-[#1e3a8a] data-[state=active]:to-[#0f1a2e] data-[state=active]:text-white data-[state=active]:shadow-xl text-[#334155] py-3.5 transition-all cursor-pointer"
                 >
                   <Plane className="w-5 h-5 text-[#3b82f6]" />
                   Flights
                 </TabsTrigger>
                 <TabsTrigger
                   value="hotels"
-                  className="rounded-xl font-extrabold text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0f1a2e] data-[state=active]:to-[#1e3a8a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3 transition-all"
+                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0f1a2e] data-[state=active]:via-[#1e3a8a] data-[state=active]:to-[#0f1a2e] data-[state=active]:text-white data-[state=active]:shadow-xl text-[#334155] py-3.5 transition-all cursor-pointer"
                 >
                   <BedDouble className="w-5 h-5 text-[#3b82f6]" />
                   Hotels
@@ -434,7 +452,7 @@ export default function Home() {
               </TabsList>
 
               {/* FLIGHTS SEARCH */}
-              <TabsContent value="flights" className="mt-6">
+              <TabsContent value="flights" className="mt-2 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
                   <div className="space-y-2">
                     <Label className="text-[#0f1a2e] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
@@ -443,7 +461,7 @@ export default function Home() {
                     <select
                       value={fromCity}
                       onChange={(e) => setFromCity(e.target.value)}
-                      className="w-full bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-4 font-bold shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer text-sm"
                     >
                       <option value="" disabled>Select Departure City</option>
                       {indianCities.map((city) => (
@@ -459,7 +477,7 @@ export default function Home() {
                     <select
                       value={toCity}
                       onChange={(e) => setToCity(e.target.value)}
-                      className="w-full bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-4 font-bold shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer text-sm"
                     >
                       <option value="" disabled>Select Destination City</option>
                       {indianCities.map((city) => (
@@ -476,7 +494,7 @@ export default function Home() {
                       type="date"
                       value={departDate}
                       onChange={(e) => setDepartDate(e.target.value)}
-                      className="bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-4 font-bold shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all"
+                      className="bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all text-sm"
                     />
                   </div>
 
@@ -492,7 +510,7 @@ export default function Home() {
                         const count = parseInt(val) || 1;
                         setFlightAdults(count);
                       }}
-                      className="w-full bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-4 font-bold shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer text-sm"
                     >
                       <option value="1">1 Traveller</option>
                       <option value="2">2 Travellers</option>
@@ -505,14 +523,18 @@ export default function Home() {
                 </div>
 
                 {/* FLIGHT AGE & TRAVELLER BREAKDOWN */}
-                <div className="mt-4 bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-4 space-y-3">
+                <div className="bg-gradient-to-r from-[#eff6ff] via-[#e0f2fe] to-[#eff6ff] border-2 border-[#93c5fd] rounded-2xl p-5 space-y-3 shadow-inner">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-black uppercase tracking-wider text-[#1e3a8a]">Passenger Breakdown &amp; Child Age Options</span>
-                    <span className="text-[11px] font-extrabold text-[#2563eb]">Custom Family Size</span>
+                    <span className="text-xs font-black uppercase tracking-wider text-[#1e3a8a] flex items-center gap-2">
+                      <Users className="w-4 h-4 text-[#2563eb]" /> Passenger Breakdown &amp; Child Age Options
+                    </span>
+                    <span className="text-[11px] font-black text-[#2563eb] bg-white px-3 py-1 rounded-full border border-[#bfdbfe] shadow-xs">
+                      Custom Family Size
+                    </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <Label className="text-[11px] font-bold text-[#475569]">Adults (12+ yrs)</Label>
+                      <Label className="text-xs font-bold text-[#334155]">Adults (12+ yrs)</Label>
                       <select
                         value={flightAdults}
                         onChange={(e) => {
@@ -520,7 +542,7 @@ export default function Home() {
                           setFlightAdults(a);
                           setTravellers(String(a + flightChildren));
                         }}
-                        className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-xs font-bold text-[#0f172a]"
+                        className="w-full mt-1.5 bg-white border-2 border-[#b8cde4] rounded-xl h-11 px-3 text-xs font-black text-[#0f172a] shadow-xs"
                       >
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                           <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
@@ -529,7 +551,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label className="text-[11px] font-bold text-[#475569]">Children (2-12 yrs)</Label>
+                      <Label className="text-xs font-bold text-[#334155]">Children (2-12 yrs)</Label>
                       <select
                         value={flightChildren}
                         onChange={(e) => {
@@ -537,7 +559,7 @@ export default function Home() {
                           setFlightChildren(c);
                           setTravellers(String(flightAdults + c));
                         }}
-                        className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-xs font-bold text-[#0f172a]"
+                        className="w-full mt-1.5 bg-white border-2 border-[#b8cde4] rounded-xl h-11 px-3 text-xs font-black text-[#0f172a] shadow-xs"
                       >
                         {[0, 1, 2, 3, 4, 5].map((n) => (
                           <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
@@ -546,12 +568,12 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label className="text-[11px] font-bold text-[#475569]">Child 1 Age Selection</Label>
+                      <Label className="text-xs font-bold text-[#334155]">Child 1 Age Selection</Label>
                       <select
                         value={flightChildAge}
                         onChange={(e) => setFlightChildAge(e.target.value)}
                         disabled={flightChildren === 0}
-                        className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-xs font-bold text-[#0f172a] disabled:opacity-50"
+                        className="w-full mt-1.5 bg-white border-2 border-[#b8cde4] rounded-xl h-11 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50"
                       >
                         <option value="2">2 years (Child Fare)</option>
                         <option value="5">5 years (Child Fare)</option>
@@ -562,11 +584,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex justify-center mt-6">
+                <div className="flex justify-center pt-2">
                   <Button
                     type="button"
                     onClick={handleSearchFlights}
-                    className="bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-lg rounded-full px-14 h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 flex items-center gap-3 transition-all tracking-wide uppercase cursor-pointer"
+                    className="bg-gradient-to-r from-[#ff4d00] via-[#ea580c] to-[#ff4d00] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_30px_rgba(234,88,12,0.45)] hover:shadow-[0_15px_40px_rgba(234,88,12,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/40"
                   >
                     <Search className="w-6 h-6 stroke-[3]" />
                     Search Flights
@@ -575,7 +597,7 @@ export default function Home() {
               </TabsContent>
 
               {/* HOTELS SEARCH — SEPARATE ROOMS, CLEAN NUMBERS & AGE OPTIONS */}
-              <TabsContent value="hotels" className="mt-6">
+              <TabsContent value="hotels" className="mt-2 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
                   <div className="space-y-2 lg:col-span-1">
                     <Label className="text-[#0f1a2e] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
@@ -584,7 +606,7 @@ export default function Home() {
                     <select
                       value={hotelLocation}
                       onChange={(e) => setHotelLocation(e.target.value)}
-                      className="w-full bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-3 font-bold text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
                     >
                       <option value="" disabled>Select Location or Hotel</option>
                       {indianCities.map((city) => (
@@ -604,7 +626,7 @@ export default function Home() {
                       type="date"
                       value={checkInDate}
                       onChange={(e) => setCheckInDate(e.target.value)}
-                      className="bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-3 font-bold text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all"
+                      className="bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all"
                     />
                   </div>
 
@@ -616,11 +638,11 @@ export default function Home() {
                       type="date"
                       value={checkOutDate}
                       onChange={(e) => setCheckOutDate(e.target.value)}
-                      className="bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-3 font-bold text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all"
+                      className="bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all"
                     />
                   </div>
 
-                  {/* ROOMS SELECTOR (SEPARATE FIELD!) */}
+                  {/* ROOMS SELECTOR */}
                   <div className="space-y-2">
                     <Label className="text-[#0f1a2e] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
                       <BedDouble className="w-4 h-4 text-[#2563eb]" /> Rooms
@@ -628,7 +650,7 @@ export default function Home() {
                     <select
                       value={rooms}
                       onChange={(e) => setRooms(e.target.value)}
-                      className="w-full bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-3 font-bold text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
                     >
                       <option value="1">1 Room</option>
                       <option value="2">2 Rooms (e.g. 2 Adults / 2 Rooms)</option>
@@ -638,7 +660,7 @@ export default function Home() {
                     </select>
                   </div>
 
-                  {/* GUESTS SELECTOR (CLEAN NUMBERS!) */}
+                  {/* GUESTS SELECTOR */}
                   <div className="space-y-2">
                     <Label className="text-[#0f1a2e] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
                       <Users className="w-4 h-4 text-[#2563eb]" /> Guests
@@ -651,7 +673,7 @@ export default function Home() {
                         const count = parseInt(val) || 2;
                         setHotelAdults(count);
                       }}
-                      className="w-full bg-[#f8fafc] border-2 border-[#cbd5e1] text-[#0f172a] rounded-xl h-13 px-3 font-bold text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#b8cde4] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-sm hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
                     >
                       <option value="1">1 Guest</option>
                       <option value="2">2 Guests</option>
@@ -664,14 +686,18 @@ export default function Home() {
                 </div>
 
                 {/* HOTEL AGE & FAMILY BREAKDOWN CONTROL */}
-                <div className="mt-4 bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-4 space-y-3">
+                <div className="bg-gradient-to-r from-[#eff6ff] via-[#e0f2fe] to-[#eff6ff] border-2 border-[#93c5fd] rounded-2xl p-5 space-y-3 shadow-inner">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-black uppercase tracking-wider text-[#1e3a8a]">Custom Rooms &amp; Children Age Breakdown</span>
-                    <span className="text-[11px] font-extrabold text-[#2563eb]">Book Any Number of Rooms</span>
+                    <span className="text-xs font-black uppercase tracking-wider text-[#1e3a8a] flex items-center gap-2">
+                      <BedDouble className="w-4 h-4 text-[#2563eb]" /> Custom Rooms &amp; Children Age Breakdown
+                    </span>
+                    <span className="text-[11px] font-black text-[#2563eb] bg-white px-3 py-1 rounded-full border border-[#bfdbfe] shadow-xs">
+                      Book Any Number of Rooms
+                    </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <Label className="text-[11px] font-bold text-[#475569]">Adults (12+ yrs)</Label>
+                      <Label className="text-xs font-bold text-[#334155]">Adults (12+ yrs)</Label>
                       <select
                         value={hotelAdults}
                         onChange={(e) => {
@@ -679,7 +705,7 @@ export default function Home() {
                           setHotelAdults(a);
                           setGuests(String(a + hotelChildren));
                         }}
-                        className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-xs font-bold text-[#0f172a]"
+                        className="w-full mt-1.5 bg-white border-2 border-[#b8cde4] rounded-xl h-11 px-3 text-xs font-black text-[#0f172a] shadow-xs"
                       >
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                           <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
@@ -688,7 +714,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label className="text-[11px] font-bold text-[#475569]">Children (0-12 yrs)</Label>
+                      <Label className="text-xs font-bold text-[#334155]">Children (0-12 yrs)</Label>
                       <select
                         value={hotelChildren}
                         onChange={(e) => {
@@ -696,7 +722,7 @@ export default function Home() {
                           setHotelChildren(c);
                           setGuests(String(hotelAdults + c));
                         }}
-                        className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-xs font-bold text-[#0f172a]"
+                        className="w-full mt-1.5 bg-white border-2 border-[#b8cde4] rounded-xl h-11 px-3 text-xs font-black text-[#0f172a] shadow-xs"
                       >
                         {[0, 1, 2, 3, 4, 5].map((n) => (
                           <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
@@ -705,12 +731,12 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label className="text-[11px] font-bold text-[#475569]">Child 1 Age Selection</Label>
+                      <Label className="text-xs font-bold text-[#334155]">Child 1 Age Selection</Label>
                       <select
                         value={hotelChildAge}
                         onChange={(e) => setHotelChildAge(e.target.value)}
                         disabled={hotelChildren === 0}
-                        className="w-full mt-1 bg-white border border-[#cbd5e1] rounded-lg h-10 px-3 text-xs font-bold text-[#0f172a] disabled:opacity-50"
+                        className="w-full mt-1.5 bg-white border-2 border-[#b8cde4] rounded-xl h-11 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50"
                       >
                         <option value="2">2 years (Infant Bed Included)</option>
                         <option value="5">5 years (Junior Free Stay)</option>
@@ -721,11 +747,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex justify-center mt-8">
+                <div className="flex justify-center pt-2">
                   <Button
                     type="button"
                     onClick={handleSearchHotels}
-                    className="bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 font-black text-lg rounded-full px-14 h-14 shadow-2xl hover:shadow-orange-500/40 hover:scale-105 flex items-center gap-3 transition-all tracking-wide uppercase cursor-pointer"
+                    className="bg-gradient-to-r from-[#ff4d00] via-[#ea580c] to-[#ff4d00] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_30px_rgba(234,88,12,0.45)] hover:shadow-[0_15px_40px_rgba(234,88,12,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/40"
                   >
                     <Search className="w-6 h-6 stroke-[3]" />
                     Search Hotels
