@@ -169,7 +169,13 @@ export default function FlightStatusPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              {/* speed mode indicator */}
+              <div className="flex items-center gap-1.5 bg-white/10 border border-white/20 px-3 py-1.5 rounded-full text-xs font-semibold text-white">
+                <Gauge className="w-4 h-4 text-[#4f9c7f]" />
+                <span>1x Real-Time (Actual Time)</span>
+              </div>
+
               {/* push toggle */}
               <button
                 onClick={enablePush}

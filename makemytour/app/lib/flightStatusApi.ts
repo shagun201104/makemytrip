@@ -77,7 +77,7 @@ export interface StatusEvent {
 type Listener = (payload: { flights: LiveFlight[]; events: StatusEvent[] }) => void;
 
 // --- tuning ------------------------------------------------------------------
-const SIM_SPEED = 120; // 1 real second ≈ 2 simulated minutes (watchable demo)
+let currentSimSpeed = 1; // 1x Real-Time (1 real second = 1 real second) as requested by user
 const TICK_MS = 2000; // engine tick cadence
 const MIN = 60_000; // one minute in ms
 
@@ -280,7 +280,18 @@ class FlightStatusEngine {
   }
 
   private simNow(): number {
-    return this.anchor + (Date.now() - this.realStart) * SIM_SPEED;
+    return this.anchor + (Date.now() - this.realStart) * currentSimSpeed;
+  }
+
+  setSimSpeed(speed: number) {
+    const now = Date.now();
+    this.anchor = this.simNow();
+    this.realStart = now;
+    currentSimSpeed = speed;
+  }
+
+  getSimSpeed(): number {
+    return currentSimSpeed;
   }
 
   // Public accessor to the accelerated simulation clock (for live countdowns).
