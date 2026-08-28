@@ -125,10 +125,12 @@ export function CategoryServices({ category }: CategoryServicesProps) {
                 onChange={(e) => setPassengers(e.target.value)}
                 className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
               >
-                <option value="1">2 Guests (1 Bedroom)</option>
-                <option value="2">4 Guests (2 Bedrooms)</option>
-                <option value="3">6 Guests (3 Bedroom Villa)</option>
-                <option value="4">8+ Guests (Full Private Estate)</option>
+                <option value="1">1 Guest (1 Room)</option>
+                <option value="2">2 Guests (2 Rooms)</option>
+                <option value="3">3 Guests (2 Bedrooms)</option>
+                <option value="4">4 Guests (2 Bedrooms)</option>
+                <option value="5">6 Guests (3 Bedroom Villa)</option>
+                <option value="6">8+ Guests (Full Private Estate)</option>
               </select>
             </div>
           </div>
