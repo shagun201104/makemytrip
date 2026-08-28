@@ -465,18 +465,18 @@ export default function AdminDashboardPage() {
   // If not admin, render Access Denied message
   if (!user || !isAdmin) {
     return (
-      <div className="min-h-screen bg-[#f4f7fb] flex items-center justify-center p-4">
-        <div className="bg-white rounded-3xl shadow-2xl border border-[#e2e8f0] p-8 md:p-12 text-center max-w-md space-y-4">
-          <div className="w-16 h-16 bg-[#fef2f2] text-[#ef4444] rounded-full flex items-center justify-center mx-auto">
+      <div className="min-h-screen bg-[#0f172a] flex items-center justify-center p-4">
+        <div className="bg-[#1e293b] rounded-3xl shadow-2xl border border-[#334155] p-8 md:p-12 text-center max-w-md space-y-4">
+          <div className="w-16 h-16 bg-[#ef4444]/10 text-[#ef4444] rounded-full flex items-center justify-center mx-auto border border-[#ef4444]/20">
             <ShieldAlert className="w-8 h-8" />
           </div>
-          <h2 className="text-2xl font-extrabold text-[#0f1a2e]">Admin Access Required</h2>
-          <p className="text-sm text-[#64748b]">
+          <h2 className="text-2xl font-black text-white">Admin Access Required</h2>
+          <p className="text-sm text-[#94a3b8]">
             This portal is restricted to authorized Administrator Shagun Prajapati. Please sign in with admin credentials.
           </p>
           <Button
             onClick={() => router.push("/")}
-            className="w-full bg-[#0f1a2e] text-white hover:bg-[#1a2947] font-bold rounded-full h-11"
+            className="w-full bg-[#2563eb] text-white hover:bg-[#1d4ed8] font-black rounded-full h-12 shadow-lg"
           >
             Return to Homepage
           </Button>
@@ -486,100 +486,121 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#c3daf0] via-[#a3cef0] to-[#96bfe3] text-[#0f1a2e] px-4 md:px-8 py-8">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-[#0f172a] text-white px-4 md:px-8 py-8 relative overflow-hidden font-sans">
+      {/* Background ambient glow */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#2563eb]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#16a34a]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto space-y-8 relative z-10">
         
         {/* Banner */}
         <div
-          className="relative overflow-hidden rounded-3xl shadow-2xl"
+          className="relative overflow-hidden rounded-3xl shadow-2xl border border-[#334155]"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(15,26,46,0.88), rgba(43,62,87,0.65)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80')",
+              "linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.75)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
           <div className="px-6 py-10 md:px-12 md:py-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">
-                  <Building2 className="w-3.5 h-3.5" /> Official Control Center
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md text-[#93c5fd] text-xs font-black px-3.5 py-1 rounded-full border border-white/15">
+                  <Building2 className="w-3.5 h-3.5" /> Enterprise System Control Center
                 </span>
-                <span className="bg-[#22c55e] text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">
-                  Admin: Shagun Prajapati
+                <span className="bg-[#16a34a] text-white text-[11px] font-black px-3 py-1 rounded-full border border-[#4ade80]/40 shadow-xs">
+                  Primary Admin: Shagun Prajapati
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-md">
+              <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white drop-shadow-md">
                 MakeMyTour Admin Panel
               </h1>
-              <p className="text-[#dbe8f7] mt-2 text-sm md:text-base max-w-xl">
-                Manage global flights, luxury hotel inventory, and user privileges across all systems.
+              <p className="text-[#94a3b8] mt-2 text-sm md:text-base max-w-xl font-medium">
+                Real-time inventory governance for global flights, luxury hotels, and admin user authorizations.
               </p>
+            </div>
+
+            <div className="flex items-center gap-3 bg-[#1e293b]/80 backdrop-blur-md p-4 rounded-2xl border border-[#334155]">
+              <span className="flex h-3 w-3 rounded-full bg-[#4ade80] animate-ping" />
+              <div>
+                <p className="text-xs font-bold text-[#94a3b8] uppercase tracking-wider">System Status</p>
+                <p className="text-sm font-black text-[#4ade80]">100% Operational • Live Sync</p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Action notification toast */}
         {actionNotice && (
-          <div className="bg-[#dcfce7] border border-[#86efac] text-[#15803d] px-5 py-3 rounded-2xl text-sm font-bold shadow-md flex items-center gap-2 animate-bounce">
-            <CheckCircle2 className="w-5 h-5 shrink-0" />
+          <div className="bg-[#166534] border border-[#22c55e]/50 text-white px-5 py-3.5 rounded-2xl text-sm font-bold shadow-xl flex items-center gap-2.5 animate-bounce">
+            <CheckCircle2 className="w-5 h-5 text-[#4ade80] shrink-0" />
             {actionNotice}
           </div>
         )}
 
         {/* Quick stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          <div className="flex items-center gap-4 bg-white/70 border border-white/80 rounded-2xl shadow-lg backdrop-blur-md p-5">
-            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#5b9bd5] to-[#4a86c9] text-white shadow-md">
-              <Plane className="w-7 h-7" />
-            </div>
+          <div className="flex items-center justify-between bg-[#1e293b]/90 border border-[#3b82f6]/30 rounded-3xl shadow-xl backdrop-blur-md p-6 hover:border-[#3b82f6]/60 transition-all">
             <div>
-              <p className="text-3xl font-extrabold text-[#0f1a2e] leading-none">{flights.length}</p>
-              <p className="text-[#3d5170] text-sm font-medium mt-1">Active Flights</p>
+              <p className="text-xs font-bold text-[#94a3b8] uppercase tracking-wider">Active Flights</p>
+              <p className="text-4xl font-black text-white mt-1">{flights.length}</p>
+              <span className="inline-block mt-2 text-xs font-bold text-[#60a5fa] bg-[#1e3a8a]/50 px-2.5 py-0.5 rounded-full border border-[#3b82f6]/30">
+                +12.5% Live Routes
+              </span>
+            </div>
+            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white shadow-lg shadow-[#2563eb]/30">
+              <Plane className="w-7 h-7" />
             </div>
           </div>
           
-          <div className="flex items-center gap-4 bg-white/70 border border-white/80 rounded-2xl shadow-lg backdrop-blur-md p-5">
-            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#6bb39a] to-[#4f9c7f] text-white shadow-md">
-              <BedDouble className="w-7 h-7" />
-            </div>
+          <div className="flex items-center justify-between bg-[#1e293b]/90 border border-[#22c55e]/30 rounded-3xl shadow-xl backdrop-blur-md p-6 hover:border-[#22c55e]/60 transition-all">
             <div>
-              <p className="text-3xl font-extrabold text-[#0f1a2e] leading-none">{hotels.length}</p>
-              <p className="text-[#3d5170] text-sm font-medium mt-1">Managed Hotels</p>
+              <p className="text-xs font-bold text-[#94a3b8] uppercase tracking-wider">Managed Hotels</p>
+              <p className="text-4xl font-black text-white mt-1">{hotels.length}</p>
+              <span className="inline-block mt-2 text-xs font-bold text-[#4ade80] bg-[#14532d]/50 px-2.5 py-0.5 rounded-full border border-[#22c55e]/30">
+                98% Occupancy
+              </span>
+            </div>
+            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#16a34a] to-[#15803d] text-white shadow-lg shadow-[#16a34a]/30">
+              <BedDouble className="w-7 h-7" />
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-white/70 border border-white/80 rounded-2xl shadow-lg backdrop-blur-md p-5">
-            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#c99bd5] to-[#a86dc9] text-white shadow-md">
-              <UsersIcon className="w-7 h-7" />
-            </div>
+          <div className="flex items-center justify-between bg-[#1e293b]/90 border border-[#a855f7]/30 rounded-3xl shadow-xl backdrop-blur-md p-6 hover:border-[#a855f7]/60 transition-all">
             <div>
-              <p className="text-3xl font-extrabold text-[#0f1a2e] leading-none">{users.length}</p>
-              <p className="text-[#3d5170] text-sm font-medium mt-1">System Users</p>
+              <p className="text-xs font-bold text-[#94a3b8] uppercase tracking-wider">System Users</p>
+              <p className="text-4xl font-black text-white mt-1">{users.length}</p>
+              <span className="inline-block mt-2 text-xs font-bold text-[#c084fc] bg-[#581c87]/50 px-2.5 py-0.5 rounded-full border border-[#a855f7]/30">
+                RBAC Governed
+              </span>
+            </div>
+            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#9333ea] to-[#7e22ce] text-white shadow-lg shadow-[#9333ea]/30">
+              <UsersIcon className="w-7 h-7" />
             </div>
           </div>
         </div>
 
         {/* Tabs section */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="w-full grid grid-cols-3 bg-white/50 rounded-2xl p-1.5 backdrop-blur-md border border-white/60">
+          <TabsList className="w-full grid grid-cols-3 bg-[#1e293b] rounded-2xl p-1.5 border border-[#334155] shadow-lg">
             <TabsTrigger
               value="flights"
-              className="rounded-xl font-bold flex items-center justify-center gap-2 data-[state=active]:bg-[#0f1a2e] data-[state=active]:text-white data-[state=active]:shadow-md text-[#2c3e57] py-3 transition-all"
+              className="rounded-xl font-black text-sm flex items-center justify-center gap-2 data-[state=active]:bg-[#2563eb] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#94a3b8] py-3.5 transition-all cursor-pointer"
             >
               <Plane className="w-4 h-4" />
               Flights ({flights.length})
             </TabsTrigger>
             <TabsTrigger
               value="hotels"
-              className="rounded-xl font-bold flex items-center justify-center gap-2 data-[state=active]:bg-[#0f1a2e] data-[state=active]:text-white data-[state=active]:shadow-md text-[#2c3e57] py-3 transition-all"
+              className="rounded-xl font-black text-sm flex items-center justify-center gap-2 data-[state=active]:bg-[#2563eb] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#94a3b8] py-3.5 transition-all cursor-pointer"
             >
               <BedDouble className="w-4 h-4" />
               Hotels ({hotels.length})
             </TabsTrigger>
             <TabsTrigger
               value="users"
-              className="rounded-xl font-bold flex items-center justify-center gap-2 data-[state=active]:bg-[#0f1a2e] data-[state=active]:text-white data-[state=active]:shadow-md text-[#2c3e57] py-3 transition-all"
+              className="rounded-xl font-black text-sm flex items-center justify-center gap-2 data-[state=active]:bg-[#2563eb] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#94a3b8] py-3.5 transition-all cursor-pointer"
             >
               <UsersIcon className="w-4 h-4" />
               Users & Admin Roles
@@ -589,12 +610,12 @@ export default function AdminDashboardPage() {
           {/* TAB 1: FLIGHTS */}
           <TabsContent value="flights" className="mt-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-              <Card className="bg-white/70 border border-white/80 rounded-2xl shadow-xl backdrop-blur-md">
+              <Card className="bg-[#1e293b]/90 border border-[#334155] rounded-3xl shadow-2xl text-white">
                 <CardHeader>
-                  <CardTitle className="text-[#0f1a2e] text-2xl font-extrabold flex items-center gap-2">
-                    <Plane className="w-5 h-5 text-[#5b9bd5]" /> Flight Inventory
+                  <CardTitle className="text-white text-2xl font-black flex items-center gap-2.5">
+                    <Plane className="w-6 h-6 text-[#60a5fa]" /> Flight Inventory
                   </CardTitle>
-                  <CardDescription className="text-[#3d5170] text-xs">
+                  <CardDescription className="text-[#94a3b8] text-xs font-medium">
                     View and manage all domestic & international flight schedules
                   </CardDescription>
                 </CardHeader>
@@ -603,13 +624,13 @@ export default function AdminDashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/70 border border-white/80 rounded-2xl shadow-xl backdrop-blur-md">
+              <Card className="bg-[#1e293b]/90 border border-[#334155] rounded-3xl shadow-2xl text-white">
                 <CardHeader>
-                  <CardTitle className="text-[#0f1a2e] text-2xl font-extrabold flex items-center gap-2">
-                    {selectedFlight ? <Edit className="w-5 h-5 text-[#5b9bd5]" /> : <Plus className="w-5 h-5 text-[#22c55e]" />}
+                  <CardTitle className="text-white text-2xl font-black flex items-center gap-2.5">
+                    {selectedFlight ? <Edit className="w-6 h-6 text-[#60a5fa]" /> : <Plus className="w-6 h-6 text-[#4ade80]" />}
                     {selectedFlight ? "Edit Flight Schedule" : "Add New Flight"}
                   </CardTitle>
-                  <CardDescription className="text-[#3d5170] text-xs">
+                  <CardDescription className="text-[#94a3b8] text-xs font-medium">
                     {selectedFlight
                       ? `Updating details for "${selectedFlight.flightName}"`
                       : "Fill out the fields below to add a new flight route."}
@@ -625,12 +646,12 @@ export default function AdminDashboardPage() {
           {/* TAB 2: HOTELS */}
           <TabsContent value="hotels" className="mt-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-              <Card className="bg-white/70 border border-white/80 rounded-2xl shadow-xl backdrop-blur-md">
+              <Card className="bg-[#1e293b]/90 border border-[#334155] rounded-3xl shadow-2xl text-white">
                 <CardHeader>
-                  <CardTitle className="text-[#0f1a2e] text-2xl font-extrabold flex items-center gap-2">
-                    <BedDouble className="w-5 h-5 text-[#22c55e]" /> Hotel Inventory
+                  <CardTitle className="text-white text-2xl font-black flex items-center gap-2.5">
+                    <BedDouble className="w-6 h-6 text-[#4ade80]" /> Hotel Inventory
                   </CardTitle>
-                  <CardDescription className="text-[#3d5170] text-xs">
+                  <CardDescription className="text-[#94a3b8] text-xs font-medium">
                     View and manage luxury hotels and resort listings
                   </CardDescription>
                 </CardHeader>
@@ -639,13 +660,13 @@ export default function AdminDashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/70 border border-white/80 rounded-2xl shadow-xl backdrop-blur-md">
+              <Card className="bg-[#1e293b]/90 border border-[#334155] rounded-3xl shadow-2xl text-white">
                 <CardHeader>
-                  <CardTitle className="text-[#0f1a2e] text-2xl font-extrabold flex items-center gap-2">
-                    {selectedHotel ? <Edit className="w-5 h-5 text-[#22c55e]" /> : <Plus className="w-5 h-5 text-[#22c55e]" />}
+                  <CardTitle className="text-white text-2xl font-black flex items-center gap-2.5">
+                    {selectedHotel ? <Edit className="w-6 h-6 text-[#4ade80]" /> : <Plus className="w-6 h-6 text-[#4ade80]" />}
                     {selectedHotel ? "Edit Hotel Listing" : "Add New Hotel"}
                   </CardTitle>
-                  <CardDescription className="text-[#3d5170] text-xs">
+                  <CardDescription className="text-[#94a3b8] text-xs font-medium">
                     {selectedHotel
                       ? `Updating listing for "${selectedHotel.hotelName}"`
                       : "Fill out the fields below to add a new hotel property."}
@@ -660,36 +681,36 @@ export default function AdminDashboardPage() {
 
           {/* TAB 3: USERS & ADMIN ROLES */}
           <TabsContent value="users" className="mt-6">
-            <Card className="bg-white/70 border border-white/80 rounded-2xl shadow-xl backdrop-blur-md">
+            <Card className="bg-[#1e293b]/90 border border-[#334155] rounded-3xl shadow-2xl text-white">
               <CardHeader>
-                <CardTitle className="text-[#0f1a2e] text-2xl font-extrabold flex items-center gap-2">
-                  <User className="w-5 h-5 text-[#a86dc9]" /> User & Administrator Management
+                <CardTitle className="text-white text-2xl font-black flex items-center gap-2.5">
+                  <User className="w-6 h-6 text-[#c084fc]" /> User & Administrator Management
                 </CardTitle>
-                <CardDescription className="text-[#3d5170] text-xs">
-                  Only Shagun Prajapati holds primary Administrator authority.
+                <CardDescription className="text-[#94a3b8] text-xs font-medium">
+                  Shagun Prajapati holds primary Administrator authority.
                 </CardDescription>
                 <Input
                   placeholder="Search user by name or email..."
                   value={searchEmail}
                   onChange={(e) => setSearchEmail(e.target.value)}
-                  className="mt-3 bg-white border border-[#b8cde4] text-[#0f1a2e] placeholder:text-[#7c8ba3] rounded-xl h-10 px-3 max-w-sm"
+                  className="mt-3 bg-[#0f172a] border border-[#334155] text-white placeholder:text-[#64748b] rounded-xl h-11 px-4 max-w-sm font-bold text-sm focus:border-[#3b82f6]"
                 />
               </CardHeader>
               <CardContent>
-                <div className="rounded-xl border border-white/80 overflow-x-auto bg-white/50">
+                <div className="rounded-2xl border border-[#334155] overflow-hidden bg-[#0f172a]">
                   <Table>
                     <TableHeader>
-                      <TableRow className="border-b border-[#e2e8f0] bg-white/70">
-                        <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Name</TableHead>
-                        <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Email</TableHead>
-                        <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Role</TableHead>
-                        <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs text-right">Action</TableHead>
+                      <TableRow className="border-b border-[#334155] bg-[#0f172a]">
+                        <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Name</TableHead>
+                        <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Email</TableHead>
+                        <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Role</TableHead>
+                        <TableHead className="text-[#94a3b8] font-black uppercase text-xs text-right">Action</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {filteredUsers.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={4} className="text-center text-[#3d5170] py-6 text-sm">
+                          <TableCell colSpan={4} className="text-center text-[#94a3b8] py-6 text-sm">
                             No matching users found
                           </TableCell>
                         </TableRow>
@@ -697,22 +718,22 @@ export default function AdminDashboardPage() {
                         filteredUsers.map((u: any) => {
                           const isPrimaryAdmin = u.firstname.toLowerCase() === "shagun" && u.lastname.toLowerCase() === "prajapati";
                           return (
-                            <TableRow key={u._id} className="border-b border-[#e2e8f0]/60 hover:bg-white/60">
-                              <TableCell className="font-bold text-[#0f1a2e] text-sm">
+                            <TableRow key={u._id} className="border-b border-[#334155]/60 hover:bg-[#1e293b]">
+                              <TableCell className="font-bold text-white text-sm">
                                 {u.firstname} {u.lastname}
                                 {isPrimaryAdmin && (
-                                  <span className="ml-2 text-[10px] bg-[#fef3c7] text-[#b45309] border border-[#fde68a] font-extrabold px-2 py-0.5 rounded-full">
+                                  <span className="ml-2 text-[10px] bg-[#fef3c7] text-[#b45309] border border-[#fde68a] font-extrabold px-2.5 py-0.5 rounded-full">
                                     Primary Admin
                                   </span>
                                 )}
                               </TableCell>
-                              <TableCell className="text-[#2c3e57] text-sm">{u.email}</TableCell>
+                              <TableCell className="text-[#94a3b8] text-sm font-medium">{u.email}</TableCell>
                               <TableCell>
                                 <span
                                   className={
                                     u.role === "ADMIN"
-                                      ? "bg-[#0f1a2e] text-white text-xs font-bold px-3 py-1 rounded-full"
-                                      : "bg-white text-[#2c3e57] text-xs font-bold px-3 py-1 rounded-full border border-[#cbd5e1]"
+                                      ? "bg-[#2563eb] text-white text-xs font-black px-3 py-1 rounded-full"
+                                      : "bg-[#334155] text-white text-xs font-bold px-3 py-1 rounded-full"
                                   }
                                 >
                                   {u.role}
@@ -723,7 +744,7 @@ export default function AdminDashboardPage() {
                                   size="sm"
                                   disabled={isPrimaryAdmin} // Primary admin cannot be downgraded
                                   onClick={() => toggleUserRole(u._id)}
-                                  className="bg-[#0f1a2e] text-white hover:bg-[#1a2947] font-bold text-xs rounded-xl shadow-xs disabled:opacity-50"
+                                  className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-xs rounded-xl shadow-md disabled:opacity-50"
                                 >
                                   {u.role === "ADMIN" ? "Revoke Admin" : "Make Admin"}
                                 </Button>
@@ -747,35 +768,35 @@ export default function AdminDashboardPage() {
 // Subcomponent: Flight List Table
 function FlightList({ flights, onSelect }: any) {
   return (
-    <div className="rounded-xl border border-white/80 overflow-x-auto bg-white/50">
+    <div className="rounded-2xl border border-[#334155] overflow-hidden bg-[#0f172a]">
       <Table>
         <TableHeader>
-          <TableRow className="border-b border-[#e2e8f0] bg-white/70">
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Airline & Flight</TableHead>
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Route</TableHead>
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Price</TableHead>
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs text-right">Action</TableHead>
+          <TableRow className="border-b border-[#334155] bg-[#0f172a]">
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Airline & Flight</TableHead>
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Route</TableHead>
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Price</TableHead>
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {flights.length > 0 ? (
             flights.map((f: any) => (
-              <TableRow key={f.id || f.flightName} className="border-b border-[#e2e8f0]/60 hover:bg-white/60">
-                <TableCell className="font-bold text-[#0f1a2e] text-sm">
+              <TableRow key={f.id || f.flightName} className="border-b border-[#334155]/60 hover:bg-[#1e293b]">
+                <TableCell className="font-bold text-white text-sm">
                   {f.flightName}
-                  <p className="text-[10px] text-[#7c8ba3] font-normal">{f.availableSeats} seats left</p>
+                  <p className="text-[11px] text-[#94a3b8] font-normal">{f.availableSeats} seats left</p>
                 </TableCell>
-                <TableCell className="text-[#2c3e57] text-xs font-semibold">
+                <TableCell className="text-[#94a3b8] text-xs font-bold">
                   {f.from} &rarr; {f.to}
                 </TableCell>
-                <TableCell className="text-[#0f1a2e] font-bold text-xs">
+                <TableCell className="text-[#facc15] font-black text-sm drop-shadow-xs">
                   ₹{Number(f.price || 0).toLocaleString("en-IN")}
                 </TableCell>
                 <TableCell className="text-right">
                   <Button
                     size="sm"
                     onClick={() => onSelect(f)}
-                    className="bg-[#5b9bd5] text-white hover:bg-[#4a86c9] font-bold text-xs rounded-xl shadow-xs"
+                    className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-xs rounded-xl shadow-md cursor-pointer"
                   >
                     Edit
                   </Button>
@@ -784,7 +805,7 @@ function FlightList({ flights, onSelect }: any) {
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={4} className="text-center text-[#3d5170] py-6 text-sm">
+              <TableCell colSpan={4} className="text-center text-[#94a3b8] py-6 text-sm">
                 No flights available
               </TableCell>
             </TableRow>
@@ -825,77 +846,77 @@ function FlightForm({ flight, onSave, onCancel }: any) {
   };
 
   return (
-    <form onSubmit={handlesubmit} className="space-y-3 text-xs">
-      <div className="space-y-1">
-        <Label className="text-[#2c3e57] font-semibold text-xs">Flight Name / Number</Label>
+    <form onSubmit={handlesubmit} className="space-y-4 text-xs">
+      <div className="space-y-1.5">
+        <Label className="text-[#94a3b8] font-bold text-xs">Flight Name / Number</Label>
         <Input
           name="flightName"
           value={formdata.flightName}
           onChange={handlechange}
           placeholder="e.g. IndiGo 6E-204"
           required
-          className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+          className="bg-[#0f172a] border border-[#334155] text-white placeholder:text-[#64748b] rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
         />
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <div className="space-y-1">
-          <Label className="text-[#2c3e57] font-semibold text-xs">From (Origin)</Label>
+        <div className="space-y-1.5">
+          <Label className="text-[#94a3b8] font-bold text-xs">From (Origin)</Label>
           <Input
             name="from"
             value={formdata.from}
             onChange={handlechange}
             placeholder="e.g. New Delhi"
             required
-            className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+            className="bg-[#0f172a] border border-[#334155] text-white placeholder:text-[#64748b] rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
           />
         </div>
 
-        <div className="space-y-1">
-          <Label className="text-[#2c3e57] font-semibold text-xs">To (Destination)</Label>
+        <div className="space-y-1.5">
+          <Label className="text-[#94a3b8] font-bold text-xs">To (Destination)</Label>
           <Input
             name="to"
             value={formdata.to}
             onChange={handlechange}
             placeholder="e.g. Mumbai"
             required
-            className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+            className="bg-[#0f172a] border border-[#334155] text-white placeholder:text-[#64748b] rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <div className="space-y-1">
-          <Label className="text-[#2c3e57] font-semibold text-xs">Price (₹)</Label>
+        <div className="space-y-1.5">
+          <Label className="text-[#94a3b8] font-bold text-xs">Price (₹)</Label>
           <Input
             name="price"
             type="number"
             value={formdata.price}
             onChange={handlechange}
             required
-            className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+            className="bg-[#0f172a] border border-[#334155] text-white rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
           />
         </div>
 
-        <div className="space-y-1">
-          <Label className="text-[#2c3e57] font-semibold text-xs">Available Seats</Label>
+        <div className="space-y-1.5">
+          <Label className="text-[#94a3b8] font-bold text-xs">Available Seats</Label>
           <Input
             name="availableSeats"
             type="number"
             value={formdata.availableSeats}
             onChange={handlechange}
             required
-            className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+            className="bg-[#0f172a] border border-[#334155] text-white rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
           />
         </div>
       </div>
 
       <div className="flex gap-2 pt-2">
-        <Button type="submit" className="bg-[#0f1a2e] text-white hover:bg-[#1a2947] font-bold text-xs rounded-xl h-10 flex-1">
+        <Button type="submit" className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-sm rounded-xl h-11 flex-1 shadow-md cursor-pointer transition-all">
           {flight ? "Save Changes" : "Add Flight"}
         </Button>
         {flight && (
-          <Button type="button" onClick={onCancel} variant="outline" className="text-xs font-bold rounded-xl h-10">
+          <Button type="button" onClick={onCancel} variant="outline" className="text-xs font-bold rounded-xl h-11 border-[#334155] text-white hover:bg-[#334155]">
             Cancel
           </Button>
         )}
@@ -907,33 +928,33 @@ function FlightForm({ flight, onSave, onCancel }: any) {
 // Subcomponent: Hotel List Table
 function HotelList({ hotels, onSelect }: any) {
   return (
-    <div className="rounded-xl border border-white/80 overflow-x-auto bg-white/50">
+    <div className="rounded-2xl border border-[#334155] overflow-hidden bg-[#0f172a]">
       <Table>
         <TableHeader>
-          <TableRow className="border-b border-[#e2e8f0] bg-white/70">
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Hotel Name</TableHead>
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Location</TableHead>
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs">Price / Night</TableHead>
-            <TableHead className="text-[#0f1a2e] font-extrabold uppercase text-xs text-right">Action</TableHead>
+          <TableRow className="border-b border-[#334155] bg-[#0f172a]">
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Hotel Name</TableHead>
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Location</TableHead>
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs">Price / Night</TableHead>
+            <TableHead className="text-[#94a3b8] font-black uppercase text-xs text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {hotels.length > 0 ? (
             hotels.map((h: any) => (
-              <TableRow key={h.id || h.hotelName} className="border-b border-[#e2e8f0]/60 hover:bg-white/60">
-                <TableCell className="font-bold text-[#0f1a2e] text-sm">
+              <TableRow key={h.id || h.hotelName} className="border-b border-[#334155]/60 hover:bg-[#1e293b]">
+                <TableCell className="font-bold text-white text-sm">
                   {h.hotelName}
-                  <p className="text-[10px] text-[#7c8ba3] font-normal">★ {h.rating || 4.5} · {h.availableRooms || 10} rooms left</p>
+                  <p className="text-[11px] text-[#94a3b8] font-normal">★ {h.rating || 4.5} · {h.availableRooms || 10} rooms left</p>
                 </TableCell>
-                <TableCell className="text-[#2c3e57] text-xs font-semibold">{h.location}</TableCell>
-                <TableCell className="text-[#1a6b52] font-extrabold text-xs">
+                <TableCell className="text-[#94a3b8] text-xs font-bold">{h.location}</TableCell>
+                <TableCell className="text-[#4ade80] font-black text-sm drop-shadow-xs">
                   ₹{Number(h.pricePerNight || 0).toLocaleString("en-IN")}
                 </TableCell>
                 <TableCell className="text-right">
                   <Button
                     size="sm"
                     onClick={() => onSelect(h)}
-                    className="bg-[#22c55e] text-white hover:bg-[#16a34a] font-bold text-xs rounded-xl shadow-xs"
+                    className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-xs rounded-xl shadow-md cursor-pointer"
                   >
                     Edit
                   </Button>
@@ -942,7 +963,7 @@ function HotelList({ hotels, onSelect }: any) {
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={4} className="text-center text-[#3d5170] py-6 text-sm">
+              <TableCell colSpan={4} className="text-center text-[#94a3b8] py-6 text-sm">
                 No hotels available
               </TableCell>
             </TableRow>
@@ -981,46 +1002,46 @@ function HotelForm({ hotel, onSave, onCancel }: any) {
   };
 
   return (
-    <form onSubmit={handlesubmit} className="space-y-3 text-xs">
-      <div className="space-y-1">
-        <Label className="text-[#2c3e57] font-semibold text-xs">Hotel Name</Label>
+    <form onSubmit={handlesubmit} className="space-y-4 text-xs">
+      <div className="space-y-1.5">
+        <Label className="text-[#94a3b8] font-bold text-xs">Hotel Name</Label>
         <Input
           name="hotelName"
           value={formdata.hotelName}
           onChange={handlechange}
           placeholder="e.g. Taj Palace New Delhi"
           required
-          className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+          className="bg-[#0f172a] border border-[#334155] text-white placeholder:text-[#64748b] rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
         />
       </div>
 
-      <div className="space-y-1">
-        <Label className="text-[#2c3e57] font-semibold text-xs">City / Location</Label>
+      <div className="space-y-1.5">
+        <Label className="text-[#94a3b8] font-bold text-xs">City / Location</Label>
         <Input
           name="location"
           value={formdata.location}
           onChange={handlechange}
           placeholder="e.g. New Delhi"
           required
-          className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+          className="bg-[#0f172a] border border-[#334155] text-white placeholder:text-[#64748b] rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
         />
       </div>
 
       <div className="grid grid-cols-3 gap-3">
-        <div className="space-y-1">
-          <Label className="text-[#2c3e57] font-semibold text-xs">Price / Night (₹)</Label>
+        <div className="space-y-1.5">
+          <Label className="text-[#94a3b8] font-bold text-xs">Price / Night (₹)</Label>
           <Input
             name="pricePerNight"
             type="number"
             value={formdata.pricePerNight}
             onChange={handlechange}
             required
-            className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+            className="bg-[#0f172a] border border-[#334155] text-white rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
           />
         </div>
 
-        <div className="space-y-1">
-          <Label className="text-[#2c3e57] font-semibold text-xs">Rating (1-5)</Label>
+        <div className="space-y-1.5">
+          <Label className="text-[#94a3b8] font-bold text-xs">Rating (1-5)</Label>
           <Input
             name="rating"
             type="number"
@@ -1030,29 +1051,29 @@ function HotelForm({ hotel, onSave, onCancel }: any) {
             value={formdata.rating}
             onChange={handlechange}
             required
-            className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+            className="bg-[#0f172a] border border-[#334155] text-white rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
           />
         </div>
 
-        <div className="space-y-1">
-          <Label className="text-[#2c3e57] font-semibold text-xs">Rooms Left</Label>
+        <div className="space-y-1.5">
+          <Label className="text-[#94a3b8] font-bold text-xs">Rooms Left</Label>
           <Input
             name="availableRooms"
             type="number"
             value={formdata.availableRooms}
             onChange={handlechange}
             required
-            className="bg-white border border-[#cbd5e1] text-[#0f1a2e] rounded-xl h-10 px-3"
+            className="bg-[#0f172a] border border-[#334155] text-white rounded-xl h-11 px-3.5 font-bold focus:border-[#3b82f6]"
           />
         </div>
       </div>
 
       <div className="flex gap-2 pt-2">
-        <Button type="submit" className="bg-[#0f1a2e] text-white hover:bg-[#1a2947] font-bold text-xs rounded-xl h-10 flex-1">
+        <Button type="submit" className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-sm rounded-xl h-11 flex-1 shadow-md cursor-pointer transition-all">
           {hotel ? "Save Changes" : "Add Hotel"}
         </Button>
         {hotel && (
-          <Button type="button" onClick={onCancel} variant="outline" className="text-xs font-bold rounded-xl h-10">
+          <Button type="button" onClick={onCancel} variant="outline" className="text-xs font-bold rounded-xl h-11 border-[#334155] text-white hover:bg-[#334155]">
             Cancel
           </Button>
         )}
