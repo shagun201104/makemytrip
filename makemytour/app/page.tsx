@@ -413,40 +413,40 @@ export default function Home() {
             </ul>
           </nav>
 
-          {/* SEARCH CARD WITH FLIGHTS / HOTELS TOGGLE — PURE LUXURY SAPPHIRE BLUE CARD */}
-          <div className="bg-gradient-to-br from-[#ffffff] via-[#f0f7ff] to-[#e0f2fe] backdrop-blur-3xl border-4 border-[#2563eb]/60 rounded-[32px] shadow-[0_25px_60px_-15px_rgba(15,26,46,0.35)] p-6 md:p-10 text-[#0f1a2e] relative overflow-hidden">
+          {/* SEARCH CARD WITH FLIGHTS / HOTELS TOGGLE — CLEAN NEUTRAL LUXURY CARD */}
+          <div className="bg-white/95 backdrop-blur-2xl border border-[#cbd5e1] rounded-[32px] shadow-[0_25px_60px_-15px_rgba(15,26,46,0.25)] p-6 md:p-10 text-[#0f172a] relative overflow-hidden">
             {/* Top status header */}
-            <div className="bg-gradient-to-r from-[#0f1a2e] via-[#1d3866] via-[#2563eb] to-[#0f1a2e] p-3.5 rounded-2xl text-white shadow-md border border-[#3b82f6]/40 mb-6 flex items-center justify-between flex-wrap gap-3">
+            <div className="bg-[#0f172a] p-3.5 rounded-2xl text-white shadow-md mb-6 flex items-center justify-between flex-wrap gap-3">
               <div className="flex items-center gap-2.5">
-                <span className="flex h-3.5 w-3.5 rounded-full bg-[#60a5fa] animate-ping" />
-                <span className="text-xs font-black text-[#93c5fd] uppercase tracking-wider bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                <span className="flex h-3 w-3 rounded-full bg-[#3b82f6] animate-ping" />
+                <span className="text-xs font-black text-[#93c5fd] uppercase tracking-wider bg-white/10 px-3 py-1 rounded-full border border-white/15">
                   ⚡ Live Fare Engine &bull; Instant Lowest Price Guarantee
                 </span>
               </div>
-              <div className="flex items-center gap-4 text-xs font-black text-white">
-                <span className="flex items-center gap-1.5 text-[#60a5fa] bg-[#1e3a8a]/70 px-2.5 py-0.5 rounded-full border border-[#3b82f6]/40">
-                  ✓ 100% Refundable
+              <div className="flex items-center gap-4 text-xs font-bold text-white/90">
+                <span className="flex items-center gap-1.5 text-[#4ade80]">
+                  ✓ 100% Refundable Fares
                 </span>
-                <span className="flex items-center gap-1.5 text-[#93c5fd] bg-[#1d4ed8]/70 px-2.5 py-0.5 rounded-full border border-[#60a5fa]/40">
+                <span className="flex items-center gap-1.5 text-[#60a5fa]">
                   ✓ 0% Gateway Fee
                 </span>
               </div>
             </div>
 
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="w-full max-w-md mx-auto grid grid-cols-2 bg-[#0f1a2e] rounded-2xl p-1.5 border-2 border-[#3b82f6]/50 shadow-xl mb-6">
+              <TabsList className="w-full max-w-md mx-auto grid grid-cols-2 bg-[#f1f5f9] rounded-2xl p-1.5 border border-[#cbd5e1] shadow-inner mb-6">
                 <TabsTrigger
                   value="flights"
-                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#2563eb] data-[state=active]:via-[#1d4ed8] data-[state=active]:to-[#2563eb] data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:ring-2 data-[state=active]:ring-[#60a5fa] text-white/80 py-3.5 transition-all cursor-pointer"
+                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-[#0f172a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3.5 transition-all cursor-pointer"
                 >
-                  <Plane className="w-5 h-5 text-[#60a5fa]" />
+                  <Plane className="w-5 h-5" />
                   Flights
                 </TabsTrigger>
                 <TabsTrigger
                   value="hotels"
-                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#2563eb] data-[state=active]:via-[#1d4ed8] data-[state=active]:to-[#2563eb] data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:ring-2 data-[state=active]:ring-[#60a5fa] text-white/80 py-3.5 transition-all cursor-pointer"
+                  className="rounded-xl font-black text-base flex items-center justify-center gap-2.5 data-[state=active]:bg-[#0f172a] data-[state=active]:text-white data-[state=active]:shadow-lg text-[#475569] py-3.5 transition-all cursor-pointer"
                 >
-                  <BedDouble className="w-5 h-5 text-[#60a5fa]" />
+                  <BedDouble className="w-5 h-5" />
                   Hotels
                 </TabsTrigger>
               </TabsList>
@@ -455,13 +455,13 @@ export default function Home() {
               <TabsContent value="flights" className="mt-2 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <MapPin className="w-4 h-4 text-[#2563eb]" /> Departure City
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <MapPin className="w-4 h-4 text-[#475569]" /> Departure City
                     </Label>
                     <select
                       value={fromCity}
                       onChange={(e) => setFromCity(e.target.value)}
-                      className="w-full bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-4 font-black shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer text-sm"
+                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm"
                     >
                       <option value="" disabled>Select Departure City</option>
                       {indianCities.map((city) => (
@@ -471,13 +471,13 @@ export default function Home() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <ArrowRightLeft className="w-4 h-4 text-[#2563eb]" /> Destination City
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <ArrowRightLeft className="w-4 h-4 text-[#475569]" /> Destination City
                     </Label>
                     <select
                       value={toCity}
                       onChange={(e) => setToCity(e.target.value)}
-                      className="w-full bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-4 font-black shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer text-sm"
+                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer text-sm"
                     >
                       <option value="" disabled>Select Destination City</option>
                       {indianCities.map((city) => (
@@ -487,97 +487,113 @@ export default function Home() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <CalendarDays className="w-4 h-4 text-[#2563eb]" /> Departure Date
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <CalendarDays className="w-4 h-4 text-[#475569]" /> Departure Date
                     </Label>
                     <Input
                       type="date"
                       value={departDate}
                       onChange={(e) => setDepartDate(e.target.value)}
-                      className="bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-4 font-black shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all text-sm"
+                      className="bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all text-sm"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <Users className="w-4 h-4 text-[#2563eb]" /> Travellers
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <Users className="w-4 h-4 text-[#475569]" /> Total Travellers
                     </Label>
-                    <select
-                      value={travellers}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        setTravellers(val);
-                        const count = parseInt(val) || 1;
-                        setFlightAdults(count);
-                      }}
-                      className="w-full bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-4 font-black shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer text-sm"
-                    >
-                      <option value="1">1 Traveller</option>
-                      <option value="2">2 Travellers</option>
-                      <option value="3">3 Travellers</option>
-                      <option value="4">4 Travellers</option>
-                      <option value="5">5 Travellers</option>
-                      <option value="6">6 Travellers</option>
-                      <option value="8">8 Travellers</option>
-                      <option value="10">10 Travellers</option>
-                      <option value="12">12 Travellers</option>
-                      <option value="15">15+ Travellers (Group Booking)</option>
-                    </select>
+                    <div className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-4 font-black shadow-xs flex items-center justify-between text-sm">
+                      <span>{flightAdults + flightChildren} Person(s)</span>
+                      <span className="text-xs font-bold text-[#64748b]">({flightAdults} A / {flightChildren} C)</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* FLIGHT AGE & TRAVELLER BREAKDOWN — PURE SAPPHIRE BLUE CARD */}
-                <div className="bg-gradient-to-r from-[#eff6ff] via-[#dbeafe] to-[#eff6ff] border-2 border-[#3b82f6]/40 rounded-2xl p-5 space-y-3 shadow-inner">
+                {/* FLIGHT AGE & TRAVELLER BREAKDOWN WITH +/- STEPPERS */}
+                <div className="bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-5 space-y-3 shadow-inner">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-black uppercase tracking-wider text-[#1e3a8a] flex items-center gap-2">
-                      <Users className="w-4 h-4 text-[#2563eb]" /> Passenger Breakdown &amp; Child Age Options
+                    <span className="text-xs font-black uppercase tracking-wider text-[#0f172a] flex items-center gap-2">
+                      <Users className="w-4 h-4 text-[#475569]" /> Passenger Count (+ / - Stepper)
                     </span>
-                    <span className="text-[11px] font-black text-[#1d4ed8] bg-white px-3 py-1 rounded-full border border-[#bfdbfe] shadow-xs">
-                      Custom Family &amp; Group Booking
+                    <span className="text-[11px] font-black text-[#475569] bg-white px-3 py-1 rounded-full border border-[#cbd5e1] shadow-xs">
+                      Tap + or - to Adjust
                     </span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
-                      <Label className="text-xs font-black text-[#1d4ed8]">Adults (12+ yrs)</Label>
-                      <select
-                        value={flightAdults}
-                        onChange={(e) => {
-                          const a = parseInt(e.target.value);
-                          setFlightAdults(a);
-                          setTravellers(String(a + flightChildren));
-                        }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
-                      >
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((n) => (
-                          <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
-                        ))}
-                      </select>
+                    {/* ADULTS STEPPER */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs">
+                        <button
+                          type="button"
+                          disabled={flightAdults <= 1}
+                          onClick={() => {
+                            const next = Math.max(1, flightAdults - 1);
+                            setFlightAdults(next);
+                            setTravellers(String(next + flightChildren));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer"
+                        >
+                          -
+                        </button>
+                        <span className="font-black text-sm text-[#0f172a]">
+                          {flightAdults} Adult{flightAdults > 1 ? "s" : ""}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const next = flightAdults + 1;
+                            setFlightAdults(next);
+                            setTravellers(String(next + flightChildren));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
 
-                    <div>
-                      <Label className="text-xs font-black text-[#1d4ed8]">Children (2-12 yrs)</Label>
-                      <select
-                        value={flightChildren}
-                        onChange={(e) => {
-                          const c = parseInt(e.target.value);
-                          setFlightChildren(c);
-                          setTravellers(String(flightAdults + c));
-                        }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
-                      >
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => (
-                          <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
-                        ))}
-                      </select>
+                    {/* CHILDREN STEPPER */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569]">Children (2-12 yrs)</Label>
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs">
+                        <button
+                          type="button"
+                          disabled={flightChildren <= 0}
+                          onClick={() => {
+                            const next = Math.max(0, flightChildren - 1);
+                            setFlightChildren(next);
+                            setTravellers(String(flightAdults + next));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer"
+                        >
+                          -
+                        </button>
+                        <span className="font-black text-sm text-[#0f172a]">
+                          {flightChildren} Child{flightChildren !== 1 ? "ren" : ""}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const next = flightChildren + 1;
+                            setFlightChildren(next);
+                            setTravellers(String(flightAdults + next));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
 
-                    <div>
-                      <Label className="text-xs font-black text-[#1d4ed8]">Child 1 Age Selection</Label>
+                    {/* CHILD 1 AGE */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569]">Child 1 Age Selection</Label>
                       <select
                         value={flightChildAge}
                         onChange={(e) => setFlightChildAge(e.target.value)}
                         disabled={flightChildren === 0}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs disabled:opacity-50 cursor-pointer"
+                        className="w-full bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50 cursor-pointer"
                       >
                         <option value="2">2 years (Child Fare)</option>
                         <option value="5">5 years (Child Fare)</option>
@@ -592,7 +608,7 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={handleSearchFlights}
-                    className="bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#1d4ed8] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_35px_rgba(37,99,235,0.45)] hover:shadow-[0_15px_45px_rgba(37,99,235,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/60"
+                    className="bg-gradient-to-r from-[#ff4d00] via-[#ea580c] to-[#ff4d00] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_30px_rgba(234,88,12,0.45)] hover:shadow-[0_15px_40px_rgba(234,88,12,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/40"
                   >
                     <Search className="w-6 h-6 stroke-[3]" />
                     Search Flights
@@ -604,13 +620,13 @@ export default function Home() {
               <TabsContent value="hotels" className="mt-2 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
                   <div className="space-y-2 lg:col-span-1">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <MapPin className="w-4 h-4 text-[#2563eb]" /> Hotel Location
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <MapPin className="w-4 h-4 text-[#475569]" /> Hotel Location
                     </Label>
                     <select
                       value={hotelLocation}
                       onChange={(e) => setHotelLocation(e.target.value)}
-                      className="w-full bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-3 font-black text-sm shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer"
                     >
                       <option value="" disabled>Select Location or Hotel</option>
                       {indianCities.map((city) => (
@@ -623,131 +639,147 @@ export default function Home() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <CalendarDays className="w-4 h-4 text-[#2563eb]" /> Check-in Date
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <CalendarDays className="w-4 h-4 text-[#475569]" /> Check-in Date
                     </Label>
                     <Input
                       type="date"
                       value={checkInDate}
                       onChange={(e) => setCheckInDate(e.target.value)}
-                      className="bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-3 font-black text-sm shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all"
+                      className="bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <CalendarDays className="w-4 h-4 text-[#2563eb]" /> Check-out Date
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <CalendarDays className="w-4 h-4 text-[#475569]" /> Check-out Date
                     </Label>
                     <Input
                       type="date"
                       value={checkOutDate}
                       onChange={(e) => setCheckOutDate(e.target.value)}
-                      className="bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-3 font-black text-sm shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all"
+                      className="bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all"
                     />
                   </div>
 
                   {/* ROOMS SELECTOR */}
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <BedDouble className="w-4 h-4 text-[#2563eb]" /> Rooms
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <BedDouble className="w-4 h-4 text-[#475569]" /> Rooms
                     </Label>
                     <select
                       value={rooms}
                       onChange={(e) => setRooms(e.target.value)}
-                      className="w-full bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-3 font-black text-sm shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
+                      className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black text-sm shadow-xs hover:border-[#0f172a] focus:border-[#0f172a] focus:ring-2 focus:ring-[#0f172a]/20 transition-all cursor-pointer"
                     >
                       <option value="1">1 Room</option>
-                      <option value="2">2 Rooms (e.g. 2 Adults / 2 Rooms)</option>
+                      <option value="2">2 Rooms</option>
                       <option value="3">3 Rooms</option>
                       <option value="4">4 Rooms</option>
                       <option value="5">5 Rooms</option>
                       <option value="6">6 Rooms</option>
                       <option value="8">8 Rooms</option>
-                      <option value="10">10+ Rooms (Group)</option>
+                      <option value="10">10+ Rooms</option>
                     </select>
                   </div>
 
-                  {/* GUESTS SELECTOR */}
+                  {/* GUESTS SUMMARY */}
                   <div className="space-y-2">
-                    <Label className="text-[#1d4ed8] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
-                      <Users className="w-4 h-4 text-[#2563eb]" /> Guests
+                    <Label className="text-[#0f172a] text-xs font-black flex items-center gap-1.5 tracking-wider uppercase">
+                      <Users className="w-4 h-4 text-[#475569]" /> Total Guests
                     </Label>
-                    <select
-                      value={guests}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        setGuests(val);
-                        const count = parseInt(val) || 2;
-                        setHotelAdults(count);
-                      }}
-                      className="w-full bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#60a5fa] text-[#1e3a8a] rounded-2xl h-14 px-3 font-black text-sm shadow-md hover:border-[#2563eb] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all cursor-pointer"
-                    >
-                      <option value="1">1 Guest</option>
-                      <option value="2">2 Guests</option>
-                      <option value="3">3 Guests</option>
-                      <option value="4">4 Guests</option>
-                      <option value="5">5 Guests</option>
-                      <option value="6">6 Guests</option>
-                      <option value="8">8 Guests</option>
-                      <option value="10">10 Guests</option>
-                      <option value="12">12 Guests</option>
-                      <option value="15">15+ Guests (Family / Group)</option>
-                    </select>
+                    <div className="w-full bg-white border-2 border-[#cbd5e1] text-[#0f172a] rounded-2xl h-14 px-3 font-black shadow-xs flex items-center justify-between text-sm">
+                      <span>{hotelAdults + hotelChildren} Guest(s)</span>
+                      <span className="text-xs font-bold text-[#64748b]">({hotelAdults} A / {hotelChildren} C)</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* HOTEL AGE & FAMILY BREAKDOWN CONTROL */}
-                <div className="bg-gradient-to-r from-[#eff6ff] via-[#dbeafe] to-[#eff6ff] border-2 border-[#3b82f6]/40 rounded-2xl p-5 space-y-3 shadow-inner">
+                {/* HOTEL AGE & FAMILY BREAKDOWN CONTROL WITH STEPPERS */}
+                <div className="bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-5 space-y-3 shadow-inner">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-black uppercase tracking-wider text-[#1e3a8a] flex items-center gap-2">
-                      <BedDouble className="w-4 h-4 text-[#2563eb]" /> Custom Rooms &amp; Children Age Breakdown
+                    <span className="text-xs font-black uppercase tracking-wider text-[#0f172a] flex items-center gap-2">
+                      <BedDouble className="w-4 h-4 text-[#475569]" /> Guest Count (+ / - Stepper)
                     </span>
-                    <span className="text-[11px] font-black text-[#1d4ed8] bg-white px-3 py-1 rounded-full border border-[#bfdbfe] shadow-xs">
-                      Book Any Number of Rooms
+                    <span className="text-[11px] font-black text-[#475569] bg-white px-3 py-1 rounded-full border border-[#cbd5e1] shadow-xs">
+                      Tap + or - to Adjust
                     </span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
-                      <Label className="text-xs font-black text-[#1d4ed8]">Adults (12+ yrs)</Label>
-                      <select
-                        value={hotelAdults}
-                        onChange={(e) => {
-                          const a = parseInt(e.target.value);
-                          setHotelAdults(a);
-                          setGuests(String(a + hotelChildren));
-                        }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
-                      >
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((n) => (
-                          <option key={n} value={n}>{n} Adult{n > 1 ? "s" : ""}</option>
-                        ))}
-                      </select>
+                    {/* HOTEL ADULTS STEPPER */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs">
+                        <button
+                          type="button"
+                          disabled={hotelAdults <= 1}
+                          onClick={() => {
+                            const next = Math.max(1, hotelAdults - 1);
+                            setHotelAdults(next);
+                            setGuests(String(next + hotelChildren));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer"
+                        >
+                          -
+                        </button>
+                        <span className="font-black text-sm text-[#0f172a]">
+                          {hotelAdults} Adult{hotelAdults > 1 ? "s" : ""}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const next = hotelAdults + 1;
+                            setHotelAdults(next);
+                            setGuests(String(next + hotelChildren));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
 
-                    <div>
-                      <Label className="text-xs font-black text-[#1d4ed8]">Children (0-12 yrs)</Label>
-                      <select
-                        value={hotelChildren}
-                        onChange={(e) => {
-                          const c = parseInt(e.target.value);
-                          setHotelChildren(c);
-                          setGuests(String(hotelAdults + c));
-                        }}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs cursor-pointer"
-                      >
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => (
-                          <option key={n} value={n}>{n} Child{n !== 1 ? "ren" : ""}</option>
-                        ))}
-                      </select>
+                    {/* HOTEL CHILDREN STEPPER */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569]">Children (0-12 yrs)</Label>
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs">
+                        <button
+                          type="button"
+                          disabled={hotelChildren <= 0}
+                          onClick={() => {
+                            const next = Math.max(0, hotelChildren - 1);
+                            setHotelChildren(next);
+                            setGuests(String(hotelAdults + next));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer"
+                        >
+                          -
+                        </button>
+                        <span className="font-black text-sm text-[#0f172a]">
+                          {hotelChildren} Child{hotelChildren !== 1 ? "ren" : ""}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const next = hotelChildren + 1;
+                            setHotelChildren(next);
+                            setGuests(String(hotelAdults + next));
+                          }}
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
 
-                    <div>
-                      <Label className="text-xs font-black text-[#1d4ed8]">Child 1 Age Selection</Label>
+                    {/* CHILD 1 AGE */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569]">Child 1 Age Selection</Label>
                       <select
                         value={hotelChildAge}
                         onChange={(e) => setHotelChildAge(e.target.value)}
                         disabled={hotelChildren === 0}
-                        className="w-full mt-1.5 bg-white border-2 border-[#60a5fa] rounded-xl h-11 px-3 text-xs font-black text-[#1e3a8a] shadow-xs disabled:opacity-50 cursor-pointer"
+                        className="w-full bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-3 text-xs font-black text-[#0f172a] shadow-xs disabled:opacity-50 cursor-pointer"
                       >
                         <option value="2">2 years (Infant Bed Included)</option>
                         <option value="5">5 years (Junior Free Stay)</option>
@@ -762,7 +794,7 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={handleSearchHotels}
-                    className="bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#1d4ed8] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_35px_rgba(37,99,235,0.45)] hover:shadow-[0_15px_45px_rgba(37,99,235,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/60"
+                    className="bg-gradient-to-r from-[#ff4d00] via-[#ea580c] to-[#ff4d00] text-white hover:opacity-95 font-black text-xl rounded-full px-16 h-16 shadow-[0_10px_30px_rgba(234,88,12,0.45)] hover:shadow-[0_15px_40px_rgba(234,88,12,0.65)] hover:scale-105 flex items-center justify-center gap-3 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/40"
                   >
                     <Search className="w-6 h-6 stroke-[3]" />
                     Search Hotels
