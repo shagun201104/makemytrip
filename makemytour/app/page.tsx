@@ -271,6 +271,10 @@ export default function Home() {
   // Controls the search-results dialog.
   const [showResults, setShowResults] = useState(false);
   const [showHotelResults, setShowHotelResults] = useState(false);
+  const [showHomestayResults, setShowHomestayResults] = useState(false);
+  const [showHolidayResults, setShowHolidayResults] = useState(false);
+  const [showCabResults, setShowCabResults] = useState(false);
+  const [showTrainResults, setShowTrainResults] = useState(false);
 
   const handleCategory = (category: string) => {
     setActiveCategory(category);
@@ -823,13 +827,13 @@ export default function Home() {
                       setHotelLocation("Goa");
                       setShowHotelResults(true);
                     } else if (offer.title.includes("Homestays")) {
-                      handleCategory("Homestays");
+                      setShowHomestayResults(true);
                     } else if (offer.title.includes("Cab")) {
-                      handleCategory("Cabs");
+                      setShowCabResults(true);
                     } else if (offer.title.includes("Train")) {
-                      handleCategory("Trains");
+                      setShowTrainResults(true);
                     } else {
-                      handleCategory("Holiday");
+                      setShowHolidayResults(true);
                     }
                   }}
                   className="relative overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20 hover:border-[#60a5fa] hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer"
@@ -1186,24 +1190,24 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* HOTEL SEARCH RESULTS DIALOG */}
+      {/* HOTEL SEARCH RESULTS DIALOG — LUXURY DARK NAVY STYLING (MATCHING FLIGHT MODAL) */}
       <Dialog open={showHotelResults} onOpenChange={setShowHotelResults}>
-        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-0 shadow-2xl bg-[#f8fafc]">
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
           {/* Luxury Header */}
-          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#2c5a9e] px-7 py-6 text-left text-white relative">
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-2xl font-extrabold text-white flex items-center gap-3">
+                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
                   <BedDouble className="w-7 h-7 text-[#60a5fa]" />
                   <span>Hotels in {hotelLocation || "Your Selected Destination"}</span>
                 </DialogTitle>
-                <DialogDescription className="text-white/80 text-xs mt-1.5">
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
                   {checkInDate && checkOutDate ? `${checkInDate} to ${checkOutDate}` : "Luxury & Handpicked Hotels"}
                   {" • "}
                   {guests} {Number(guests) > 1 ? "Guests" : "Guest"}
                 </DialogDescription>
               </div>
-              <span className="bg-[#f59e0b] text-[#0f172a] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+              <span className="bg-[#f59e0b] text-[#0f172a] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
                 Up to 25% OFF
               </span>
             </div>
@@ -1225,16 +1229,16 @@ export default function Home() {
               return (
                 <div
                   key={hotel.name}
-                  className="bg-white rounded-2xl border border-[#e2e8f0] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#3b82f6] transition-all flex flex-col sm:flex-row gap-4 p-4 group"
+                  className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-4 p-4 group"
                 >
                   {/* Property Cover Photo */}
-                  <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#e2e8f0]">
+                  <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
                     <img
                       src={hotelImg}
                       alt={hotel.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span className="absolute top-2 left-2 bg-[#0f172a]/90 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                    <span className="absolute top-2 left-2 bg-[#0f172a]/95 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full border border-white/20">
                       {hotel.tag}
                     </span>
                   </div>
@@ -1243,29 +1247,29 @@ export default function Home() {
                   <div className="flex-1 flex flex-col justify-between space-y-2">
                     <div>
                       <div className="flex items-center justify-between">
-                        <h4 className="font-extrabold text-base text-[#0f172a] group-hover:text-[#2563eb] transition-colors leading-snug">
+                        <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors leading-snug">
                           {hotel.name}
                         </h4>
-                        <span className="bg-[#fef3c7] text-[#b45309] text-xs font-bold px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
+                        <span className="bg-[#fef3c7] text-[#b45309] text-xs font-black px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
                           ★ {hotel.rating}
                         </span>
                       </div>
-                      <p className="text-xs text-[#64748b] flex items-center gap-1 mt-1">
-                        <MapPin className="w-3.5 h-3.5 text-[#94a3b8]" /> {hotel.city} • Prime Location
+                      <p className="text-xs text-white/80 font-bold flex items-center gap-1 mt-1">
+                        <MapPin className="w-3.5 h-3.5 text-[#60a5fa]" /> {hotel.city} • Prime Location
                       </p>
                     </div>
 
                     {/* Amenities chips */}
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="bg-[#eff6ff] text-[#1e40af] text-[10px] font-bold px-2 py-0.5 rounded-md">Free Breakfast</span>
-                      <span className="bg-[#f0fdf4] text-[#166534] text-[10px] font-bold px-2 py-0.5 rounded-md">Free WiFi</span>
-                      <span className="bg-[#fef2f2] text-[#991b1b] text-[10px] font-bold px-2 py-0.5 rounded-md">Swimming Pool</span>
+                      <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-2 py-0.5 rounded-md">Free Breakfast</span>
+                      <span className="bg-[#1e3a8a] text-[#60a5fa] text-[10px] font-black px-2 py-0.5 rounded-md">Free High-Speed WiFi</span>
+                      <span className="bg-[#991b1b]/80 text-[#fca5a5] text-[10px] font-black px-2 py-0.5 rounded-md">Swimming Pool</span>
                     </div>
 
                     {/* Price & Book */}
-                    <div className="flex items-center justify-between border-t border-[#f1f5f9] pt-2 mt-1">
+                    <div className="flex items-center justify-between border-t border-[#3b82f6]/30 pt-2.5 mt-1">
                       <div>
-                        <span className="text-[10px] font-bold text-[#64748b] uppercase block">Special Nightly Rate</span>
+                        <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Special Nightly Rate</span>
                         <LivePrice
                           input={{
                             kind: "HOTEL",
@@ -1280,7 +1284,7 @@ export default function Home() {
                       <Button
                         type="button"
                         onClick={() => handleBookHotel(hotel)}
-                        className="h-10 px-5 text-xs bg-gradient-to-r from-[#1a3a6b] to-[#2c5a9e] text-white hover:from-[#0f2847] hover:to-[#1a3a6b] rounded-full font-extrabold shadow-md hover:shadow-lg transition-all"
+                        className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
                       >
                         Book &amp; Reserve Room &rarr;
                       </Button>
@@ -1289,6 +1293,231 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* HOMESTAYS & VILLAS RESULTS DIALOG — LUXURY DARK NAVY */}
+      <Dialog open={showHomestayResults} onOpenChange={setShowHomestayResults}>
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
+                  <House className="w-7 h-7 text-[#60a5fa]" />
+                  <span>Luxury Homestays &amp; Private Villas</span>
+                </DialogTitle>
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                  Private Swimming Pools • Beachfront &amp; Mountain Cottages • 25% Off Deal
+                </DialogDescription>
+              </div>
+              <span className="bg-[#e5573f] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                Flat 25% OFF
+              </span>
+            </div>
+          </DialogHeader>
+
+          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+            {[
+              { name: "Goa Beachfront Infinity Pool Villa", location: "Candolim, Goa", price: 14500, rating: "4.9", bedrooms: "3 Bedrooms • Private Pool", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" },
+              { name: "Manali Alpine Wooden Chalet", location: "Old Manali, Himachal", price: 8900, rating: "4.8", bedrooms: "2 Bedrooms • Mountain View", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" },
+              { name: "Coorg Coffee Estate Bungalow", location: "Madikeri, Coorg", price: 11200, rating: "4.9", bedrooms: "4 Bedrooms • Private Chef", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" },
+              { name: "Lonavala Royal Pool Villa", location: "Lonavala, Maharashtra", price: 13800, rating: "4.7", bedrooms: "3 Bedrooms • BBQ Lawn", img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80" }
+            ].map((stay) => (
+              <div key={stay.name} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-4 p-4 group">
+                <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
+                  <img src={stay.img} alt={stay.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <span className="absolute top-2 left-2 bg-[#0f172a]/95 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full border border-white/20">Private Villa</span>
+                </div>
+                <div className="flex-1 flex flex-col justify-between space-y-2">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors leading-snug">{stay.name}</h4>
+                      <span className="bg-[#fef3c7] text-[#b45309] text-xs font-black px-2 py-0.5 rounded-md">★ {stay.rating}</span>
+                    </div>
+                    <p className="text-xs text-white/80 font-bold flex items-center gap-1 mt-1">
+                      <MapPin className="w-3.5 h-3.5 text-[#60a5fa]" /> {stay.location}
+                    </p>
+                    <p className="text-[11px] text-[#60a5fa] font-extrabold mt-1">{stay.bedrooms}</p>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-[#3b82f6]/30 pt-2.5">
+                    <div>
+                      <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Pamphlet Offer Rate</span>
+                      <span className="font-black text-lg text-[#facc15]">{formatINR(stay.price)}/night</span>
+                    </div>
+                    <Button
+                      type="button"
+                      onClick={() => handleBookHotel({ name: stay.name, city: stay.location, price: stay.price, rating: parseFloat(stay.rating), reviews: 120, tag: "Private Villa" })}
+                      className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                    >
+                      Book Villa &rarr;
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* HOLIDAY PACKAGES RESULTS DIALOG — LUXURY DARK NAVY */}
+      <Dialog open={showHolidayResults} onOpenChange={setShowHolidayResults}>
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
+                  <Umbrella className="w-7 h-7 text-[#60a5fa]" />
+                  <span>All-Inclusive Holiday Packages</span>
+                </DialogTitle>
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                  Flights + 5-Star Hotel + Sightseeing + Transfers Included
+                </DialogDescription>
+              </div>
+              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                Exclusive Deals
+              </span>
+            </div>
+          </DialogHeader>
+
+          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+            {[
+              { name: "Kashmir Paradise Gulmarg & Pahalgam Tour", duration: "5 Nights / 6 Days", price: 24999, tag: "Best Seller", img: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=600&q=80" },
+              { name: "Kerala Houseboat & Munnar Tea Estate Escape", duration: "4 Nights / 5 Days", price: 18500, tag: "Honeymoon Special", img: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80" },
+              { name: "Dubai Desert Safari & Burj Khalifa Tour", duration: "5 Nights / 6 Days", price: 38900, tag: "International Deal", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80" },
+              { name: "Manali & Solang Valley Snow Vacation", duration: "4 Nights / 5 Days", price: 14999, tag: "Family Favorite", img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" }
+            ].map((pkg) => (
+              <div key={pkg.name} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 overflow-hidden shadow-xl hover:border-[#60a5fa] transition-all flex flex-col sm:flex-row gap-4 p-4 group">
+                <div className="relative w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 bg-[#0f1a2e]">
+                  <img src={pkg.img} alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <span className="absolute top-2 left-2 bg-[#2563eb] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full">{pkg.tag}</span>
+                </div>
+                <div className="flex-1 flex flex-col justify-between space-y-2">
+                  <div>
+                    <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors leading-snug">{pkg.name}</h4>
+                    <p className="text-xs text-[#60a5fa] font-extrabold mt-1">🗓️ {pkg.duration}</p>
+                    <p className="text-[11px] text-white/80 mt-1 font-semibold">Includes Airfare, 5-Star Stay, Meals &amp; Guided Tours</p>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-[#3b82f6]/30 pt-2.5">
+                    <div>
+                      <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Package Price</span>
+                      <span className="font-black text-lg text-[#facc15]">{formatINR(pkg.price)}/person</span>
+                    </div>
+                    <Button
+                      type="button"
+                      onClick={() => handleBookHotel({ name: pkg.name, city: "Holiday Tour", price: pkg.price, rating: 4.9, reviews: 120, tag: pkg.tag })}
+                      className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                    >
+                      Book Package &rarr;
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* CABS & BUSES RESULTS DIALOG — LUXURY DARK NAVY */}
+      <Dialog open={showCabResults} onOpenChange={setShowCabResults}>
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
+                  <CarTaxiFront className="w-7 h-7 text-[#60a5fa]" />
+                  <span>Intercity Cabs &amp; Luxury Sleeper Buses</span>
+                </DialogTitle>
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                  Doorstep Pickup • Sanitized Vehicles • Flat ₹500 Discount
+                </DialogDescription>
+              </div>
+              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                Save ₹500 Instant
+              </span>
+            </div>
+          </DialogHeader>
+
+          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+            {[
+              { title: "Delhi ➔ Jaipur Outstation Sedan Cab", fare: 3200, type: "Dzire / Etios (AC)", duration: "4.5 Hrs", seats: "4 Seats" },
+              { title: "Mumbai ➔ Goa Luxury AC Sleeper Bus", fare: 1450, type: "Volvo Multi-Axle 2+1", duration: "11 Hrs", seats: "Single Sleeper" },
+              { title: "Bengaluru ➔ Ooty SUV Cab Sale", fare: 4800, type: "Innova Crysta (7 Seater)", duration: "6 Hrs", seats: "6 Seats" },
+              { title: "Delhi ➔ Manali Overnight Volvo Bus", fare: 1290, type: "Scania AC Sleeper", duration: "12 Hrs", seats: "Recliner Seats" }
+            ].map((cab) => (
+              <div key={cab.title} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+                <div>
+                  <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors">{cab.title}</h4>
+                  <p className="text-xs text-[#60a5fa] font-extrabold mt-1">{cab.type} • {cab.seats}</p>
+                  <p className="text-[11px] text-white/80 mt-1 font-semibold">Estimated Travel Duration: {cab.duration}</p>
+                </div>
+                <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 pt-3 md:pt-0 border-[#3b82f6]/30">
+                  <div>
+                    <span className="text-[10px] font-black text-[#60a5fa] uppercase block">Special Fare</span>
+                    <span className="font-black text-lg text-[#facc15]">{formatINR(cab.fare)}</span>
+                  </div>
+                  <Button
+                    type="button"
+                    onClick={() => handleBookHotel({ name: cab.title, city: "Cab/Bus Transfer", price: cab.fare, rating: 4.8, reviews: 120, tag: "Transfer" })}
+                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                  >
+                    Reserve Ride &rarr;
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* TRAINS & RAIL PASS RESULTS DIALOG — LUXURY DARK NAVY */}
+      <Dialog open={showTrainResults} onOpenChange={setShowTrainResults}>
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-3xl border-4 border-[#3b82f6]/40 shadow-2xl bg-[#0f1a2e] text-white">
+          <DialogHeader className="bg-gradient-to-r from-[#0f1a2e] via-[#1a3a6b] to-[#0f1a2e] px-7 py-6 text-left text-white relative border-b border-[#1e293b]">
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-2xl font-black text-white flex items-center gap-3">
+                  <TrainFront className="w-7 h-7 text-[#60a5fa]" />
+                  <span>IRCTC Train Tickets &amp; Vande Bharat Sale</span>
+                </DialogTitle>
+                <DialogDescription className="text-white/80 text-xs font-semibold mt-1.5">
+                  Zero Gateway Fees • Instant PNR Confirmation • Vande Bharat Express
+                </DialogDescription>
+              </div>
+              <span className="bg-[#166534] text-[#4ade80] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                0% Gateway Fee
+              </span>
+            </div>
+          </DialogHeader>
+
+          <div className="px-6 py-5 max-h-[65vh] overflow-y-auto space-y-4">
+            {[
+              { train: "Vande Bharat Express (22436)", route: "New Delhi (NDLS) ➔ Varanasi (BSB)", fare: 1750, time: "06:00 ➔ 14:00 (8h 00m)", class: "Executive CC" },
+              { train: "Mumbai Rajdhani Express (12951)", route: "Mumbai (CSMT) ➔ New Delhi (NDLS)", fare: 2890, time: "16:35 ➔ 08:32 (15h 57m)", class: "1st AC (1A)" },
+              { train: "Tejas Express (82502)", route: "New Delhi (NDLS) ➔ Lucknow (LJN)", fare: 1420, time: "15:30 ➔ 21:55 (6h 25m)", class: "AC Chair Car" },
+              { train: "Goa Sampark Kranti (12484)", route: "Delhi (NZM) ➔ Goa Madgaon (MAO)", fare: 1980, time: "11:00 ➔ 12:45 (+1d)", class: "2nd AC (2A)" }
+            ].map((t) => (
+              <div key={t.train} className="bg-[#1e293b] rounded-2xl border-2 border-[#3b82f6]/40 p-5 shadow-xl hover:border-[#60a5fa] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+                <div>
+                  <h4 className="font-black text-base text-white group-hover:text-[#60a5fa] transition-colors">{t.train}</h4>
+                  <p className="text-xs text-[#60a5fa] font-extrabold mt-1">{t.route}</p>
+                  <p className="text-[11px] text-white/80 mt-1 font-semibold">Timing: {t.time} • Class: {t.class}</p>
+                </div>
+                <div className="flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 pt-3 md:pt-0 border-[#3b82f6]/30">
+                  <div>
+                    <span className="text-[10px] font-black text-[#60a5fa] uppercase block">IRCTC Ticket Price</span>
+                    <span className="font-black text-lg text-[#facc15]">{formatINR(t.fare)}</span>
+                  </div>
+                  <Button
+                    type="button"
+                    onClick={() => handleBookHotel({ name: t.train, city: t.route, price: t.fare, rating: 4.9, reviews: 120, tag: "Train Ticket" })}
+                    className="h-11 px-6 text-xs bg-gradient-to-r from-[#e5573f] via-[#f97316] to-[#e5573f] text-white hover:opacity-95 rounded-full font-black uppercase tracking-wider shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all cursor-pointer"
+                  >
+                    Book Train &rarr;
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         </DialogContent>
       </Dialog>

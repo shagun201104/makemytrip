@@ -125,12 +125,12 @@ export function CategoryServices({ category }: CategoryServicesProps) {
                 onChange={(e) => setPassengers(e.target.value)}
                 className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
               >
-                <option value="1">1 Guest (1 Room)</option>
-                <option value="2">2 Guests (2 Rooms)</option>
-                <option value="3">3 Guests (2 Bedrooms)</option>
-                <option value="4">4 Guests (2 Bedrooms)</option>
-                <option value="5">6 Guests (3 Bedroom Villa)</option>
-                <option value="6">8+ Guests (Full Private Estate)</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6+ Guests</option>
               </select>
             </div>
           </div>
@@ -160,28 +160,19 @@ export function CategoryServices({ category }: CategoryServicesProps) {
             </div>
             <div className="space-y-2">
               <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
-                <CalendarDays className="w-4 h-4 text-[#5b9bd5]" /> Travel Month
-              </Label>
-              <Input
-                type="month"
-                value={fromDate}
-                onChange={(e) => setFromDate(e.target.value)}
-                className="bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-4"
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label className="text-[#1a3a6b] text-sm font-bold flex items-center gap-1.5 uppercase">
-                <Users className="w-4 h-4 text-[#5b9bd5]" /> Travellers Count
+                <Users className="w-4 h-4 text-[#5b9bd5]" /> Travellers
               </Label>
               <select
                 value={passengers}
                 onChange={(e) => setPassengers(e.target.value)}
                 className="w-full bg-white border-2 border-[#d5e2f0] text-[#0f1a2e] rounded-xl h-12 px-3 font-semibold text-sm outline-none cursor-pointer"
               >
-                <option value="2">2 Travellers (Couple / Friends)</option>
-                <option value="4">4 Travellers (Family Pack)</option>
-                <option value="6">6 Travellers (Group Package)</option>
+                <option value="1">1 Traveller</option>
+                <option value="2">2 Travellers</option>
+                <option value="3">3 Travellers</option>
+                <option value="4">4 Travellers</option>
+                <option value="5">5 Travellers</option>
+                <option value="6">6+ Travellers</option>
               </select>
             </div>
           </div>
