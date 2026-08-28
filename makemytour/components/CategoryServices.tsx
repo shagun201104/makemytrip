@@ -468,9 +468,9 @@ export function CategoryServices({ category }: CategoryServicesProps) {
         <div className="flex justify-center mt-6">
           <Button
             type="submit"
-            className="bg-gradient-to-r from-[#1a3a6b] to-[#2c5a9e] text-white hover:from-[#0f2847] hover:to-[#1a3a6b] font-bold text-base rounded-full px-12 h-14 shadow-xl hover:shadow-2xl hover:scale-[1.02] flex items-center gap-3 transition-all"
+            className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-sm rounded-2xl px-8 h-11 shadow-md hover:shadow-lg hover:scale-[1.02] flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
-            <Search className="w-5 h-5" /> Search {category}
+            <Search className="w-4 h-4" /> Search {category}
           </Button>
         </div>
       </form>

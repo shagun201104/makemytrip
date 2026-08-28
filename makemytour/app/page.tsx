@@ -608,9 +608,9 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={handleSearchFlights}
-                    className="bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-extrabold text-lg rounded-full px-12 h-14 shadow-[0_12px_35px_rgba(29,78,216,0.45)] hover:shadow-[0_16px_45px_rgba(29,78,216,0.65)] hover:scale-105 flex items-center justify-center gap-2.5 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/60"
+                    className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-sm rounded-2xl px-8 h-11 shadow-md hover:shadow-lg hover:scale-[1.02] flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
-                    <Search className="w-6 h-6 stroke-[3]" />
+                    <Search className="w-4 h-4" />
                     Search Flights
                   </Button>
                 </div>
@@ -794,9 +794,9 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={handleSearchHotels}
-                    className="bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-extrabold text-lg rounded-full px-12 h-14 shadow-[0_12px_35px_rgba(29,78,216,0.45)] hover:shadow-[0_16px_45px_rgba(29,78,216,0.65)] hover:scale-105 flex items-center justify-center gap-2.5 transition-all tracking-wider uppercase cursor-pointer border-2 border-white/60"
+                    className="bg-[#215190] hover:bg-[#1b3e6c] text-white font-semibold text-sm rounded-2xl px-8 h-11 shadow-md hover:shadow-lg hover:scale-[1.02] flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
-                    <Search className="w-6 h-6 stroke-[3]" />
+                    <Search className="w-4 h-4" />
                     Search Hotels
                   </Button>
                 </div>
