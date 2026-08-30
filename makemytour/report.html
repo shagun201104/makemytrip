@@ -1,0 +1,227 @@
+<h1 id="project-submission-report">PROJECT SUBMISSION REPORT</h1>
+<p><strong>Project Title</strong>: Online Travel Booking &amp; Real-Time
+Flight Tracking Platform<br />
+<strong>Course / Track</strong>: Full-Stack Web Development Capstone
+Project<br />
+<strong>Developer</strong>: Shagun Kaushal Prajapati<br />
+<strong>Technologies Used</strong>: Next.js 16, React 19, TypeScript,
+Tailwind CSS, Recharts<br />
+<strong>Submission Date</strong>: August 28, 2026<br />
+<strong>Live Application</strong>:
+https://makemytrip-one.vercel.app<br />
+<strong>Repository</strong>:
+https://github.com/shagun201104/makemytrip</p>
+<hr />
+<h2 id="introduction-project-overview">1. INTRODUCTION &amp; PROJECT
+OVERVIEW</h2>
+<p>This project is a full-stack web platform for travel bookings,
+modeled after MakeMyTrip. The goal was to build a clean, working web
+application where users can search for flights and hotels, track live
+flight status updates in real time, view dynamic pricing trends, select
+specific seats or hotel rooms, and manage cancellations with refund
+calculations.</p>
+<p>The application is built using Next.js 16 (App Router) with
+TypeScript and Tailwind CSS. The state management is handled using React
+hooks and browser local storage for persistence across page reloads.</p>
+<h3 id="key-objectives">1.1 Key Objectives</h3>
+<ol type="1">
+<li>Implement a search system for flights and hotels with input
+validation.</li>
+<li>Build a live flight tracking engine that simulates status changes
+(On Time, Boarding, Delayed, Landed) based on actual time.</li>
+<li>Develop a dynamic pricing module that adjusts base prices according
+to peak travel periods and weekend demand, supported by visual price
+history charts.</li>
+<li>Design interactive seat and room selection grids for booking
+customization.</li>
+<li>Create a self-service cancellation dialog that calculates refund
+amounts based on cancellation timing.</li>
+<li>Ensure full mobile responsiveness across all devices, including iOS
+and Android browsers.</li>
+</ol>
+<hr />
+<h2 id="system-design-architecture">2. SYSTEM DESIGN &amp;
+ARCHITECTURE</h2>
+<p>The application follows Next.js App Router file-based routing
+structure. Client-side components handle user interaction, while state
+is stored locally or processed via helper functions.</p>
+<h3 id="directory-layout">2.1 Directory Layout</h3>
+<pre><code>makemytour/
+├── app/
+│   ├── layout.tsx              # Root layout &amp; navbar
+│   ├── page.tsx                # Homepage search card &amp; showcase
+│   ├── flight-status/
+│   │   └── page.tsx            # Live flight tracking dashboard
+│   ├── admin/
+│   │   └── page.tsx            # Admin control panel
+│   ├── booking/
+│   │   ├── flight/page.tsx     # Flight seat map &amp; checkout
+│   │   └── hotel/page.tsx      # Hotel room selection &amp; checkout
+│   └── lib/
+│       └── flightStatusApi.ts  # Flight status simulation engine
+├── components/
+│   ├── PriceHistoryChart.tsx   # Recharts price trend visualization
+│   ├── LivePrice.tsx           # Dynamic price badge calculator
+│   ├── ReviewSystem.tsx        # Customer review &amp; rating system
+│   └── booking/
+│       ├── InteractiveSeatMap.tsx
+│       ├── InteractiveRoomGrid.tsx
+│       └── CancellationDialog.tsx
+└── public/                     # Static assets &amp; images</code></pre>
+<hr />
+<h2 id="implementation-details-by-module">3. IMPLEMENTATION DETAILS BY
+MODULE</h2>
+<h3 id="flight-hotel-search-engine-apppage.tsx">3.1 Flight &amp; Hotel
+Search Engine (<code>app/page.tsx</code>)</h3>
+<p>The homepage contains a dual-tab search card for flights and hotels.
+Users can select departure/destination cities, departure date, and
+number of passengers using steppers (<code>+</code> and <code>-</code>
+controls).</p>
+<ul>
+<li><strong>Input Validation</strong>: Ensures departure and destination
+cities are not identical and mandatory fields are filled before
+submitting.</li>
+<li><strong>Mobile Layout Fix</strong>: Date inputs on mobile WebKit
+(iOS Safari) were originally overflowing container boundaries. This was
+resolved by wrapping <code>&lt;input type="date"&gt;</code> elements
+inside a wrapper <code>div</code> styled with
+<code>overflow-hidden border-2 border-[#cbd5e1] rounded-2xl min-w-0 w-full</code>.</li>
+</ul>
+<h3
+id="live-flight-status-tracking-appflight-statuspage.tsx-libflightstatusapi.ts">3.2
+Live Flight Status Tracking (<code>app/flight-status/page.tsx</code>
+&amp; <code>lib/flightStatusApi.ts</code>)</h3>
+<p>The flight tracking page simulates live status changes for active
+flights.</p>
+<ul>
+<li><strong>Time Calibration</strong>: The engine was adjusted to run at
+a 1:1 real-time scale (1 second = 1 second of flight time) so flights
+progress in real time rather than sped-up simulation.</li>
+<li><strong>Status Updates</strong>: Flights move through states
+(<code>ON TIME</code> → <code>BOARDING</code> → <code>IN FLIGHT</code> →
+<code>LANDED</code> or <code>DELAYED</code>).</li>
+<li><strong>Context &amp; Management</strong>: If a flight is delayed, a
+reason is generated (e.g., weather conditions). Users can add custom
+flight numbers to track, or remove flights using the delete button,
+which immediately updates state and local storage
+(<code>mmt_tracked_flights</code>).</li>
+</ul>
+<h3
+id="dynamic-pricing-engine-componentsliveprice.tsx-pricehistorychart.tsx">3.3
+Dynamic Pricing Engine (<code>components/LivePrice.tsx</code> &amp;
+<code>PriceHistoryChart.tsx</code>)</h3>
+<p>Base prices automatically recalculate based on demand metrics: 1.
+<strong>Peak Season Multiplier</strong>: Fares increase by 20% during
+holiday dates. 2. <strong>Weekend Surge</strong>: Fares increase by 10%
+on Friday through Sunday departures. 3. <strong>Price History
+Graph</strong>: A line chart built with Recharts shows 7-day price
+trends, helping users decide when to book.</p>
+<h3 id="interactive-seat-room-selection">3.4 Interactive Seat &amp; Room
+Selection</h3>
+<ul>
+<li><strong>Flight Seat Map
+(<code>InteractiveSeatMap.tsx</code>)</strong>: Displays an airplane
+layout divided into Business and Economy sections. Occupied seats are
+disabled, while available seats display price add-ons.</li>
+<li><strong>Hotel Room Grid
+(<code>InteractiveRoomGrid.tsx</code>)</strong>: Displays available room
+types (Deluxe, Suite, Villa) with occupancy limits and amenity
+tags.</li>
+</ul>
+<h3 id="cancellation-refund-handling-cancellationdialog.tsx">3.5
+Cancellation &amp; Refund Handling
+(<code>CancellationDialog.tsx</code>)</h3>
+<p>Allows users to cancel existing bookings and view a breakdown of
+their refund: * Cancellation &gt; 24 hours before trip: <strong>100%
+refund</strong> (minus standard transaction fee). * Cancellation ≤ 24
+hours before trip: <strong>80% refund</strong>.</p>
+<h3 id="admin-panel-appadminpage.tsx">3.6 Admin Panel
+(<code>app/admin/page.tsx</code>)</h3>
+<p>A dashboard styled with a dark navy background (<code>#0f172a</code>)
+to manage platform stats, monitor active flights, check hotel inventory,
+and view total revenue figures.</p>
+<hr />
+<h2 id="challenges-resolutions">4. CHALLENGES &amp; RESOLUTIONS</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Problem Encountered</th>
+<th style="text-align: left;">Technical Root Cause</th>
+<th style="text-align: left;">Resolution Applied</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Date input overflow on
+mobile</strong></td>
+<td style="text-align: left;">iOS Safari renders native
+<code>&lt;input type="date"&gt;</code> WebKit controls with fixed
+intrinsic width, causing them to push outside parent card borders.</td>
+<td style="text-align: left;">Wrapped input in a container
+<code>&lt;div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white"&gt;</code>
+with <code>appearance-none</code> on the input element.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fast simulation
+speed</strong></td>
+<td style="text-align: left;">Flight status was updating every few
+seconds, making tracking feel unrealistic.</td>
+<td style="text-align: left;">Recalibrated timer ticks in
+<code>flightStatusApi.ts</code> to 1:1 real-time scale.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Deleted flights
+re-appearing</strong></td>
+<td style="text-align: left;">State was updating locally but not syncing
+with <code>localStorage</code>.</td>
+<td style="text-align: left;">Updated deletion function to write the
+updated array back to
+<code>localStorage.setItem('mmt_tracked_flights', ...)</code>
+immediately.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Search button color
+mismatch</strong></td>
+<td style="text-align: left;">Search buttons used different shades of
+blue and orange across pages.</td>
+<td style="text-align: left;">Unified all search action buttons to
+<code>#215190</code> (Steel Sapphire Navy) with 44px height.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="testing-and-build-results">5. TESTING AND BUILD RESULTS</h2>
+<p>The project was compiled and tested using
+<code>npx next build</code>. All pages compile as clean
+static/prerendered routes.</p>
+<pre><code>▲ Next.js 16.2.12 (Turbopack)
+
+  Creating an optimized production build ...
+  Compiled successfully in 1373ms
+  Running TypeScript ...
+  Finished TypeScript in 2.0s ...
+  Generating static pages (9/9) in 131ms
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    182 kB         284 kB
+├ ○ /_not-found                          982 B          102 kB
+├ ○ /admin                               38.4 kB        140 kB
+├ ○ /booking/flight                      24.1 kB        126 kB
+├ ○ /booking/hotel                       22.8 kB        125 kB
+├ ○ /flight-status                       31.6 kB        133.6 kB
+└ ○ /profile                             12.4 kB        114.4 kB
+
+○  (Static)  prerendered as static content</code></pre>
+<hr />
+<h2 id="conclusion">6. CONCLUSION</h2>
+<p>The MakeMyTrip clone application fulfills all core functionality
+requirements. The platform provides a clean user interface, accurate
+flight status tracking, dynamic pricing feedback, and responsive layout
+performance across desktop and mobile screens.</p>
+<p>The application is deployed live on Vercel at
+https://makemytrip-one.vercel.app.</p>

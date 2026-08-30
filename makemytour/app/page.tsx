@@ -42,6 +42,7 @@ import {
   ShieldCheck,
   Sparkles,
   Star,
+  Dog,
 } from "lucide-react";
 import { LivePrice } from "@/components/pricing/PriceInsights";
 import { PersonalizedRecommendations } from "@/components/recommendations/PersonalizedRecommendations";
@@ -250,22 +251,24 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Flights");
 
   // Flight search form fields.
-  const [fromCity, setFromCity] = useState("");
-  const [toCity, setToCity] = useState("");
-  const [departDate, setDepartDate] = useState("");
+  const [fromCity, setFromCity] = useState("New Delhi");
+  const [toCity, setToCity] = useState("Goa");
+  const [departDate, setDepartDate] = useState("2026-08-30");
   const [travellers, setTravellers] = useState("1");
   const [flightAdults, setFlightAdults] = useState(1);
   const [flightChildren, setFlightChildren] = useState(0);
+  const [flightPets, setFlightPets] = useState(0);
   const [flightChildAge, setFlightChildAge] = useState("5");
 
   // Hotel search form fields.
-  const [hotelLocation, setHotelLocation] = useState("");
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
+  const [hotelLocation, setHotelLocation] = useState("Hyderabad");
+  const [checkInDate, setCheckInDate] = useState("2026-08-30");
+  const [checkOutDate, setCheckOutDate] = useState("2026-08-31");
   const [rooms, setRooms] = useState("1");
   const [guests, setGuests] = useState("2");
   const [hotelAdults, setHotelAdults] = useState(2);
   const [hotelChildren, setHotelChildren] = useState(0);
+  const [hotelPets, setHotelPets] = useState(0);
   const [hotelChildAge, setHotelChildAge] = useState("5");
 
   // Controls the search-results dialog.
@@ -286,11 +289,10 @@ export default function Home() {
   // Validate the flight form, then open the results dialog.
   const handleSearchFlights = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fromCity || !toCity || !departDate) {
-      alert("Please select From, To and Departure date.");
-      return;
-    }
-    if (fromCity === toCity) {
+    if (!fromCity) setFromCity("New Delhi");
+    if (!toCity) setToCity("Goa");
+    if (!departDate) setDepartDate("2026-08-30");
+    if (fromCity && toCity && fromCity === toCity) {
       alert("Departure and destination cities can't be the same.");
       return;
     }
@@ -299,13 +301,10 @@ export default function Home() {
 
   const handleSearchHotels = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!hotelLocation || !checkInDate || !checkOutDate) {
-      alert("Please select Location, Check-in and Check-out dates.");
-      return;
-    }
-    if (checkInDate >= checkOutDate) {
-      alert("Check-out date must be after check-in date.");
-      return;
+    if (!hotelLocation) setHotelLocation("Hyderabad");
+    if (!checkInDate) setCheckInDate("2026-08-30");
+    if (!checkOutDate || checkOutDate <= (checkInDate || "2026-08-30")) {
+      setCheckOutDate("2026-08-31");
     }
     setShowHotelResults(true);
   };
@@ -513,8 +512,8 @@ export default function Home() {
                       <Users className="w-4 h-4 text-[#475569] shrink-0" /> Total Travellers
                     </Label>
                     <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center justify-between h-12 sm:h-14 px-3.5 text-xs sm:text-sm font-black text-[#0f172a]">
-                      <span>{flightAdults + flightChildren} Person(s)</span>
-                      <span className="text-[11px] sm:text-xs font-bold text-[#64748b]">({flightAdults} A / {flightChildren} C)</span>
+                      <span>{flightAdults + flightChildren} Person(s){flightPets > 0 ? ` • ${flightPets} Pet(s)` : ""}</span>
+                      <span className="text-[11px] sm:text-xs font-bold text-[#64748b]">({flightAdults} A / {flightChildren} C {flightPets > 0 ? `/ ${flightPets} P` : ""})</span>
                     </div>
                   </div>
                 </div>
@@ -523,13 +522,13 @@ export default function Home() {
                 <div className="bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-4 sm:p-5 space-y-3 shadow-inner">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <span className="text-xs font-black uppercase tracking-wider text-[#0f172a] flex items-center gap-2">
-                      <Users className="w-4 h-4 text-[#475569] shrink-0" /> Passenger Count (+ / - Stepper)
+                      <Users className="w-4 h-4 text-[#475569] shrink-0" /> Passenger &amp; Pet Count (+ / - Stepper)
                     </span>
                     <span className="text-[10px] sm:text-[11px] font-black text-[#475569] bg-white px-2.5 py-0.5 rounded-full border border-[#cbd5e1] shadow-xs self-start sm:self-auto">
                       Tap + or - to Adjust
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                     {/* ADULTS STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
@@ -589,6 +588,33 @@ export default function Home() {
                             setFlightChildren(next);
                             setTravellers(String(flightAdults + next));
                           }}
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer shrink-0"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* PETS STEPPER */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569] flex items-center gap-1">
+                        <Dog className="w-3.5 h-3.5 text-[#2563eb]" /> Pets (Dogs/Cats)
+                      </Label>
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0 overflow-hidden">
+                        <button
+                          type="button"
+                          disabled={flightPets <= 0}
+                          onClick={() => setFlightPets(Math.max(0, flightPets - 1))}
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer shrink-0"
+                        >
+                          -
+                        </button>
+                        <span className="font-black text-sm text-[#0f172a] truncate px-1">
+                          {flightPets} Pet{flightPets !== 1 ? "s" : ""}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setFlightPets(flightPets + 1)}
                           className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer shrink-0"
                         >
                           +
@@ -691,23 +717,30 @@ export default function Home() {
                       <Users className="w-4 h-4 text-[#475569] shrink-0" /> Total Guests
                     </Label>
                     <div className="w-full min-w-0 overflow-hidden rounded-2xl border-2 border-[#cbd5e1] bg-white shadow-xs flex items-center justify-between h-12 sm:h-14 px-3.5 text-xs sm:text-sm font-black text-[#0f172a]">
-                      <span>{hotelAdults + hotelChildren} Guest(s)</span>
-                      <span className="text-[11px] sm:text-xs font-bold text-[#64748b]">({hotelAdults} A / {hotelChildren} C)</span>
+                      <span>{hotelAdults + hotelChildren} Guest(s){hotelPets > 0 ? ` • ${hotelPets} Pet(s)` : ""}</span>
+                      <span className="text-[11px] sm:text-xs font-bold text-[#64748b]">({hotelAdults} A / {hotelChildren} C {hotelPets > 0 ? `/ ${hotelPets} P` : ""})</span>
                     </div>
                   </div>
                 </div>
 
                 {/* HOTEL AGE & FAMILY BREAKDOWN CONTROL WITH STEPPERS */}
                 <div className="bg-[#f8fafc] border-2 border-[#cbd5e1] rounded-2xl p-5 space-y-3 shadow-inner">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between flex-wrap gap-1.5">
                     <span className="text-xs font-black uppercase tracking-wider text-[#0f172a] flex items-center gap-2">
-                      <BedDouble className="w-4 h-4 text-[#475569]" /> Guest Count (+ / - Stepper)
+                      <BedDouble className="w-4 h-4 text-[#475569]" /> Guest &amp; Pet Count (+ / - Stepper)
                     </span>
-                    <span className="text-[11px] font-black text-[#475569] bg-white px-3 py-1 rounded-full border border-[#cbd5e1] shadow-xs">
-                      Tap + or - to Adjust
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {hotelPets > 0 && (
+                        <span className="text-[10px] font-black text-[#166534] bg-[#dcfce7] px-2.5 py-0.5 rounded-full border border-[#86efac]">
+                          🐾 Pet Friendly Stays Included
+                        </span>
+                      )}
+                      <span className="text-[11px] font-black text-[#475569] bg-white px-3 py-1 rounded-full border border-[#cbd5e1] shadow-xs">
+                        Tap + or - to Adjust
+                      </span>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {/* HOTEL ADULTS STEPPER */}
                     <div className="space-y-1.5">
                       <Label className="text-xs font-bold text-[#475569]">Adults (12+ yrs)</Label>
@@ -768,6 +801,33 @@ export default function Home() {
                             setGuests(String(hotelAdults + next));
                           }}
                           className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* HOTEL PETS STEPPER */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-bold text-[#475569] flex items-center gap-1">
+                        <Dog className="w-3.5 h-3.5 text-[#2563eb]" /> Pets (Dogs/Cats/Other)
+                      </Label>
+                      <div className="flex items-center justify-between bg-white border-2 border-[#cbd5e1] rounded-xl h-12 px-2 shadow-xs min-w-0 overflow-hidden">
+                        <button
+                          type="button"
+                          disabled={hotelPets <= 0}
+                          onClick={() => setHotelPets(Math.max(0, hotelPets - 1))}
+                          className="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] active:scale-95 text-[#0f172a] font-black text-lg flex items-center justify-center transition-all disabled:opacity-30 cursor-pointer shrink-0"
+                        >
+                          -
+                        </button>
+                        <span className="font-black text-sm text-[#0f172a] truncate px-1">
+                          {hotelPets} Pet{hotelPets !== 1 ? "s" : ""}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setHotelPets(hotelPets + 1)}
+                          className="w-8 h-8 rounded-lg bg-[#0f172a] hover:bg-[#1e293b] active:scale-95 text-white font-black text-lg flex items-center justify-center transition-all shadow-xs cursor-pointer shrink-0"
                         >
                           +
                         </button>
